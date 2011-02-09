@@ -1,0 +1,96 @@
+% Package fuer Uebungsblaetter
+% Autor: Rebecca Breu
+% Version: 11.05.2007
+
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{listings}
+\RequirePackage{a4wide}
+
+\ProvidesPackage{py_uebungen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Seitenstil
+
+%Abstand zwischen zwei aufeinander folgenden Absaetzen:
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+
+%Kein Einzug am Anfang eines Absatzes:
+\setlength{\parindent}{0cm}
+
+%Abstand zum oberen Blattrand verringern
+\setlength{\headsep}{0cm}
+\setlength{\topskip}{0cm}
+
+% Zaehler und Label-Feld fuer enumerate neu formatieren:
+% Erste Ebene:
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+% Zweite Ebene:
+\renewcommand{\theenumii}{\roman{enumii}}
+\renewcommand{\labelenumii}{\theenumii)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% listings-Stil
+\lstset{
+    language=Python, 
+    basicstyle=\small,
+    identifierstyle=\ttfamily, 
+    stringstyle=\itshape, 
+    frame=single,
+    framerule=0.5pt,
+    showstringspaces=false}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Befehle
+
+\newcommand{\abgabe}[1]
+  {
+    \vspace*{\fill}\hspace*{\fill}\textbf{Abgabe: #1}
+  }
+
+\newcommand{\hinweis}{\textit{Hinweis: }}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Umgebungen
+\newenvironment{auflistung}
+  {\begin{itemize}\setlength{\itemsep}{0mm}}
+  {\end{itemize}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorems
+
+\newtheoremstyle{aufgabenstyle}
+  {} % Space above, empty = `usual value'
+  {3\parskip} % Space below
+  {\normalfont}% Body font
+  {} % Indent amount (empty = no indent, \parindent = para indent)
+  {\bf\large} % Thm head font
+  {\hspace{0.3em}} % Punctuation after thm head
+  { } % Space after thm head: \newline = linebreak
+  {} % thm spec
+
+\newtheoremstyle{teilaufgabenstyle}
+  {} % Space above, empty = `usual value'
+  {} % Space below
+  {\normalfont} % Body font
+  {} % Indent amount (empty = no indent, \parindent = para indent)
+  {\bf} % Thm head font
+  {} % Punctuation after thm head
+  { } % Space after thm head: \newline = linebreak
+  {} % thm spec
+
+
+\theoremstyle{aufgabenstyle}
+\newtheorem{aufgabe}{Aufgabe}
+
+\theoremstyle{teilaufgabenstyle}
+\newtheorem{teilaufgabe}{}[aufgabe]
+
+%% 
+%% End of file `uebungen.sty'.
+

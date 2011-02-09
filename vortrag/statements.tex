@@ -1,0 +1,98 @@
+\section{Statements}
+
+\begin{frame}[fragile]
+\frametitle{Das if-Statement}
+\begin{lstlisting}[style=Python]
+if a == 3:
+    print "Aha!"
+\end{lstlisting}
+\begin{itemize}
+\item Bl"ocke werden durch Einr"uckung festgelegt!
+\item Standard: Einr"uckung mit vier Leerzeichen
+\end{itemize}
+\begin{lstlisting}
+if a == 3:
+    print "spam"
+elif a == 10:
+    print "eggs"
+elif a == -3:
+    print "bacon"
+else:
+    print "something else"
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Vergleichsoperatoren}
+\begin{itemize}
+\item Vergleich des Inhalts: \texttt{==}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}, \texttt{!=}
+\item Vergleich der Objektidentit"at: \lstinline{a is b}, \lstinline{a is not b}\item Und/Oder-Verkn"upfung: \lstinline{a and b}, \lstinline{a or b}
+\item Negation: \lstinline{not a}
+\end{itemize}
+\begin{lstlisting}
+if not (a==b) and (c<3):
+    pass
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{for-Schleifen}
+\begin{lstlisting}[style=Python]
+for i in range(10):
+    print i   # 0, 1, 2, 3, ..., 9
+
+for i in range(3, 10):
+   print i    # 3, 4, 5, ..., 9
+
+for i in range(0, 10, 2):
+   print i   # 0, 2, 4, ..., 8
+else:
+   print "Schleife komplett durchlaufen."
+\end{lstlisting}
+\begin{itemize}
+\item Schleife vorzeitig beenden: \texttt{break}
+\item n"achster Durchlauf: \texttt{continue}
+\item \texttt{else} wird ausgef"uhrt, wenn die Schleife nicht vorzeitig verlassen wurde
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+"Uber Sequenzen kann man direkt (ohne Index) iterieren:
+\begin{lstlisting}[style=Python]
+for item in ["spam", "eggs", "bacon"]:
+    print item
+\end{lstlisting}
+
+Auch die \texttt{range}-Funktion liefert eine Liste:
+\begin{lstlisting}[style=Shell]
+>>> range(0, 10, 2)
+[0, 2, 4, 6, 8]
+\end{lstlisting}
+Ben"otigt man doch Indices:
+\begin{lstlisting}[style=Python]
+for (i, char) in enumerate("hallo welt"):
+    print i, char
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{while-Schleifen}
+\begin{lstlisting}[style=Python]
+while i < 10:
+    i += 1
+\end{lstlisting}
+Auch hier k"onnen \lstinline{break} und \lstinline{continue} verwendet werden.\\[3mm]
+Ersatz f"ur do-while-Schleife:
+\begin{lstlisting}[style=Python]
+while True:
+   # wichtiger Code
+   if bedingung:
+       break
+\end{lstlisting} 
+\end{frame}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% latex-run-command: pdflatex
+%%% TeX-master: "vortrag"
+%%% End: 

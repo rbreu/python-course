@@ -1,0 +1,24 @@
+>>> print "%3.5f" % 3.1
+3.10000
+>>> print "%03.5f" % 3.1
+3.10000
+>>> print "% 3.5f" % 3.1
+ 3.10000
+>>> print "%3.5f" % 3.1
+3.10000
+>>> print "%3.5e" % 3.1
+3.10000e+00
+>>> print "%3.5E" % 3.1
+3.10000E+00
+>>> print "%o" % 10
+12
+>>> print "%x" % 10
+a
+>>> print "%X" % 12
+C
+>>> vorname = "Jim"
+>>> nachname = "Kirk"
+>>> wohnort = "Iowa"
+>>> alter = 35
+>>> print "%s %s ist %i Jahre alt und wohnt in %s." % (vorname, nachname, alter, wohnort)
+Jim Kirk ist 35 Jahre alt und wohnt in Iowa.

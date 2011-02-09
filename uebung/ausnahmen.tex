@@ -1,0 +1,29 @@
+\section*{Ausnahmen}
+\begin{aufgabe}
+Lesen Sie vom Benuter eine Zahl ein und geben Sie ihr Quadrat aus. Was passiert, wenn der Benutzer etwas anderes als eine Zahl eingibt? Geben Sie eine benutzerfreundliche Fehlermeldung aus!
+\end{aufgabe}
+
+\begin{aufgabe}[Fakult"at erweitert]
+Die Fakult"at ist nur f"ur nat"urliche Zahlen definiert. Wie reagiert die Funktion aus Aufgabe \ref{fakultaet} auf negative Parameter? Lassen Sie die Funktion in diesem Fall einen \texttt{ValueError} ausl"osen.
+\end{aufgabe}
+
+\begin{aufgabe}Schreiben Sie ein Programm, welches in einer Endlosschleife Eingaben vom Benutzer einliest und jeweils pr"uft, ob die Eingabe ein Palindrom ist (verwenden Sie die Funktion aus Aufgabe \ref{palindrom}). 
+
+Was passiert, wenn der Benutzer \texttt{Ctrl-C} oder \texttt{Ctrl-D} dr"uckt? "Andern Sie das Programm, sodass der Benutzer beim Dr"ucken von \texttt{Ctrl-C} oder \texttt{Ctrl-D} gefragt wird, ob er das Programm beenden m"ochte.
+\end{aufgabe}
+
+\begin{aufgabe}
+Mit dem Modul \texttt{readline} k"onnen f"ur die Benutzereingaben mittels \texttt{raw\_input} Editierm"oglichkeiten wie in der Shell aktiviert werden. Dieses Modul ist standardm"a"sig nur unter *nix-Systemen verf"ugbar. Folgender Code importiert das Modul nicht auf Windows-Rechnern:
+\begin{lstlisting}
+if not sys.platform.startswith("win"):
+    import readline
+    import rlcompleter
+    readline.parse_and_bind("tab: complete")
+\end{lstlisting}
+Warum ist ein Ansatz mit Ausnahmen besser? Schreiben Sie den Code so um, dass er mit Ausnahmen arbeitet.
+\end{aufgabe}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "uebung1"
+%%% End: 

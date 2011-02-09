@@ -1,0 +1,60 @@
+\section*{Funktionen}
+\begin{aufgabe}[Fakult"at]
+\label{fakultaet}
+Schreiben Sie eine Funktion, welche die Fakult"at n! einer Zahl $n$ zur"uckgibt. ($n! = 1 \cdot 2 \cdot ... \cdot n$)
+\end{aufgabe}
+
+\begin{aufgabe}[Ulam-Folge]
+\label{ulamfolge}
+Schreiben Sie eine Funktion, welche die Ulam-Folge zu einer Zahl $a_0$ als Liste zur"uckgibt. Es gilt: 
+\begin{displaymath}
+a_{n+1} =
+\begin{cases}
+\nicefrac{a_n}{2}, & \text{falls } a_n \text{ gerade}\\
+3 a_n+1, & \text{falls } a_n \text{ ungerade}\\
+\end{cases}
+\end{displaymath}
+ bei $a_n=1$ breche die Folge ab. 
+Beispiel: 
+\begin{lstlisting}
+>>> print ulam_folge(6)
+[6, 3, 10, 5, 16, 8, 4, 2, 1]
+\end{lstlisting}
+\end{aufgabe}
+
+\begin{aufgabe}[Palindrom]
+\label{palindrom}
+Schreiben Sie eine Funktion, die testet, ob ein String ein Palindrom ist, also ein Wort, das vorw"arts und r"uckw"arts gelesen gleich ist (gehen Sie davon aus, dass der String keine gemischte Gro"s-/Kleinschreibung enth"alt). Was passiert, wenn der Funktion statt eines Strings eine Liste "ubergeben wird? 
+\end{aufgabe}
+
+\begin{aufgabe}[Freier Fall]
+\label{freier_fall}
+Die Formel f"ur den freien Fall lautet: 
+\begin{displaymath}
+h(t) = h_0 - \frac{1}{2} gt^2, 
+\end{displaymath}
+wobei $h(t)$ die Fallh"ohe zur Zeit $t$ ist, $h_0$ die Ausgangsh"ohe zur Zeit 0 und $g$ die Erdbeschleunigung. Implementieren eine Funktion \lstinline{fallhoehe(h_0, t, g)}!
+\begin{teilaufgabe}
+Rufen Sie die obige Funktion mit Keyword-Parametern auf. Was passiert, wenn Sie die Reihenfolge der Keyword-Parameter "andern?
+\end{teilaufgabe}
+\begin{teilaufgabe}
+"Andern Sie das Programm, sodass die Erdbeschleunigung per default 9.81 betr"agt.
+\end{teilaufgabe}
+\end{aufgabe}
+
+\begin{aufgabe}
+Was macht folgender Code?\\
+\begin{lstlisting}
+def nichts():
+    print "Ich gebe nichts zurueck."
+
+a = nichts()
+print a
+\end{lstlisting}
+\end{aufgabe}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "uebung1"
+%%% End: 

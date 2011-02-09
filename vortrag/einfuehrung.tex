@@ -1,0 +1,170 @@
+\section{Einf"uhrung}
+
+\begin{frame}
+\frametitle{Was ist Python?}
+\alert{Python:} dynamische Programmiersprache, welche verschiedene Programmierparadigmen unterst"utzt:
+\begin{itemize}
+\item prozedurale Programmierung
+\item objektorientierte Programmierung
+\item funktionale Programmierung
+\end{itemize}
+Standard: Python-Bytecode wird im Interpreter ausgef"uhrt ("ahnlich Java)\\
+$\rightarrow$ \alert{plattformunabh"angiger Code}
+\end{frame}
+
+\begin{frame}
+\frametitle{Warum Python?}
+\begin{itemize}
+\item Syntax ist klar, leicht zu lesen \& lernen (fast Pseudocode)
+\item intuitive Objektorientierung
+\item volle Modularit"at, hierarchische Pakete
+\item Fehlerbehandlung mittels Ausnahmen
+\item dynamische, \glqq High Level\grqq-Datentypen
+\item umfangreiche Standard-Bibliothek f"ur viele Aufgaben
+\item einfache Erweiterbarkeit durch C/C++, Wrappen von C/C++-Bibliotheken
+\end{itemize}
+\alert{Schwerpunkt: Programmiergeschwindigkeit!}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ist Python schnell genug?}
+\begin{itemize}
+\item f"ur rechenintensive Algorithmen: evtl. besser Fortran, C, C++ 
+\item f"ur Anwenderprogramme: Python ist schnell genug!
+\item Gro"steil der Python-Funktionen sind in C geschrieben
+\item Performance-kritische Teile k"onnen jederzeit in C/C++ ausgelagert werden
+\item erst analysieren, dann optimieren!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Hallo Welt!}
+\begin{lstlisting}[style=Python]
+#!/usr/bin/env python
+
+# Dies ist ein Kommentar
+print "Hallo Welt!"
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+$ python hallo_welt.py
+Hallo Welt!
+$
+\end{lstlisting}%$
+\begin{lstlisting}[style=Shell]
+$ chmod 755 hallo_welt.py
+$ ./hallo_welt.py
+Hallo Welt!
+$
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Hallo User}
+\begin{lstlisting}[style=Python]
+#!/usr/bin/env python
+
+name = raw_input("Wie heisst du?")
+print "Hallo", name
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+$ ./hallo_user.py
+Wie heisst du?
+Rebecca
+Hallo Rebecca
+$
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+\frametitle{Starke und dynamische Typisierung}
+\alert{Starke Typisierung:}
+\begin{itemize}
+\item Objekt ist genau von einem Typ! String ist immer String, \texttt{int} immer \texttt{int}
+\item Gegenbeispiel C: \texttt{char} kann als \texttt{short} betrachtet werden, \texttt{void~*} kann alles sein
+\end{itemize}
+\alert{Dynamische Typisierung: }
+\begin{itemize}
+\item keine Variablendeklaration
+\item Variablennamen k"onnen nacheinander unterschiedliche Datentypen zugewiesen werden
+\item Erst zur Laufzeit werden Eigenschaften eines Objekts untersucht
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Starke und dynamische Typisierung}
+\begin{lstlisting}[style=Python]
+zahl = 3
+print zahl, type(zahl)
+print zahl + 42
+zahl = "Rebecca"
+print zahl, type(zahl)
+print zahl + 42
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+3 <type 'int'>
+45
+Rebecca <type 'str'>
+Traceback (most recent call last):
+  File "test.py", line 6, in ?
+    print zahl + 42
+TypeError: cannot concatenate 'str' and 
+'int' objects
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Interaktiver Modus}
+Der Interpreter kann im interaktiven Modus gestartet werden:
+\begin{lstlisting}[style=Shell]
+$ python
+Python 2.4.1 (#1, Oct 13 2006, 16:58:04)
+[GCC 4.0.2 20050901 (prerelease) ...
+Type "help", "copyright", "credits" or ...
+>>> print "hallo welt"
+hallo welt
+>>> a = 3 + 4
+>>> print a
+7
+>>> 3 + 4
+7
+>>>
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}
+\frametitle{Dokumentation}
+Online-Hilfe im Interpreter:
+\begin{itemize}
+\item \lstinline{help()}: allgemeine Hilfe zu Python
+\item \lstinline{help(obj)}: Hilfe zu einem Objekt, z.B. einer Funktion oder einem Modul
+\item \lstinline{dir()}: alle belegten Namen 
+\item \lstinline{dir(obj)}: alle Attribute eines Objekts
+\end{itemize}
+\vspace{5mm}
+Offizielle Dokumentation: \alert{\underline{\texttt{http://docs.python.org/}}}\\
+\vspace{5mm}
+Dive into Python: \alert{\underline{\texttt{http://diveintopython.org/}}}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Dokumentation}
+\begin{lstlisting}[style=Shell]
+>>> help(dir)
+Help on built-in function dir:
+...
+>>> a = 3
+>>> dir()
+['__builtins__', '__doc__', '__file__', 
+'__name__', 'a']
+>>> help(a)
+Help on int object:
+...
+\end{lstlisting}
+\end{frame}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% latex-run-command: pdflatex
+%%% TeX-master: "vortrag"
+%%% End: 

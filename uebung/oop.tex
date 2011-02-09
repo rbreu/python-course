@@ -1,0 +1,63 @@
+\section*{Objektorientierte Programmierung}
+
+\begin{aufgabe}[Punkt-Klasse]
+\begin{teilaufgabe}
+Programmieren Sie die Punkt-Klasse aus der Vorlesung nach. Sorgen Sie f"ur eine leserliche Ausgabe unter Verwendung mit \texttt{print} und stellen Sie sicher, dass zwei Punkte als gleich gelten, wenn ihre $x$- und $y$-Werte "ubereinstimmen. \end{teilaufgabe}
+\begin{teilaufgabe}
+Implementieren Sie den $+$- und den $*$-Operator f"ur zwei Punkte:
+\begin{displaymath}
+\left(\begin{array}{c}
+x_1\\
+y_1
+\end{array}\right)
++
+\left(\begin{array}{c}
+x_2\\
+y_12
+\end{array}\right)
+=
+\left(\begin{array}{c}
+x_1 + x_2\\
+y_1 + y_2
+\end{array}\right), \hspace{5mm}
+\left(\begin{array}{c}
+x_1\\
+y_1
+\end{array}\right)
+*
+\left(\begin{array}{c}
+x_2\\
+y_12
+\end{array}\right)
+= (x_1 * x_2) + (y_1 * y_2)
+\end{displaymath}
+Folgendes soll m"oglich sein:
+\begin{lstlisting}
+>>> Punkt(1, 2) + Punkt(4, 2)
+(5, 4)
+>>> Punkt(1, 2) * Punkt(4, 2)
+8
+\end{lstlisting}
+\end{teilaufgabe}
+
+\begin{teilaufgabe}
+Implementieren Sie die Norm eines Punktes mithilfe des eben implementierten Skalarprodukts:
+\begin{displaymath}
+\left\| p\right\| = \sqrt{p*p}
+\end{displaymath}
+\end{teilaufgabe}
+\end{aufgabe}
+
+\begin{aufgabe}[Konto]
+\begin{teilaufgabe}
+Implementieren Sie eine Klasse Konto mit Attributen f"ur die Kontonummer, den Kontostand und den Namen des Kontoinhabers. Das Konto soll nicht "uberzogen werden k"onnen, sorgen Sie daf"ur, dass ein Zugriff auf den Kontostand keinen negativen Kontostand zur Folge hat.
+\end{teilaufgabe}
+\begin{teilaufgabe}
+Zus"atzlich zu den Kontodaten soll der Zinssatz festgehalten werden, der f"ur alle Konten gleich ist. Implementieren Sie eine Methode, die den Kunden "uber den aktuellen Zinssatz informiert und eine weitere Methode, welche die Zinsen zum aktuellen Kontostand ausrechnet.
+\end{teilaufgabe}
+\end{aufgabe}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "uebung2"
+%%% End: 

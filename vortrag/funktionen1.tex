@@ -1,0 +1,100 @@
+\section{Funktionen}
+
+\begin{frame}[fragile]
+\frametitle{Funktionen}
+\begin{lstlisting}[style=Python]
+def addiere(a, b):
+    """Gibt die Summe von a und b zurueck."""
+
+    summe = a + b
+    return summe
+\end{lstlisting}
+
+\begin{lstlisting}[style=Shell]
+>>> ergebnis = addiere(3, 5)
+>>> print ergebnis
+8
+>>> help(addiere)
+Help on function addiere in module __main__:
+
+addiere(a, b)
+    Gibt die Summe von a und b zurueck.
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{R"uckgabewerte und Parameter}
+\begin{itemize}
+\item Funktionen k"onnen beliebige Objekte als Parameter und R"uckgabewerte haben
+\item Typen der R"uckgabewerte und Parameter sind nicht festgelegt
+\item Funktionen ohne expliziten R"uckgabewert geben \texttt{None} zur"uck
+\end{itemize}
+\begin{lstlisting}[style=Python]
+def hallo_welt():
+    print "Hallo Welt!"
+
+a = hallo_welt()
+print a
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+$ mein_programm.py
+Hallo Welt
+None
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Mehrere R"uckgabewerte}
+Mehrere R"uckgabewerte werden mittels Tupel oder Listen realisiert:
+\begin{lstlisting}[style=Python]
+def foo():
+   a = 17
+   b = 42
+   return (a, b)
+
+ret = foo()
+(z1, z2) = foo()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Keywords und Defaultwerte}
+Man kann Parameter auch in anderer Reihenfolge als definiert angeben:
+\begin{lstlisting}[style=Python]
+def foo(a, b, c):
+    print a, b, c
+
+foo(b=3, c=1, a="hallo")
+\end{lstlisting}
+Defaultwerte festlegen:
+\begin{lstlisting}[style=Python]
+def foo(a, b, c=1.3):
+    print a, b, c
+
+foo(1, 2)
+foo(1, 17, 42)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Funktionen sind Objekte}
+Funktionen sind Objekte und k"onnen wie solche zugewiesen und "ubergeben werden:
+\begin{lstlisting}[style=Shell]
+>>> def foo(f):
+...     print f(33)
+...
+>>> foo(float)
+33.0
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+>>> a = float
+>>> a(22)
+22.0
+\end{lstlisting}
+\end{frame}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% latex-run-command: pdflatex
+%%% TeX-master: "vortrag"
+%%% End: 

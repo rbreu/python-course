@@ -1,0 +1,174 @@
+\section{Datentypen I}
+
+\begin{frame}[fragile]
+\frametitle{Numerische Datentypen}
+\begin{itemize}
+\item \texttt{int}: entspricht \texttt{long} in C
+\item \texttt{long}: unbegrenzter Wertebereich
+\item \texttt{float}: enspricht \texttt{double} in C 
+\item \texttt{complex}: komplexe Zahlen
+\end{itemize} 
+\begin{lstlisting}[style=Python]
+a = 1
+b = 1L
+c = 1.0; c = 1e0
+d = 1 + 0j
+\end{lstlisting}
+\vspace{3mm}
+Integers werden bei Bedarf automatisch in long umgewandelt! 
+\end{frame}
+
+\begin{frame}
+\frametitle{Operatoren auf Zahlen}
+\begin{itemize}
+\item Grundrechenarten: \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}
+\item Div- und Modulo-Operator: \texttt{//}, \hspace{1mm}\texttt{\%}, \hspace{1mm}\texttt{divmod(x, y)}
+\item Betrag: \texttt{abs(x)}
+\item Runden: \texttt{round(x)}
+\item Konvertierung: \texttt{int(x)}, \texttt{long(x)}, \texttt{float(x)}, \texttt{complex(re~[, im=0])}
+\item Konjugierte einer komplexen Zahl: \texttt{x.conjugate()}
+\item Potenzen: \texttt{x ** y}, \hspace{1mm}\texttt{pow(x, y)}
+\end{itemize}
+Ergebnis einer Verkn"upfung unterschiedlicher Datentypen ist vom Typ des \glqq gr"o"seren\grqq \, Datentyps.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Strings}
+Datentyp: \texttt{str}
+\begin{itemize}
+\item \lstinline{s = 'spam'}, \lstinline{s = "spam"}
+\item Mehrzeilige Strings: \lstinline{s = """spam"""}
+\item keine Interpretation von Escape-Sequenzen: \lstinline{s = r"spam"}
+\item Strings aus anderen Datentypen erzeugen: \lstinline{str(1.0)}
+\end{itemize}
+\begin{lstlisting}[style=Shell]
+>>> print "sp\nam"
+sp
+am
+>>> print r"sp\nam"
+sp\nam
+>>> s = """hallo
+... welt"""
+>>> print s
+hallo
+welt
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+\frametitle{String-Methoden}
+\begin{itemize}
+\item Vorkommen von Substrings z"ahlen: \lstinline{s.count(sub [, start[, end]])}
+\item beginnt/endet s mit einem Substring? \lstinline{s.startswith(sub[, start[, end]])}, \lstinline{s.endswith(sub[, start[, end]])}
+\item s in Gro"s-/Kleinbuchstaben: \lstinline{s.upper()}, \lstinline{s.lower()}
+\item Leerraum entfernen: \lstinline{s.strip([chars])}
+\item an Substrings trennen: \lstinline{s.split([sub [,maxsplit]])}
+\item Position eines Substrings finden: \lstinline{s.index(sub[, start[, end]])}
+\item einen Substring ersetzen: \lstinline{s.replace(old, new[, count])}
+\end{itemize}
+Weitere Methoden: \lstinline{help(str)}, \lstinline{dir(str)}
+\end{frame}
+
+\begin{frame}
+\frametitle{Listen}
+Datentyp: \texttt{list}
+\begin{itemize}
+\item \lstinline{s = [1, "spam", 9.0, 42]}, \lstinline{s = []}
+\item Element anh"angen: \lstinline{s.append(x)}
+\item um zweite Liste erweitern: \lstinline{s.extend(s2)}
+\item Vorkommen eines Elements z"ahlen: \lstinline{s.count(x)}
+\item Position eines Elements: \lstinline{s.index(x[, min[, max]])}
+\item Element an Position einf"ugen: \lstinline{s.insert(i, x)}
+\item Element an Position l"oschen und zur"uckgeben: \lstinline{\s.pop([i])}
+\item Element l"oschen: \lstinline{s.remove(x)}
+\item Liste umkehren: \lstinline{s.reverse()}
+\item Sortieren: \lstinline{s.sort([cmp[, key[, reverse]]])}
+\item Summe der Elemente: \lstinline{sum(s)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Operationen auf Sequenzen}
+Stings und Listen haben viel gemeinsam: Sie sind \alert{Sequenzen}.
+\begin{itemize}
+\item Ist ein Element in s enhalten/nicht enthalen?\\
+ \lstinline{x in s}, \lstinline{x not in s}
+\item Sequenzen aneinanderh"angen: \lstinline{s + t}
+\item Sequenzen vervielf"altigen: \lstinline{n * s}, \lstinline{s * n}
+\item i-tes Element: \lstinline{s[i]}, von hinten: \lstinline{s[-i]}
+\item Subsequenz: \lstinline{s[i:j]}, mit Schrittweite k: \lstinline{s[i:j:k]}
+\item Subsequenz von Anfgang/bis Ende: \lstinline{s[:-2]}, \lstinline{s[2:]}, \lstinline{s[:]}
+\item L"ange: \lstinline{len(s)}
+\item kleinstes/gr"o"stes Element: \lstinline{min(s)}, \lstinline{max(s)}
+\item Zuweisungen: \lstinline{(a, b, c) = s} \\
+$\rightarrow$ \lstinline{a = s[0]}, \lstinline{b = s[1]}, \lstinline{c = s[2]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sequenzen}
+\begin{itemize}
+\item Auch eine Sequenz: Datentyp \alert{\texttt{tuple}}: a = (1, 2, 3)
+\item Listen sind ver"anderbar
+\item Strings und Tupel sind nicht ver"anderbar
+\begin{itemize}
+\item Keine Zuweisung \lstinline{s[i] = ...}
+\item Kein Anh"angen und L"oschen von Elementen
+\item Funktionen wie \texttt{upper} liefern einen neuen String zur"uck!
+\end{itemize}
+\end{itemize}
+\begin{lstlisting}[style=Shell]
+>>> s1 = "spam"
+>>> s2 = s1.upper()
+>>> s1
+'spam'
+>>> s2
+'SPAM'
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Referenzen}
+\begin{itemize}
+\item In Python ist alles eine Referenz auf ein Objekt!
+\item Vorsicht bei Zuweisungen:
+\end{itemize}
+\begin{lstlisting}[style=Shell]
+>>> s1 = [1, 2, 3, 4]
+>>> s2 = s1
+>>> s2[1] = 17
+>>> s1
+[1, 17, 3, 4]
+>>> s2
+[1, 17, 3, 4]
+\end{lstlisting}
+Flache Kopie einer Liste: \lstinline{s2 = s1[:]} oder \lstinline{s2 = list(s1)}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Wahrheitswerte}
+Datentyp \alert{bool}: \texttt{True}, \texttt{False}
+
+Werte, die zu \texttt{False} ausgewertet werden:
+\begin{itemize}
+\item \texttt{None}
+\item \texttt{False}
+\item \texttt{0} (in jedem numerischen Datentyp)
+\item leere Strings, Listen und Tupel: \texttt{''}, \texttt{()}, \texttt{[]}
+\item leere Dictionaries: \texttt{\{\}}
+\item leere Sets
+\end{itemize}
+Andere Objekte von eingebauten Datentypen werden stets zu \texttt{True} ausgewertet!
+\begin{lstlisting}[style=Shell]
+>>> bool([1, 2, 3])
+True
+>>> bool("")
+False
+\end{lstlisting}
+\end{frame}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% latex-run-command: pdflatex
+%%% TeX-master: "vortrag"
+%%% End: 

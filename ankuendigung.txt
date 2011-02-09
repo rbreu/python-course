@@ -1,0 +1,22 @@
+Einführung in Python
+
+Python ist eine Programmiersprache, die objektorientierte, aspektorientierte
+und funktionale Programmierung unterstützt. Sie wurde mit dem Ziel entwickelt,
+möglichst einfach und übersichtlich zu sein und schnelles Programmieren zu
+ermöglichen. Python benutzt dynamische Typisierung und automatische
+Speicherverwaltung und wird standardmäßig in einem Interpreter ausgeführt,
+ähnlich wie Perl, Ruby, Scheme, Smalltalk und Tcl.  
+
+Durch die einfache Kernsyntax, aber sehr mächtigen Funktionsumfang und
+eingebauten Datentypen eignet Python sich sowohl für kurze Scripte wie auch
+für umfangreiche Programme, ein Zugriff auf GUI-Toolkits ist ebenfalls
+möglich. 
+
+In diesem Kurs soll eine Einführung in die grundlegenden Konzepte von Python
+gegeben werden: Datentypen, Kontrollstrukturen, objektorientierte
+Programmierung, Ausnahmebehandlung, Benutzung von Modulen. Des Weiteren soll
+ein Einblick in Pythons Standardbibliothek gegeben werden. 
+
+Der Kurs richtet sich an Teilnehmer, die bereits Programmierkenntnisse in
+anderen Sprachen besitzen (Kenntnisse in Objektorientierter Programmierung
+sind nicht unbedingt erforderlich).  

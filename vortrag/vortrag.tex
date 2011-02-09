@@ -1,0 +1,97 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\usepackage{py_vortrag}
+
+% For beamer class
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  \setbeamercovered{transparent}
+}
+
+
+% title
+\title{Einf"uhrung in Python}
+
+\date{Oktober 2007}
+
+\author{Rebecca Breu}
+
+\institute
+{
+ Verteilte Systeme und Grid-Computing \\
+ JSC\\
+ Forschungszentrum J"ulich
+}
+
+
+\begin{document}
+
+\setbeamertemplate{navigation symbols}{}
+
+\AtBeginPart
+{
+  \begin{frame}
+  \titlepage
+  \end{frame}
+
+  \begin{frame}
+  \frametitle{Inhalt --- \insertpart}
+  \tableofcontents
+  \end{frame}
+}
+
+
+\AtBeginSection[]
+{
+   \begin{frame}
+       \frametitle{\insertsection}
+       \tableofcontents[currentsection]
+   \end{frame}
+}
+
+\part{Teil 1}
+\input{einfuehrung}
+\input{datentypen1}
+\input{statements}
+\input{funktionen1}
+\input{io}
+\input{module}
+\input{ausnahmen}
+
+\begin{frame}
+\begin{center}
+\huge{Viel Spa"s mit}\\[4mm]
+\includegraphics[width=7cm]{images/python-logo-master-v3-TM.png}
+\end{center}
+\end{frame}
+
+
+\part{Teil 2}
+\input{datentypen2}
+\input{oop}
+\input{stdlib}
+\input{ausblick}
+
+\begin{frame}
+\begin{center}
+\huge{Viel Spa"s mit}\\[4mm]
+\includegraphics[width=7cm]{images/python-logo-master-v3-TM.png}
+\end{center}
+\end{frame}
+
+\appendix
+\input{fortgeschritten}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% latex-run-command: pdflatex
+%%% TeX-master: t
+%%% End: 
