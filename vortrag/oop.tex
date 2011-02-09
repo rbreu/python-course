@@ -1,20 +1,18 @@
 \section{Objektorientierte Programmierung}
 
-\begin{frame}
-\frametitle{Objektorientierte Programmierung}
+\begin{frame}{Objektorientierte Programmierung}
 \begin{itemize}
-\item Bisher: prozedurale Programmierung
+\item Bisher: \alert{prozedurale Programmierung}
 \begin{itemize}
 \item Daten
-\item Funktionen, die auf den Daten operieren
+\item Funktionen, die Daten als Parameter entgegennehmen und Ergebnis zur"uckliefern
 \end{itemize}
-\item Alternative: Fasse zusammengeh"orige Daten und Funktionen zusammen zu \alert{eigenem Datentypen}
+\item Alternative: Fasse zusammengeh"orige Daten und Funktionen zusammen zu \alert{eigenen Datentypen}
 \item $\rightarrow$ Erweiterung von Strukturen/Datenverb"unden aus C/Fortran
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Einfache Klassen als Structs verwenden}
+\begin{frame}[fragile]{Einfache Klassen als Structs verwenden}
 \begin{lstlisting}[style=Python]
 class Punkt:
     pass
@@ -30,8 +28,7 @@ p.y = 3.3
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Klassen}
+\begin{frame}[fragile]{Klassen}
 \begin{lstlisting}[style=Python]
 class Punkt:
     def __init__(self, x, y):
@@ -48,8 +45,7 @@ p.z = 42
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Methoden auf Objekten}
+\begin{frame}[fragile]{Methoden auf Objekten}
 \begin{lstlisting}[style=Python]
 class Punkt:
     def __init__(self, x, y):
@@ -65,15 +61,14 @@ print p.x, p.y, p.norm()
 \end{lstlisting}
 \begin{itemize}
 \item Methodenaufruf: automatisch das Objekt als erster Parameter
-\item $\rightarrow$ wird "ublicherweise \texttt{self} genannt
+\item $\rightarrow$ wird "ublicherweise \lstinline{self} genannt
 \item\alert{Achtung}: Kein "Uberladen von Methoden m"oglich!
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Objekte in Strings konvertieren}
+\begin{frame}[fragile]{Objekte in Strings konvertieren}
 \onslide<1->
-Standard-R"uckgabe von \texttt{str(...)} f"ur eigene Objekte:
+Standard-R"uckgabe von \lstinline{str(...)} f"ur eigene Objekte:
 \begin{lstlisting}[style=Shell]
 >>> p = Punkt(2.0, 3.0)
 >>> print p  # --> print str(p)
@@ -93,8 +88,7 @@ def __str__(self):
  \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Objekte vergleichen}
+\begin{frame}[fragile]{Objekte vergleichen}
 \onslide<1->
 Standard: \texttt{==} pr"uft Objekte eigener Klassen auf Identit"at.
 \begin{lstlisting}[style=Shell]
@@ -103,7 +97,7 @@ Standard: \texttt{==} pr"uft Objekte eigener Klassen auf Identit"at.
 >>> p1 == p2
 False
 \end{lstlisting}
-\vspace{2mm}
+%\vspace{2mm}
 \onslide<2->
 Das kann man anpassen:
 \begin{lstlisting}[style=Python]
@@ -119,8 +113,7 @@ False
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Objekte vergleichen}
+\begin{frame}[fragile]{Objekte vergleichen}
 Weitere Vergleichsoperatoren:
 \begin{itemize}
 \item \texttt{<} : \lstinline{__lt__(self, other)}
@@ -138,8 +131,7 @@ Alternativ: \lstinline{__cmp__(self, other)}, gibt zur"uck:
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Datentypen emulieren}
+\begin{frame}{Datentypen emulieren}
 Man kann mit Klassen vorhandene Datentypen emulieren:
 \begin{itemize}
 \item Zahlen: \texttt{int(myobj)}, \texttt{float(myobj)}, Rechenoperationen, ...
@@ -149,11 +141,10 @@ Man kann mit Klassen vorhandene Datentypen emulieren:
 \end{itemize}
 \vspace{2mm}
 Siehe dazu Dokumentation:\\
-\alert{\texttt{http://docs.python.org/ref/specialnames.html}}
+\href{http://docs.python.org/ref/specialnames.html}{http://docs.python.org/ref/specialnames.html}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Klassenvariablen}
+\begin{frame}[fragile]{Klassenvariablen}
 Haben f"ur alle Objekte einer Klasse stets den gleichen Wert:
 \begin{lstlisting}[style=Python]
 class Punkt:
@@ -173,8 +164,7 @@ class Punkt:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Klassenmethoden und statische Methoden}
+\begin{frame}[fragile]{Klassenmethoden und statische Methoden}
 \begin{lstlisting}[style=Python]
 class Spam:
     spam = "I don't like spam."
@@ -195,10 +185,8 @@ s.cmethod()
 s.smethod()
 \end{lstlisting}
 \end{frame}
-\frametitle{Vererbung}
 
-\begin{frame}
-\frametitle{Vererbung}
+\begin{frame}{Vererbung}
 Oft hat man verschiedene Klassen, die einander "ahneln.\\
 \alert{Vererbung} erlaubt:
 \begin{itemize}
@@ -214,8 +202,7 @@ Beispiel: Verschiedene Telefon-Arten
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Vererbung}
+\begin{frame}[fragile]{Vererbung}
 \begin{lstlisting}[style=Python]
 class Telefon:
     def telefonieren(self):
@@ -233,8 +220,7 @@ h.sms_schicken() # Eigene Methode
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Methoden "uberschreiben}
+\begin{frame}[fragile]{Methoden "uberschreiben}
 In der abgeleiteten Klasse k"onnen die Methoden der Elternklasse "uberschrieben werden:
 \begin{lstlisting}[style=Python]
 class Handy(Telefon):
@@ -244,8 +230,7 @@ class Handy(Telefon):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Mehrfachvererbung}
+\begin{frame}[fragile]{Mehrfachvererbung}
 Klassen k"onnen von mehreren Elternklassen erben. Bsp:
 \begin{itemize}
 \item Fotohandy ist ein Telefon
@@ -264,10 +249,9 @@ Attribute werden in folgender Reihenfolge gesucht:
 Fotohandy, Handy, Elterklasse von Handy (rekursiv), Kamera, Elternklasse von Kamera (rekursiv).
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Private Attribute}
+\begin{frame}[fragile]{Private Attribute}
 \begin{itemize}
-\item In Python gibt keine privaten Variablen oder Methoden. 
+\item In Python gibt es keine privaten Variablen oder Methoden. 
 \item \alert{Konvention:} Attribute, auf die nicht von au"sen zugegriffen werden sollte, beginnen mit einem Unterstrich: \lstinline{_foo}.
 \item Um Namenskonflikte zu vermeiden: Namen der Form \lstinline{__foo} werden durch \lstinline{_klassenname__foo} ersetzt:
 \end{itemize}
@@ -281,27 +265,25 @@ class Spam:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Properties}
+\begin{frame}[fragile]{Properties}
 Sollen beim Zugriff auf eine Variable noch Berechnungen oder "Uberpr"ufungen durchgef"uhrt werden: \alert{Getter} und \alert{Setter}
 \begin{lstlisting}[style=Python]
 class Spam(object):
     def __init__(self):
         self._value = 0
     
-    def _get_value(self):
+    def get_value(self):
         return self._value
 
-    def _set_value(self, value):
+    def set_value(self, value):
         if value <= 0:  self._value = 0
         else:  self._value = value
 
-    value = property(_get_value, _set_value)
+    value = property(get_value, set_value)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Properties}
+\begin{frame}[fragile]{Properties}
 Auf Properties wird wie auf gew"ohnliche Attribute zugegriffen:
 \begin{lstlisting}[style=Shell]
 >>> s = Spam()
@@ -320,8 +302,3 @@ Auf Properties wird wie auf gew"ohnliche Attribute zugegriffen:
 \end{frame}
 
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

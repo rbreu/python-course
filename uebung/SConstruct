@@ -1,0 +1,56 @@
+from __future__ import with_statement
+
+
+USERNAMES = ["username%i" % i for i in range(1112, 1139)]
+PASSWORD = "secret"
+SUFFIXES = [".pdf", ".tex", ".aux", ".log"]
+
+
+def build_serial(target, source, env):
+    with open(str(source[0])) as f:
+        tex_in = f.read()
+
+    for name in USERNAMES:
+        base = str(target[0])
+        filename = "%s_%s.tex" % (str(target[0]), name)
+        
+        tex_out = tex_in.replace("XXXloginXXX", name)
+        tex_out = tex_out.replace("XXXpasswortXXX", PASSWORD)
+        with open(filename, "w") as f:
+            f.write(tex_out)
+
+        PDF(filename)
+
+    Execute(Touch(target[0]))
+    
+
+def clean_serial(target, env):
+    clear_files = []
+
+    for name in USERNAMES:
+        for suffix in SUFFIXES:
+            clear_files.append("%s_%s%s" % (str(target[0]), name, suffix))
+    
+    return clear_files
+
+
+
+env = Environment()
+bld = Builder(action=build_serial, suffix="_serial", src_suffix=".tex")
+env['BUILDERS']['Serial'] = bld
+env.Decider('timestamp-newer')
+
+target = env.Serial("uebung1")
+env.Clean(target, clean_serial(target, env))
+
+#Default(PDF("uebung1.tex"),
+#        PDF("uebung2.tex"),
+#        PDF("uebung3.tex"))
+
+
+# Build serial stuff with: scons uebung1_serial
+# --> Doesn't compile the serial texs because not explicitly specified... :-/
+
+
+
+# for i in uebung1_serial_py111*.pdf uebung1_serial_py112[0-5].pdf; do lpr $i -Pzam13pd; done

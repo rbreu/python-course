@@ -1,0 +1,92 @@
+\section*{wxPython}
+
+\begin{aufgabe}[Hello World]
+\label{aufg-hello-world}Programmieren Sie die Hello-World-Anwendung aus der Vorlesung, welche ein leeres Frame erzeugt. Probieren Sie verschiedene Parameter f"ur Titel, Gr"o\3e und Position des Frames.
+\end{aufgabe}
+
+\begin{aufgabe}[Statischer Text]
+\begin{teilaufgabe}
+Erweitern Sie das Programm aus Aufgabe \ref{aufg-hello-world}, sodass es Text im Frame darstellt (\lstinline{wx.StaticText}). Stellen Sie mehrzeiligen Text zentriert, linsb"undig, rechtsb"undig dar.
+\end{teilaufgabe}
+\begin{teilaufgabe}
+F"ugen Sie mehrere \lstinline{wx.StaticText}-Widgets in das Frame ein. Was passiert, wenn Sie keine Positionsangaben machen? Ordnen Sie die Widgets mit Positionsangaben an. Beobachten Sie das Verhalten, wenn das Frame in seiner Gr"o\3e ver"andert wird.
+\end{teilaufgabe}
+\end{aufgabe}
+
+
+\begin{aufgabe}[Buttons]
+\begin{teilaufgabe}
+Erweitern Sie das Programm aus Aufgabe \ref{aufg-hello-world}, sodass es einen Button darstellt. Wird auf diesen Button geclickt, soll sich das Programm beenden. (Dazu das MainFrame schlie\3en: \lstinline{self.Close(True)})
+\end{teilaufgabe}
+\begin{teilaufgabe}
+F"ugen Sie weitere Buttons hinzu. Die Buttons sollen verschiedene Aktionen ausf"uren (z.B. verschiedenen Text im Terminal ausgeben), solabld sie geclickt werden.
+\end{teilaufgabe}
+\end{aufgabe}
+
+\begin{aufgabe}[Sizer]
+\label{aufg-sizer}
+Erstellen Sie ein Frame mit einem BoxSizer und Buttons und probieren Sie verschiedene M"oglichkeiten des BoxSizers aus. Z.B.:
+\begin{itemize}
+\item Ein Button, welcher stets so gro\3 wie das gesamte Frame ist
+\item Mehrere Buttons nebeneinander
+\item Mehrere Buttons untereinander
+\end{itemize}
+Sie brauchen die Buttons nicht mit Funktionen belegen, hier geht es allein um das Layout.
+\end{aufgabe}
+
+
+\begin{aufgabe}[RadioBox]
+\label{aufg-radiobox}
+Erstellen Sie ein Frame, welches eine RadioBox darstellt. Sobald der Anwender ein Item ausw"ahlt, soll die Auswahl in der Konsole ausgegeben werden.
+
+\hinweis Im Gegensatz zu den bisherigen Aufgaben ist es nun notwendig, das RadioBox-Objekt zu einem Objekt-Attriut des MainFrames zu machen, damit sie auch au"serhalb der init-Methode des Frames darauf zugreifen k"onnen: \lstinline{self.radiobox = ...}
+\end{aufgabe}
+
+\begin{aufgabe}[Text-Editor]
+Schreiben Sie einen einfachen Text-Editor. Gehen Sie dabei wie folgt vor:
+\begin{teilaufgabe}[Texteingabe-Feld]
+Erstellen Sie ein Frame mit einem mehrzeiligen TextCtrl-Widget. Das Textfeld sollte das ganze Frame ausf"ullen, vgl. Aufgabe \ref{aufg-sizer}. Probieren Sie die Nutzung des Widgets aus!
+\begin{itemize}
+\item Was passiert, wenn Sie sehr viele Zeilen in das Widget einf"ugen, oder sehr lange Zeilen?
+\item Was bewirken Tastenkombinatioen wie Ctrl-C, Ctrl-V, Ctrl-X, Einfg, Entf, \dots?
+\end{itemize}
+\end{teilaufgabe}
+\begin{teilaufgabe}[Men"us]
+F"ugen Sie eine Men"uzeile hinzu und ein Men"u \glqq File\grqq. Das File-Men"u soll den Eintrag \glqq Quit\grqq{} enthalten.
+\end{teilaufgabe}
+\begin{teilaufgabe}[Statuszeile]
+F"ugen Sie eine Statuszeile hinzu. Beobachten Sie, wir dort die Hilfetexte der Men"ueintr"age angezeigt werden.
+\end{teilaufgabe}
+\begin{teilaufgabe}[Neue Datei]
+F"ugen Sie dem File-Men"u einen Eintrag \glqq New\grqq{} hinzu, welcher den Inhalt des Texteingabe-Feldes l"oscht.
+
+\hinweis Analog zu Aufgabe \ref{aufg-radiobox} ist es nun notwendig, das Textfeld zu einem Objektattribut des MainFrame-Objekts zu machen.
+\end{teilaufgabe}
+\begin{teilaufgabe}[Datei "offnen]
+F"ugen Sie dem File-Men"u einen Eintrag \glqq Open\dots\grqq{} hinzu. "Uber einen FileDialog soll der Anwender eine Datei ausw"ahlen k"onnen, welche im Textfeld angezeigt wird.
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Datei speichern als]
+F"ugen Sie dem File-Men"u einen Eintrag \glqq Save as\dots\grqq{} hinzu. "Uber einen FileDialog soll der Anwender eine Datei ausw"ahlen k"onnen, in welcher der Inhalt des Textfelds gespeichert wird.
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Datei speichern]
+F"ugen Sie dem File-Men"u einen Eintrag \glqq Save\grqq{} hinzu, der die Datei unter dem Namen speichert, unter dem sie ge"offnet bzw. zuletzt gespeichert wurde. Geben Sie daf"ur dem MainFrame z.B. ein Objekt-Attribut \lstinline{filename}, welches bei den Aktionen \glqq Save as\dots\grqq{} und \glqq Open \dots\grqq{} entsprechend gesetzt wird.
+
+Achtung, es gibt nicht immer einen Dateinamen, wenn der Anwender speichern will! (Wann?) In einem solchen Fall sollte das \lstinline{filename}-Attribut \lstinline{None} sein; idealerweise wird dann bei \glqq Save\grqq{} ebenfalls ein FileDialog angeboten.
+
+Des weiteren kann man den Dateinamen in der Titelzeile des Frames anzeigen lassen (\lstinline{SetTitle}).
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Anzeige in der Statuszeile]
+Lassen Sie die Aktionen, die das Programm ausf"uhrt, in der Statuszeile anzeigen, z.B. \glqq File bla.txt saved.\grqq
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Speicherstatus]
+Speichern Sie den Status, ob eine Datei seit dem "Offnen oder dem letzten Speichern ge"andert wurde, in einem Attribut des MainFrame-Objekets. Lassen Sie den Status in geeigneter Weise in der Titelleiste des Frames anzeigen. Das Event, welches das TextCtrl beim "Andern des Textes ausgel"ost, ist \lstinline{wx.EVT_TEXT}.
+
+Zus"atzlich k"onnte man Warnungen (z.B. MessageDialog) einf"ugen, wenn der Anwender bei einer ungespeicherten Datei \glqq Open\dots\grqq, \glqq Quit\grqq{} oder \glqq New\grqq{} ausf"uhren m"ochte.
+\end{teilaufgabe}
+
+\end{aufgabe}
+

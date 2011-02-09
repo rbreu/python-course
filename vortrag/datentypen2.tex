@@ -1,41 +1,38 @@
 \section{Datentypen II}
 
-\begin{frame}[fragile]
-\frametitle{Sets}
-Set (Menge): ungeordnet, doppelte Elemente werden nur einmal gespeichert
+\begin{frame}[fragile]{Sets}
+\alert{Set} (Menge): ungeordnet, doppelte Elemente werden nur einmal gespeichert
 \begin{itemize}
 \item \lstinline{s = set([sequence])}
-\item Teilmenge: \lstinline{s.issubset(t)}, \lstinline{s <= t}, echte T.: \lstinline{s < t}
-\item Obermenge: \lstinline{s.issuperset(t)}, \lstinline{s >= t}, echte O.: \lstinline{s > t} 
-\item Vereinigung: \lstinline{s.union(t)}, \lstinline{s | t}
-\item Schnittmenge: \lstinline{s.intersection(t)}, \lstinline{s & t}
-\item Differenz: \lstinline{s.difference(t)}, \lstinline{s - t}
+\item \alert{Teilmenge}: \lstinline{s.issubset(t)}, \lstinline{s <= t}, echte T.: \lstinline{s < t}
+\item \alert{Obermenge}: \lstinline{s.issuperset(t)}, \lstinline{s >= t}, echte O.: \lstinline{s > t} 
+\item \alert{Vereinigung}: \lstinline{s.union(t)}, \lstinline{s | t}
+\item \alert{Schnittmenge}: \lstinline{s.intersection(t)}, \lstinline{s & t}
+\item \alert{Differenz}: \lstinline{s.difference(t)}, \lstinline{s - t}
 \item Symmetrische Differenz: \lstinline{s.symmetric_difference(t)}, \lstinline{s ^ t}
 \item Kopie: \lstinline{s.copy()}
 \end{itemize}
 Wie f"ur Sequenzen gibt es auch: \lstinline{x in set}, \lstinline{len(set)}, \lstinline{for x in set}, \lstinline{add}, \lstinline{remove}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Dictionaries}
-Dictionary: Zuordnung Schl"ussel $\rightarrow$ Wert
+\begin{frame}[fragile]{Dictionaries}
+\alert{Dictionary}: Zuordnung Schl"ussel $\rightarrow$ Wert
 \begin{lstlisting}[style=Shell]
->>> a = { "spam": 1, "eggs": 17}
->>> a["eggs"]
+>>> d = { "spam": 1, "eggs": 17}
+>>> d["eggs"]
 17
->>> a["bacon"] = 42
->>> a
+>>> d["bacon"] = 42
+>>> d
 {'eggs': 17, 'bacon': 42, 'spam': 1}
 \end{lstlisting}
 \"Uber Dictionaries iterieren:
 \begin{lstlisting}[style=Python]
-for key in a:
+for key in d:
     print key, a[key]
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Operationen auf Dictionaries}
+\begin{frame}[fragile]{Operationen auf Dictionaries}
 \begin{itemize}
 \item Eintrag l"oschen: \lstinline{del}
 \item alle Eintr"age l"oschen: \lstinline{a.clear()}
@@ -52,8 +49,3 @@ for key in a:
 
 
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

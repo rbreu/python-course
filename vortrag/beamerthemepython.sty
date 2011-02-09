@@ -1,0 +1,36 @@
+
+
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+  
+
+\mode<presentation>
+
+\useoutertheme[subsection=false]{miniframes}
+
+\setbeamertemplate{frametitle}[default][center]
+
+\AtBeginDocument{%
+  {
+    \usebeamercolor{headfade}
+  }
+  
+  \pgfdeclareverticalshading{beamer@headfade}{\paperwidth}
+  {%
+    color(0cm)=(headfade.fg);
+    color(1.25cm)=(headfade.bg)%
+  }
+
+  \setbeamercolor{section in head/foot}{bg=}
+}
+
+\addtoheadtemplate{
+   \pgfuseshading{beamer@headfade}
+   \begin{beamercolorbox}[wd=\paperwidth,ht=0.4pt]{headline}\end{beamercolorbox}
+   \vskip-1.25cm
+}
+
+\beamertemplatedotitem
+
+\mode
+<all>

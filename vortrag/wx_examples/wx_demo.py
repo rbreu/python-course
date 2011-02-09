@@ -1,0 +1,1 @@
+/usr/share/doc/wx2.8-examples/examples/wxPython/demo.py

@@ -1,0 +1,39 @@
+>>> l = [1, 2, 3, 4]
+>>> l[0]
+1
+>>> l[1]
+2
+>>> l[-1]  # Negative Indizes gehen vom Ende der Liste aus
+4
+>>> l[-2]
+3
+>>> l[8]  # geht nicht -> Ausnahme
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+IndexError: list index out of range
+>>> l[-8]  # geht nicht -> Ausnahme
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+IndexError: list index out of range
+>>> l.append("spam")  # Liste kann beliebige Datentypen aufnehmen
+>>> print l
+[1, 2, 3, 4, 'spam']
+>>> l.append([1, 2, 3]) # Liste kann beliebige Objekte aufnehmen
+>>> print l
+[1, 2, 3, 4, 'spam', [1, 2, 3]]
+>>> del l[1]
+>>> print l
+[1, 3, 4, 'spam', [1, 2, 3]]
+>>> l.extend(["a", "b", "c"])  # Eine Liste um neue Elemente erweitern
+>>> print l
+[1, 3, 4, 'spam', [1, 2, 3], 'a', 'b', 'c']
+>>> l + [6, 7, 8.0]  # Zwei Listen aneinander haengen mit + gibt neue Liste
+[1, 3, 4, 'spam', [1, 2, 3], 'a', 'b', 'c', 6, 7, 8.0]
+>>> print l  # Alte Liste bleibt dabei erhalten
+[1, 3, 4, 'spam', [1, 2, 3], 'a', 'b', 'c']
+>>> l[4][2]  # Auf Listenelemente der inneren Liste zugreifen
+3
+>>> l[1][2]  # l[1] ist ein Int  -> Ausnahme
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+TypeError: unsubscriptable object

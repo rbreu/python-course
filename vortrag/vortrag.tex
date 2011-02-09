@@ -7,18 +7,11 @@
 
 \usepackage{py_vortrag}
 
-% For beamer class
-\mode<presentation>
-{
-  \usetheme{Singapore}
-  \setbeamercovered{transparent}
-}
-
 
 % title
 \title{Einf"uhrung in Python}
 
-\date{Oktober 2007}
+\date{Oktober 2008}
 
 \author{Rebecca Breu}
 
@@ -40,8 +33,7 @@
   \titlepage
   \end{frame}
 
-  \begin{frame}
-  \frametitle{Inhalt --- \insertpart}
+  \begin{frame}{Inhalt --- \insertpart}
   \tableofcontents
   \end{frame}
 }
@@ -49,13 +41,38 @@
 
 \AtBeginSection[]
 {
-   \begin{frame}
-       \frametitle{\insertsection}
+   \begin{frame}{\insertsection}
        \tableofcontents[currentsection]
    \end{frame}
 }
 
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Inhalt}
+\begin{columns}[t]
+
+\begin{column}{0.4\textwidth}
+  Teil 1:\\[3mm]
+  \tableofcontents[part=1]
+\end{column}
+
+\begin{column}{0.6\textwidth}
+  Teil 2:\\[3mm]
+  \tableofcontents[part=2]
+  \vspace{7mm}
+  Teil 3:\\[3mm]
+  \tableofcontents[part=3]
+\end{column}
+
+\end{columns}
+\end{frame}
+
+
 \part{Teil 1}
+
 \input{einfuehrung}
 \input{datentypen1}
 \input{statements}
@@ -64,34 +81,22 @@
 \input{module}
 \input{ausnahmen}
 
-\begin{frame}
-\begin{center}
-\huge{Viel Spa"s mit}\\[4mm]
-\includegraphics[width=7cm]{images/python-logo-master-v3-TM.png}
-\end{center}
-\end{frame}
-
+\vielspass
 
 \part{Teil 2}
 \input{datentypen2}
 \input{oop}
 \input{stdlib}
+\input{python25}
+
+\vielspass
+
+\part{Teil 3}
+\input{fortgeschritten}
+\input{wx}
 \input{ausblick}
 
-\begin{frame}
-\begin{center}
-\huge{Viel Spa"s mit}\\[4mm]
-\includegraphics[width=7cm]{images/python-logo-master-v3-TM.png}
-\end{center}
-\end{frame}
-
-\appendix
-\input{fortgeschritten}
+\vielspass
 
 \end{document}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: t
-%%% End: 

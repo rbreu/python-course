@@ -1,7 +1,6 @@
 \section{Fehler und Ausnahmen}
 
-\begin{frame}[fragile]
-\frametitle{Syntax Errors, Indentation Errors}
+\begin{frame}[fragile]{Syntax Errors, Indentation Errors}
 Fehler beim Parsen: \alert{Programm wird nicht ausgef"uhrt}. Z.B.: 
 \begin{itemize}
 \item Klammerungsfehler
@@ -19,11 +18,10 @@ $ ./addiere.py
     def add(a, b)
                 ^
 SyntaxError: invalid syntax
-\end{lstlisting}
+\end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Ausnahmen}
+\begin{frame}[fragile]{Ausnahmen}
 Ausnahmen (Exceptions) treten \alert{zur Laufzeit} auf:
 \begin{lstlisting}[style=Python]
 import math
@@ -38,11 +36,10 @@ Traceback (most recent call last):
     math.foo()
 AttributeError: 'module' object has no 
 attribute 'foo'
-\end{lstlisting}
+\end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Ausnahmen behandeln}
+\begin{frame}[fragile]{Ausnahmen behandeln}
 \begin{lstlisting}[style=Python]
 try:
     s = raw_input("Gib eine Zahl ein: ")
@@ -51,7 +48,7 @@ except ValueError:
     print "Das ist keine Zahl!"
 \end{lstlisting}
 \begin{itemize}
-\item \texttt{except}-Block wird ausgef"uhrt, wenn Code im \texttt{try}-Block eine passende Ausnahme wirft
+\item \lstinline{except}-Block wird ausgef"uhrt, wenn Code im \lstinline{try}-Block eine passende Ausnahme wirft
 \item danach l"auft Programm normal weiter
 \item nicht behandelte Ausnahmen f"uhren zum Programmabbruch
 \end{itemize}
@@ -61,8 +58,7 @@ except (ValueError, TypeError, NameError):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Ausnahmen behandeln}
+\begin{frame}[fragile]{Ausnahmen behandeln}
 \begin{lstlisting}[style=Python]
 try:
     s = raw_input("Gib eine Zahl ein: ")
@@ -75,16 +71,15 @@ except:
     print "Was ist hier passiert?"
 \end{lstlisting}
 \begin{itemize}
-\item Mehrere \texttt{except}-Statements f"ur verschiedene Ausnahmen
-\item Letztes \texttt{except} kann ohne Ausnahme-Typ verwendet werden: F"angt alle verbleibenen Ausnahmen ab
+\item Mehrere \lstinline{except}-Statements f"ur verschiedene Ausnahmen
+\item Letztes \lstinline{except} kann ohne Ausnahme-Typ verwendet werden: F"angt alle verbleibenen Ausnahmen ab
 \begin{itemize}
 \item Vorsicht: Kann ungewollte Programmierfehler verdecken!
 \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Ausnahmen behandeln}
+\begin{frame}[fragile]{Ausnahmen behandeln}
 \begin{itemize}
 \item \alert{\texttt{else}} wird ausgef"uhrt, wenn keine Ausnahme auftrat
 \item \alert{\texttt{finally}} wird in \alert{jedem} Fall ausgef"uhrt
@@ -102,8 +97,7 @@ finally:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Ausnahme-Objekte}
+\begin{frame}[fragile]{Ausnahme-Objekte}
 Auf das Ausnahme-Objekt zugreifen:
 \begin{lstlisting}[style=Python]
 try:
@@ -119,8 +113,7 @@ $ python test.py
 \end{lstlisting}%$
 \end{frame}
 
-\begin{frame}
-\frametitle{Ausnahmen in Funktionsaufrufen}
+\begin{frame}{Ausnahmen in Funktionsaufrufen}
 \begin{figure}
 \centering
 \only<1>
@@ -222,8 +215,7 @@ $ python test.py
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Ausnahmen ausl"osen}
+\begin{frame}[fragile]{Ausnahmen ausl"osen}
 Ausnahmen weiterreichen:
 \begin{lstlisting}[style=Python]
 try:
@@ -240,9 +232,3 @@ def gauss_solver(matrix):
     raise ValueError("Matrix singulaer")
 \end{lstlisting}
 \end{frame}
-
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

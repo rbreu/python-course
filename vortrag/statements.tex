@@ -1,7 +1,6 @@
 \section{Statements}
 
-\begin{frame}[fragile]
-\frametitle{Das if-Statement}
+\begin{frame}[fragile]{Das if-Statement}
 \begin{lstlisting}[style=Python]
 if a == 3:
     print "Aha!"
@@ -22,8 +21,7 @@ else:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Vergleichsoperatoren}
+\begin{frame}[fragile]{Vergleichsoperatoren}
 \begin{itemize}
 \item Vergleich des Inhalts: \texttt{==}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}, \texttt{!=}
 \item Vergleich der Objektidentit"at: \lstinline{a is b}, \lstinline{a is not b}\item Und/Oder-Verkn"upfung: \lstinline{a and b}, \lstinline{a or b}
@@ -35,8 +33,21 @@ if not (a==b) and (c<3):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{for-Schleifen}
+\begin{frame}[fragile]{Conditional Expressions}
+Kurze Schreibweise f"ur bedingte Zuweisung. Statt:
+\begin{lstlisting}
+if zahl<0:
+    s = "Negativ"
+else:
+    s = "Positiv"
+\end{lstlisting}
+kann man schreiben:
+\begin{lstlisting}
+s = "Negativ" if zahl<0 else "Positiv"
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{for-Schleifen}
 \begin{lstlisting}[style=Python]
 for i in range(10):
     print i   # 0, 1, 2, 3, ..., 9
@@ -50,9 +61,9 @@ else:
    print "Schleife komplett durchlaufen."
 \end{lstlisting}
 \begin{itemize}
-\item Schleife vorzeitig beenden: \texttt{break}
-\item n"achster Durchlauf: \texttt{continue}
-\item \texttt{else} wird ausgef"uhrt, wenn die Schleife nicht vorzeitig verlassen wurde
+\item Schleife vorzeitig beenden: \lstinline{break}
+\item n"achster Durchlauf: \lstinline{continue}
+\item \lstinline{else} wird ausgef"uhrt, wenn die Schleife nicht vorzeitig verlassen wurde
 \end{itemize}
 \end{frame}
 
@@ -75,8 +86,7 @@ for (i, char) in enumerate("hallo welt"):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{while-Schleifen}
+\begin{frame}[fragile]{while-Schleifen}
 \begin{lstlisting}[style=Python]
 while i < 10:
     i += 1
@@ -91,8 +101,3 @@ while True:
 \end{lstlisting} 
 \end{frame}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

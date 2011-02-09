@@ -1,7 +1,7 @@
 \section*{Zus"atzliche Aufgaben}
 
 \begin{aufgabe}[MauMau]
-Implementieren Sie ein einfaches MauMau-Spiel ohne Sonderregeln f"ur bestimmte Karten. 
+Implementieren Sie ein einfaches MauMau-Spiel ohne Sonderregeln f"ur bestimmte Karten. Gehen Sie dabei wie folgt vor:
 
 \begin{teilaufgabe}[Grundlagen]
 Vorschlag f"ur eine Strukturierung in Klassen:
@@ -35,14 +35,14 @@ class TalonEmptyException(Exception):
     pass
 \end{lstlisting}
 \end{teilaufgabe}
-\begin{teilaufgabe}[F"ur Profis]
-Die sortierte Kartenliste im Kartendeck kann einfacher erzeugt werden. Man kann entweder eine geschachtelte List Comprehension verwenden oder einen eigenen Generator \lstinline{combine} schreiben, welchen man wie folgt verwendet:
-\begin{lstlisting}
-karten = list(combine(self.FARBEN, self.WERTE))
-\end{lstlisting}
-\end{teilaufgabe}
 \begin{teilaufgabe}[Spezialkarten]
 Noch Lust? Implementieren Sie die Sonderregeln f"ur die Acht (Aussetzen), die Sieben (zwei Karten ziehen) und den Buben (Farbwunsch).
+\end{teilaufgabe}
+\begin{teilaufgabe}[F"ur Profis]
+Die sortierte Kartenliste im Kartendeck kann einfacher erzeugt werden. Man kann entweder eine List Comprehension verwenden oder einen eigenen Generator \lstinline{combine} schreiben, welchen man wie folgt verwendet:
+\begin{lstlisting}
+karten = list(combine(...))
+\end{lstlisting}
 \end{teilaufgabe}
 \end{aufgabe}
 
@@ -58,7 +58,3 @@ print person.vorname, person.nachname, person.telefon
 \end{aufgabe}
 
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "uebung2"
-%%% End: 

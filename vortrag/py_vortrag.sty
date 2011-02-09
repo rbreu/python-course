@@ -1,16 +1,26 @@
 \NeedsTeXFormat{LaTeX2e}
 \RequirePackage{listings}
-\ProvidesPackage{uebungen}
+\RequirePackage{graphicx}
+\ProvidesPackage{py_vortrag}
+
+% For beamer class
+\mode<presentation>
+{
+  \usecolortheme{python}
+  \usetheme{python}
+  \setbeamercovered{transparent}
+}
+
+\logo{\includegraphics[width=60pt]{images/python-logo-master-v3-TM.png}}
 
 
-%some colors emacs colors for python listings:
-\definecolor{keywords}{rgb}{0.63,0.13,0.94}
-\definecolor{identifiers}{rgb}{0,0,0} 
-\definecolor{comments}{rgb}{0.7,0.13,0.13}
-\definecolor{strings}{rgb}{0.37,0.37,0.37}
+\hypersetup{colorlinks,
+            citecolor=pdarkblue,
+            filecolor=pdarkblue,
+            linkcolor=pdarkblue,
+            urlcolor=pdarkblue
+           }
 
-\definecolor{classnames}{rgb}{0.13, 0.55, 0.13}
-\definecolor{funcnames}{rgb}{0,0,1}
 
 %shell prompt:
 \definecolor{prompt}{rgb}{0,0,1}
@@ -27,13 +37,15 @@
   basicstyle=\ttfamily,
   showstringspaces=false,
   frame=single,
-  framerule=0.5pt,
-  stringstyle=\color{strings},
-  keywordstyle=\color{keywords},
-  commentstyle=\color{comments},
-  identifierstyle=\color{identifiers},
-  emph={[10]self}, emphstyle={[10]\color{keywords}},
-  emph={[11]yield}, emphstyle={[11]\color{keywords}},
+  framerule=0.4pt,
+  rulecolor=\color{pgrey},
+  backgroundcolor=\color{white},
+  stringstyle=\color{pdarkgrey},
+  keywordstyle=\color{pblue},
+  commentstyle=\color{pdarkgrey}\itshape,
+  identifierstyle={},
+  emph={[10]self}, emphstyle={[10]\color{pblue}},
+  emph={[11]yield}, emphstyle={[11]\color{pblue}},
 }
 
 
@@ -43,15 +55,27 @@
   language=Bash,
   basicstyle=\ttfamily,
   showstringspaces=false,
-  backgroundcolor=\color{lightgrey},
-  frame=none,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{pgrey},
+  backgroundcolor=\color{plightgrey2},
   stringstyle=\color{black},
   keywordstyle=\color{black},
   commentstyle=\color{black},
   identifierstyle=\color{black},
-  emph={[10]\$,>>>}, emphstyle={[10]\color{prompt}}
+  emph={[10]\$,>>>}, emphstyle={[10]\color{pblue}}
 }
 
 
 %Default
 \lstset{style=Python}
+
+
+\newcommand{\vielspass}{%
+\begin{frame}
+\begin{center}
+\huge{Viel Spa"s mit}\\[4mm]
+\includegraphics[width=7cm]{images/python-logo-master-v3-TM.png}
+\end{center}
+\end{frame}
+}

@@ -1,7 +1,6 @@
 \section{Einf"uhrung}
 
-\begin{frame}
-\frametitle{Was ist Python?}
+\begin{frame}{Was ist Python?}
 \alert{Python:} dynamische Programmiersprache, welche verschiedene Programmierparadigmen unterst"utzt:
 \begin{itemize}
 \item prozedurale Programmierung
@@ -12,8 +11,7 @@ Standard: Python-Bytecode wird im Interpreter ausgef"uhrt ("ahnlich Java)\\
 $\rightarrow$ \alert{plattformunabh"angiger Code}
 \end{frame}
 
-\begin{frame}
-\frametitle{Warum Python?}
+\begin{frame}{Warum Python?}
 \begin{itemize}
 \item Syntax ist klar, leicht zu lesen \& lernen (fast Pseudocode)
 \item intuitive Objektorientierung
@@ -26,8 +24,7 @@ $\rightarrow$ \alert{plattformunabh"angiger Code}
 \alert{Schwerpunkt: Programmiergeschwindigkeit!}
 \end{frame}
 
-\begin{frame}
-\frametitle{Ist Python schnell genug?}
+\begin{frame}{Ist Python schnell genug?}
 \begin{itemize}
 \item f"ur rechenintensive Algorithmen: evtl. besser Fortran, C, C++ 
 \item f"ur Anwenderprogramme: Python ist schnell genug!
@@ -37,8 +34,7 @@ $\rightarrow$ \alert{plattformunabh"angiger Code}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Hallo Welt!}
+\begin{frame}[fragile]{Hallo Welt!}
 \begin{lstlisting}[style=Python]
 #!/usr/bin/env python
 
@@ -58,25 +54,22 @@ $
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Hallo User}
+\begin{frame}[fragile]{Hallo User}
 \begin{lstlisting}[style=Python]
 #!/usr/bin/env python
 
-name = raw_input("Wie heisst du?")
+name = raw_input("Wie heisst du? ")
 print "Hallo", name
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
 $ ./hallo_user.py
-Wie heisst du?
-Rebecca
+Wie heisst du? Rebecca
 Hallo Rebecca
 $
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}
-\frametitle{Starke und dynamische Typisierung}
+\begin{frame}{Starke und dynamische Typisierung}
 \alert{Starke Typisierung:}
 \begin{itemize}
 \item Objekt ist genau von einem Typ! String ist immer String, \texttt{int} immer \texttt{int}
@@ -90,8 +83,7 @@ $
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Starke und dynamische Typisierung}
+\begin{frame}[fragile]{Starke und dynamische Typisierung}
 \begin{lstlisting}[style=Python]
 zahl = 3
 print zahl, type(zahl)
@@ -112,8 +104,7 @@ TypeError: cannot concatenate 'str' and
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Interaktiver Modus}
+\begin{frame}[fragile]{Interaktiver Modus}
 Der Interpreter kann im interaktiven Modus gestartet werden:
 \begin{lstlisting}[style=Shell]
 $ python
@@ -131,24 +122,22 @@ hallo welt
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}
-\frametitle{Dokumentation}
+\begin{frame}{Dokumentation}
 Online-Hilfe im Interpreter:
 \begin{itemize}
-\item \lstinline{help()}: allgemeine Hilfe zu Python
-\item \lstinline{help(obj)}: Hilfe zu einem Objekt, z.B. einer Funktion oder einem Modul
-\item \lstinline{dir()}: alle belegten Namen 
-\item \lstinline{dir(obj)}: alle Attribute eines Objekts
+\item \alert{\lstinline{help()}}: allgemeine Hilfe zu Python
+\item \alert{\lstinline{help(obj)}}: Hilfe zu einem Objekt, z.B. einer Funktion oder einem Modul
+\item \alert{\lstinline{dir()}}: alle belegten Namen 
+\item \alert{\lstinline{dir(obj)}}: alle Attribute eines Objekts
 \end{itemize}
 \vspace{5mm}
-Offizielle Dokumentation: \alert{\underline{\texttt{http://docs.python.org/}}}\\
+Offizielle Dokumentation: \href{http://docs.python.org/}{http://docs.python.org/}\\
 \vspace{5mm}
-Dive into Python: \alert{\underline{\texttt{http://diveintopython.org/}}}
+Dive into Python: \href{http://diveintopython.org/}{http://diveintopython.org/}
 
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Dokumentation}
+\begin{frame}[fragile]{Dokumentation}
 \begin{lstlisting}[style=Shell]
 >>> help(dir)
 Help on built-in function dir:
@@ -163,8 +152,3 @@ Help on int object:
 \end{lstlisting}
 \end{frame}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

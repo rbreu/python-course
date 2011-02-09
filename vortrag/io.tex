@@ -1,29 +1,27 @@
 \section{Input/Output}
 
-\begin{frame}[fragile]
-\frametitle{String-Formatierung}
+\begin{frame}[fragile]{String-Formatierung}
 Stringformatierung "ahnlich C: 
 \begin{lstlisting}[style=Python]
 print "Die Antwort ist %i." % 42
 s = "%s: %3.4f" % ("spam", 3.14)
 \end{lstlisting}
 \begin{itemize}
-\item Integer dezimal: d, i
+\item \alert{Integer dezimal}: d, i
 \item Integer oktal: o
 \item Integer hexadezimal: x, X
-\item Float: f, F
+\item \alert{Float}: f, F
 \item Float in Exponentialdarstellung: e, E, g, G
 \item Einzelnes Zeichen: c
-\item String: s
+\item \alert{String}: s
 \end{itemize}
 Ein \texttt{\%}-Zeichen gibt man als \texttt{\%\%} aus.
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Kommandozeilen-Eingaben}
+\begin{frame}[fragile]{Kommandozeilen-Eingaben}
 Benutzer-Eingaben:
 \begin{lstlisting}[style=Python]
-eingabe = raw_input("Gib was ein:")
+eingabe = raw_input("Gib was ein: ")
 \end{lstlisting}
 \vspace{3mm}
 Kommandozeilen-Parameter:
@@ -37,11 +35,10 @@ $ ./params.py spam
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Dateien}
+\begin{frame}[fragile]{Dateien}
 \begin{lstlisting}[style=Python]
 datei1 = open("spam", "r")
-datei2 = open("eggs", "wb")
+datei2 = open("/tmp/eggs", "wb")
 \end{lstlisting}
 \begin{itemize}
 \item Lesemodus: r
@@ -56,15 +53,14 @@ for line in datei1:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Operationen auf Dateien}
+\begin{frame}[fragile]{Operationen auf Dateien}
 \begin{itemize}
-\item lesen: \lstinline{f.read([size])}
+\item \alert{lesen}: \lstinline{f.read([size])}
 \item Zeile lesen: \lstinline{f.readline()}
 \item mehrere Zeilen lesen: \lstinline{f.readlines([sizehint])}
-\item schreiben: \lstinline{f.write(str)}
+\item \alert{schreiben}: \lstinline{f.write(str)}
 \item mehrere Zeilen schreiben: \lstinline{f.writelines(sequence)}
-\item Datei schlie"sen: \lstinline{f.close()}
+\item Datei \alert{schlie"sen}: \lstinline{f.close()}
 \end{itemize}
 \begin{lstlisting}[style=Python]
 datei = open("test", "w")
@@ -72,9 +68,5 @@ lines = ["spam\n", "eggs\n", "ham\n"]
 datei.writelines(lines)
 datei.close()
 \end{lstlisting}
+Python wandelt \lstinline{\n} automatisch in den richtigen Zeilenumruch um!
 \end{frame}
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

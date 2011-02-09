@@ -1,7 +1,6 @@
 \section{Module und Pakete}
 
-\begin{frame}[fragile]
-\frametitle{Module importieren}
+\begin{frame}[fragile]{Module importieren}
 Funktionen, Klassen und Objekte, die thematisch zusammengeh"oren, werden in Modulen geb"undelt.
 \begin{lstlisting}[style=Python]
 import math
@@ -21,11 +20,10 @@ s = sin(pi)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Module}
+\begin{frame}[fragile]{Module}
 \begin{itemize}
 \item Hilfe: \lstinline{dir(math)}, \lstinline{help(math)}
-\item Module werden gesucht in:
+\item Module werden gesucht in (siehe \lstinline{sys.path}):
 \begin{itemize}
 \item dem Verzeichnis der aufrufenden Datei
 \item Verzeichnissen aus der Umgebungsvariablen \texttt{PYTHONPATH}
@@ -41,9 +39,12 @@ s = sin(pi)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Pakete importieren}
+\begin{frame}[fragile]{Pakete importieren}
 Module k"onnen zu  hierarchisch strukturierten Paketen zusammengefasst werden.
+\begin{lstlisting}[style=Python]
+import email
+msg = email.mime.text.MIMEText("Hallo Welt!")
+\end{lstlisting}
 \begin{lstlisting}[style=Python]
 from email.mime import text as mtext
 msg = mtext.MIMEText("Hallo Welt!")
@@ -54,8 +55,7 @@ msg = MIMEText("Hallo Welt!")
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Eigene Module}
+\begin{frame}[fragile]{Eigene Module}
 Jedes Python-Programm kann als Modul importiert werden.
 \begin{lstlisting}[style=Python]
 """Mein erstes Modul: mein_modul.py"""
@@ -75,9 +75,8 @@ print add(2, 3)
 Top-Level-Anweisungen werden beim Import ausgef"uhrt!
 \end{frame}
 
-\begin{frame}[fragile]
-Sollen Anweisungen nur beim direkten Ausf"uhren, nicht beim Importieren ausgef"uhrt werden:
-\frametitle{Eigene Module}
+\begin{frame}[fragile]{Eigene Module}
+Sollen Anweisungen nur beim direkten Ausf"uhren, aber nicht beim Importieren ausgef"uhrt werden:
 \vspace{3mm}
 \begin{lstlisting}[style=Python]
 def add(a, b):
@@ -92,31 +91,32 @@ if __name__ == "__main__":
 Sinnvoll z.B. f"ur Tests.
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Eigene Pakete}
+\begin{frame}[fragile]{Eigene Pakete}
 \begin{columns}
 \begin{column}{3.2cm}
 \begin{tikzpicture}
-\fill[black!10!white] (-0.2,  0.2) rectangle (3.2, -4.6);
-\draw (0.0,  0.0) -- (0.2,  0.0) node[anchor=west] {\color{blue}numeric};
+\fill[plightgrey] (-0.2,  0.2) rectangle (3.2, -4.6);
+\draw (0.0,  0.0) -- (0.2,  0.0) node[anchor=west] {\color{pblue}numeric};
 \draw (0.5, -0.2) -- (0.5, -3.5);
 \draw (0.5, -0.5) -- (0.7, -0.5) node[anchor=west] {\_\_init\_\_.py};
-\draw (0.5, -1.0) -- (0.7, -1.0) node[anchor=west] {\color{blue}linalg};
+\draw (0.5, -1.0) -- (0.7, -1.0) node[anchor=west] {\color{pblue}linalg};
 \draw (1.0, -1.2) -- (1.0, -3.0);
 \draw (1.0, -1.5) -- (1.2, -1.5) node[anchor=west] {\_\_init\_\_.py};
 \draw (1.0, -2.0) -- (1.2, -2.0) node[anchor=west] {decomp.py};
 \draw (1.0, -2.5) -- (1.2, -2.5) node[anchor=west] {eig.py};
 \draw (1.0, -3.0) -- (1.2, -3.0) node[anchor=west] {solve.py};
-\draw (0.5, -3.5) -- (0.7, -3.5) node[anchor=west] {\color{blue}fft};
+\draw (0.5, -3.5) -- (0.7, -3.5) node[anchor=west] {\color{pblue}fft};
 \draw (1.0, -3.7) -- (1.0, -4.5);
 \draw (1.0, -4.0) -- (1.2, -4.0) node[anchor=west] {\_\_init\_\_.py};
 \draw (1.0, -4.5) -- (1.2, -4.5) node[anchor=west] {...};
 \end{tikzpicture}
 \end{column}
 \begin{column}{7.3cm}
-In jedem Paket-Ordner: \lstinline{__init__.py} \\
-(kann leer sein)
-\vspace{2mm}
+\begin{itemize}
+\item Pakete sind Unterordner
+\item In jedem Paket-Ordner: \lstinline{__init__.py} (kann leer sein)
+\end{itemize}
+
 \begin{lstlisting}[style=Python]
 import numeric
 numeric.foo() #Aus __init__.py
@@ -130,8 +130,3 @@ eig.foo()
 \end{columns}
 \end{frame}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

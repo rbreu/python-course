@@ -1,50 +1,6 @@
-\section{Neues in Python 2.5}
+\section{Fortgeschrittene Techniken}
 
-\begin{frame}[fragile]
-\frametitle{Conditional Expressions}
-Kurze Schreibweise f"ur bedingte Zuweisung. Statt:
-\begin{lstlisting}
-if zahl<0:
-    s = "Negativ"
-else:
-    s = "Positiv"
-\end{lstlisting}
-kann man schreiben:
-\begin{lstlisting}
-s = "Negativ" if zahl<0 else "Positiv"
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Das \texttt{with}-Statement}
-Einige Objekte bieten Kontext-Management an. Damit k"onnen \lstinline{try... finally}\,-Bl"ocke einfacher geschrieben werden:
-\begin{lstlisting}
-from __future__ import with_statement
-
-with open("test.txt") as f:
-    for line in f:
-        print line
-\end{lstlisting}
-Nach dem \lstinline{with}-Block ist das Dateiobjekt stets wieder geschlossen, auch wenn im Block eine Exception auftrat.
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Partielle Funktionsanwendung}
-\begin{lstlisting}
-import functools
-
-def add (a, b):
-    return a + b
-
-add_ten = functools.partial(add, b=10)
-add_ten(42)
-\end{lstlisting}
-\end{frame}
-
-\section{Flexiblere Funktionen}
-
-\begin{frame}[fragile]
-\frametitle{Funktionsparameter aus Listen und Dictionaries}
+\begin{frame}[fragile]{Funktionsparameter aus Listen und Dictionaries}
 \begin{lstlisting}
 def spam(a, b, c, d):
     print a, b, c, d
@@ -63,8 +19,7 @@ Man kann Keyword-Paramter aus Dictionaries erzeugen:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Funktionen mit beliebigen Parametern}
+\begin{frame}[fragile]{Funktionen mit beliebigen Parametern}
 \begin{lstlisting}
 def spam(*args, **kwargs):
     for i in args:
@@ -81,26 +36,8 @@ d 4
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Anonyme Funktionen}
-\begin{lstlisting}
-def make_incrementor(n):
-    return lambda x: x + n
-\end{lstlisting}
-\begin{lstlisting}[style=Shell]
->>> f = make_incrementor(42)
->>> f(0)
-42
->>> f(1)
-43
-\end{lstlisting}
-Sinnvoll, wenn einfache Funktionen als Parameter "ubergeben werden sollen.
-\end{frame}
 
-\section{Funktionale Techniken mit Listen}
-
-\begin{frame}[fragile]
-\frametitle{List Comprehension}
+\begin{frame}[fragile]{List Comprehension}
 Abk"urzende Schreibweise zum Erstellen von Listen aus for-Schleifen. Statt:
 \begin{lstlisting}
 a = []
@@ -111,71 +48,80 @@ kann man schreiben:
 \begin{lstlisting}
 a = [i**2 for i in range(10)]
 \end{lstlisting}
+\vspace{2mm}
+Mit Bedingung:
+\begin{lstlisting}
+a = [i**2 for i in range(10) if i != 4]
+\end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Map}
+\begin{frame}[fragile]{Anonyme Funktionen: Lambda}
+\begin{lstlisting}[style=Shell]
+>>> f = lambda x, y: x + y
+>>> f(2, 3)
+4
+>>> (lambda x: x**2)(3)
+9
+\end{lstlisting}
+N"utzlich, wenn einfache Funktionen als Parameter "ubergeben werden sollen.
+\begin{lstlisting}[style=Python]
+l = ["alice", "Bob"]
+l.sort()
+l.sort(lambda a,b: cmp(a.upper(), b.upper()))
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{Map}
 Anwenden einer Funktion auf alle Elemente einer Liste:
 \begin{lstlisting}[style=Shell]
->>> a = [1.6, 4.0, 81.0, 9.0]
->>> map(math.sqrt, a)
-[1.2649110640673518, 2.0, 9.0, 3.0]
->>> map(lambda x: x * 2, a)
-[3.2000000000000002, 8.0, 162.0, 18.0]
+>>> l = [1, 4, 81, 9]
+>>> map(math.sqrt, l)
+[1.0, 2.0, 9.0, 3.0]
+>>> map(lambda x: x * 2, l)
+[2, 8, 162, 18]
 \end{lstlisting}
 Wenn die Funktion mehr als einen Parameter nimmt, kann je zus"atzlichem Parameter eine weitere Liste "ubergeben werden:
 \begin{lstlisting}[style=Shell]
->>> map(math.pow, a, [2 for i in a])
-[2.5600000000000005, 16.0, 6561.0, 81.0]
+>>> map(math.pow, a, [1, 2, 3, 4])
+[1.0, 16.0, 531441.0, 6561.0]
 \end{lstlisting}
 \end{frame} 
 
-\begin{frame}[fragile]
-\frametitle{Filter}
-Gibt Elemente einer Liste zur"uck, die nach Anwendung einer Funktion wahr sind:
+\begin{frame}[fragile]{Filter}
+Wie Map, jedoch enth"alt die Egebnisliste nur die Elemente, welche wahr sind:
 \begin{lstlisting}[style=Shell]
->>> a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
->>> filter(lambda x: x % 2, a)
+>>> l = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> filter(lambda x: x % 2, l)
 [1, 3, 5, 7, 9]
 \end{lstlisting}
-\end{frame}
+\end{frame} 
 
-\begin{frame}[fragile]
-\frametitle{Reduce}
-Wendet Funktion auf die ersten beiden Elemente an, dann auf das Ergebnis und das n"achste Element etc.
+\begin{frame}[fragile]{Zip}
+Zusammenf"ugen mehrer Sequenzen zu einer Liste von Tupeln:
 \begin{lstlisting}[style=Shell]
->>> def add(x, y):
-...     return x + y
-...
->>> a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
->>> reduce(add, a)
-45
-\end{lstlisting}
-Optionaler Startwert, der vor die Liste gesetzt wird:
-\begin{lstlisting}[style=Shell]
->>> reduce(add, a, 10)
-55
+>>> zip("ABC", "123")
+[('A', '1'), ('B', '2'), ('C', '3')]
+>>> zip([1, 2, 3], "ABC", "XYZ")
+[(1, 'A', 'X'), (2, 'B', 'Y'), (3, 'C', 'Z')]
 \end{lstlisting}
 \end{frame}
 
-\section{Iteratoren, Generatoren, Generator-Audr"ucke}
 
-\begin{frame}[fragile]
-\frametitle{Iteratoren}
+\begin{frame}[fragile]{Iteratoren}
 Was passiert, wenn \lstinline{for} auf einem Objekt aufgerufen wird?
 \begin{lstlisting}[style=Python]
 for i in obj:
     pass
 \end{lstlisting}
 \begin{itemize}
-\item Auf \lstinline{obj} wird die \lstinline{__iter__}-Methode aufgerufen, welche einen Iterator zur"uckgibt
-\item Auf dem Iterator wird bei jedem Durchlauf \lstinline{next()} aufgerufen
+\item Auf \lstinline{obj} wird die \lstinline{__iter__}-Methode aufgerufen, welche einen \alert{Iterator} zur"uckgibt
+\item Auf dem Iterator wird bei jedem Durchlauf \alert{\lstinline{next()}} aufgerufen
 \item Eine \lstinline{StopIteration}-Ausnahme beendet die for-Schleife
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Iteratoren}
+\begin{frame}[fragile]{Iteratoren}
 \begin{lstlisting}[style=Python]
 class Reverse:
     def __init__(self, data):
@@ -197,8 +143,7 @@ m a p s
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Generatoren}
+\begin{frame}[fragile]{Generatoren}
 Einfache Weise, Iteratoren zu erzeugen:
 \begin{itemize}
 \item Werden wie Funktionen definiert
@@ -217,8 +162,7 @@ m a p s
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Generator-Audr"ucke}
+\begin{frame}[fragile]{Generator-Audr"ucke}
 "Ahnlich zu List Comprehensions kann man anonyme Iteratoren erzeugen:
 \begin{lstlisting}[style=Shell]
 >>> data = "spam"
@@ -231,9 +175,7 @@ m a p s
 \end{frame}
 
 
-\section{Etwas Dynamik}
-\begin{frame}[fragile]
-\frametitle{Dynamische Attribute}
+\begin{frame}[fragile]{Dynamische Attribute}
 Erinnerung: Man kann Attribute von Objekten zur Laufzeit hinzuf"ugen:
 \begin{lstlisting}
 class Empty:
@@ -250,8 +192,7 @@ del a.spam
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{getattr, setattr}
+\begin{frame}[fragile]{getattr, setattr}
 Man kann Attribute von Objekten als Strings ansprechen:
 \begin{lstlisting}
 import math
@@ -267,8 +208,3 @@ print a.spam
 N"utzlich, wenn man z.B. Attributnamen aus User-Input oder Dateien liest.
 \end{frame}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

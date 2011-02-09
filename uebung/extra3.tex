@@ -1,0 +1,30 @@
+\section*{Zus"atzliche Aufgaben}
+
+\begin{aufgabe}[Refactoring]
+Oft bestehen Teile einer GUI aus vielen gleichen Widgets mit "ahnlichen Funktionalit"aten, was zu vielen Wiederholungen im Programmcode f"uhrt. F"ur Men"us beispielsweise m"ussen viele einzelne Men"u-Items erzeugt und deren Events an Event-Handler gebunden werden. Um den Programmcode zu vereinfachen, kann man f"ur solche sich wiederholende Aufgaben generische Funktionen oder Klassen schreiben.
+
+Verstehen Sie folgenden Code und benutzen Sie ihn in Ihrem Text-Editor:
+\begin{lstlisting}
+class OneMenu(wx.Menu):
+    """
+    One popup menu.
+    """
+
+    def __init__(self, parent, items):
+        """
+        items: List of menu items, where one item is a list:
+                  [name, status bar text, method to bind, enable flag]
+        """ 
+
+        wx.Menu.__init__(self)
+ 
+        for item in items:
+            if item:
+                menu_item = self.Append(-1, item[0], item[1])
+                menu_item.Enable(item[3])
+                parent.Bind(wx.EVT_MENU, item[2], menu_item)
+            else:
+                self.AppendSeparator()
+\end{lstlisting}
+
+\end{aufgabe}

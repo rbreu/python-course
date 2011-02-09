@@ -1,7 +1,6 @@
 \section{Funktionen}
 
-\begin{frame}[fragile]
-\frametitle{Funktionen}
+\begin{frame}[fragile]{Funktionen}
 \begin{lstlisting}[style=Python]
 def addiere(a, b):
     """Gibt die Summe von a und b zurueck."""
@@ -22,12 +21,11 @@ addiere(a, b)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{R"uckgabewerte und Parameter}
+\begin{frame}[fragile]{R"uckgabewerte und Parameter}
 \begin{itemize}
 \item Funktionen k"onnen beliebige Objekte als Parameter und R"uckgabewerte haben
 \item Typen der R"uckgabewerte und Parameter sind nicht festgelegt
-\item Funktionen ohne expliziten R"uckgabewert geben \texttt{None} zur"uck
+\item Funktionen ohne expliziten R"uckgabewert geben \lstinline{None} zur"uck
 \end{itemize}
 \begin{lstlisting}[style=Python]
 def hallo_welt():
@@ -43,8 +41,7 @@ None
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Mehrere R"uckgabewerte}
+\begin{frame}[fragile]{Mehrere R"uckgabewerte}
 Mehrere R"uckgabewerte werden mittels Tupel oder Listen realisiert:
 \begin{lstlisting}[style=Python]
 def foo():
@@ -53,12 +50,11 @@ def foo():
    return (a, b)
 
 ret = foo()
-(z1, z2) = foo()
+(x, y) = foo()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Keywords und Defaultwerte}
+\begin{frame}[fragile]{Keywords und Defaultwerte}
 Man kann Parameter auch in anderer Reihenfolge als definiert angeben:
 \begin{lstlisting}[style=Python]
 def foo(a, b, c):
@@ -76,12 +72,11 @@ foo(1, 17, 42)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Funktionen sind Objekte}
+\begin{frame}[fragile]{Funktionen sind Objekte}
 Funktionen sind Objekte und k"onnen wie solche zugewiesen und "ubergeben werden:
 \begin{lstlisting}[style=Shell]
->>> def foo(f):
-...     print f(33)
+>>> def foo(fkt):
+...     print fkt(33)
 ...
 >>> foo(float)
 33.0
@@ -93,8 +88,3 @@ Funktionen sind Objekte und k"onnen wie solche zugewiesen und "ubergeben werden:
 \end{lstlisting}
 \end{frame}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 

@@ -1,14 +1,12 @@
 \section{Pythons Standardbibliothek}
 
-\begin{frame}
-\frametitle{Pythons Standardbibliothek}
+\begin{frame}{Pythons Standardbibliothek}
 \alert{\glqq Batteries included\grqq}: umfassende Standardbibliothek f"ur die verschiedensten Aufgaben\\[4mm]
 
 \includegraphics[height=4.5cm]{images/batteries_included.jpg}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Mathematik: \texttt{math}}
+\begin{frame}[fragile]{Mathematik: \texttt{math}}
 \begin{itemize}
 \item Konstanten: \texttt{e}, \texttt{pi}
 \item Auf- und Abrunden: \texttt{floor(x)}, \texttt{ceil(x)}
@@ -27,8 +25,7 @@
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Zufall: \texttt{random}}
+\begin{frame}[fragile]{Zufall: \texttt{random}}
 \begin{itemize}
 \item Zuf"allige Integers: \\ \texttt{randint(a, b)},  \texttt{randrange([start,] stop[, step])}
 \item Zuf"allige Floats (Gleichverteilg.): \texttt{random()}, \texttt{uniform(a, b)}
@@ -47,8 +44,7 @@
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Operationen auf Verzeichnisnamen: \texttt{os.path}}
+\begin{frame}[fragile]{Operationen auf Verzeichnisnamen: \texttt{os.path}}
 \begin{itemize}
 \item Pfade: \texttt{abspath(path)}, \texttt{basename(path)}, \texttt{normpath(path)}, \texttt{realpath(path)}
 \item Pfad zusammensetzen: \texttt{join(path1[, path2[, ...]])}
@@ -69,8 +65,7 @@
 \end{lstlisting}%$
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Dateien und Verzeichnisse: \texttt{os}}
+\begin{frame}[fragile]{Dateien und Verzeichnisse: \texttt{os}}
 \begin{itemize}
 \item Working directory: \lstinline{getcwd()}, \lstinline{chdir(path)}
 \item Dateirechte "andern: \lstinline{chmod(path, mode)}
@@ -87,8 +82,7 @@ for datei in os.listdir("mydir"):
 \end{lstlisting}
 \end{frame} 
 
-\begin{frame}[fragile]
-\frametitle{Verzeichnislisting: \texttt{glob}}
+\begin{frame}[fragile]{Verzeichnislisting: \texttt{glob}}
 Liste von Dateien in Verzeichnis, mit Unix-artiger Wildcard-Vervollst"andigung: \texttt{glob(path)}
 \begin{lstlisting}[style=Shell]
 >>> glob.glob("python/[a-c]*.py")
@@ -103,8 +97,7 @@ Liste von Dateien in Verzeichnis, mit Unix-artiger Wildcard-Vervollst"andigung: 
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Dateien und Verzeichnisse: \texttt{shutil}}
+\begin{frame}[fragile]{Dateien und Verzeichnisse: \texttt{shutil}}
 Higher Level-Operationen auf Dateien und Verzeichnissen.
 \begin{itemize}
 \item Datei kopieren: \texttt{copyfile(src, dst)}, \texttt{copy(src, dst)}
@@ -118,17 +111,15 @@ shutil.copytree("spam/eggs", "../beans",
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Andere Prozesse starten: \texttt{subprocess}}
+\begin{frame}[fragile]{Andere Prozesse starten: \texttt{subprocess}}
 Einfaches Ausf"uhren eines Programmes:
 \begin{lstlisting}[style=Python]
-p = subprocess.Popen(["ls", "~"], shell=True)
+p = subprocess.Popen(["ls", "-l", "mydir"])
 returncode = p.wait() # Auf Ende warten
 \end{lstlisting}
 Zugriff auf die Ausgabe eines Programmes:
 \begin{lstlisting}[style=Python]
-p = Popen(["ls"], stdout=PIPE, stderr=STDOUT, 
-          close_fds=True)
+p = Popen(["ls"], stdout=PIPE, stderr=STDOUT) 
 p.wait()
 output = p.stdout.read()
 \end{lstlisting}
@@ -139,8 +130,7 @@ p2 = Popen(["grep", "txt"], stdin=p1.stdout)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Threads: \texttt{threading}}
+\begin{frame}[fragile]{Threads: \texttt{threading}}
 Programmteile gleichzeitig ablaufen lassen mit \alert{Thread-Objekten}:
 \begin{lstlisting}[style=Python]
 class Counter(threading.Thread):
@@ -160,8 +150,7 @@ counter.join() # Warte auf Ende des Threads
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Threads: \texttt{threading}}
+\begin{frame}[fragile]{Threads: \texttt{threading}}
 \begin{itemize}
 \item Problem, wenn zwei Threads gleichzeitig auf das gleiche Objekt schreibend zugreifen wollen!
 \item $\rightarrow$ Verhindern, dass Programmteile gleichzeitig ausgef"uhrt werden mit \alert{Lock-Objekten}
@@ -177,8 +166,7 @@ lock.release() # Lock freigeben fuer andere
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}
-\frametitle{Threads: \texttt{threading}}
+\begin{frame}{Threads: \texttt{threading}}
 \begin{itemize}
 \item Kommunikation zwischen Threads: Z.B. mittels \alert{Event-Objekten}
 \item Events haben zwei Zust"ande: gesetzt und nicht gesetzt
@@ -194,8 +182,7 @@ Methoden auf Event-Objekten:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
+\begin{frame}[fragile]{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
 \begin{itemize}
 \item Einfach: Liste mit Parametern $\rightarrow$ \texttt{sys.argv}
 \item Komfortabler f"ur mehrere Optionen: \texttt{OptionParser}
@@ -205,20 +192,19 @@ parser = optparse.OptionParser()
 parser.add_option("-f", "--file", 
                   dest="filename",
                   default="out.txt",
-                  help="Output file")
-parser.add_option("-q", "--quiet",
-                  action="store_false", 
+                  help="output file")
+parser.add_option("-v", "--verbose",
+                  action="store_true", 
                   dest="verbose", 
-                  default=True,
-                  help="don't print info")
+                  default=False,
+                  help="verbose output")
 
 (options, args) = parser.parse_args()
 print options.filename, options.verbose
 print args
 \end{lstlisting}
 \end{frame}
-\begin{frame}[fragile]
-\frametitle{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
+\begin{frame}[fragile]{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
 So wird ein optparse-Programm verwendet:
 \begin{lstlisting}[style=Shell]
 $ ./test.py -h
@@ -227,23 +213,22 @@ usage: test.py [options]
 options:
   -h, --help     show this help message and exit
   -f FILENAME, --file=FILENAME
-                 Output file
-  -q, --quiet    don't print status messages
+                 output file
+  -v, --verbose  verbose output
 \end{lstlisting} %$
 \begin{lstlisting}[style=Shell]
 $ ./test.py -f aa bb cc
-aa True
+aa False
 ['bb', 'cc']
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Konfigurationsdateien: \texttt{ConfigParser}}
+\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
 Einfaches Format zum Speichern von Konfigurationen u."A.: Windows INI-Format
 \begin{lstlisting}[style=Python]
 [font]
 font = Times New Roman
-#this is a comment
+# Kommentar (oder: ! als Kommentarzeichen)
 size = 16
 
 [colors]
@@ -253,8 +238,7 @@ background = white
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Konfigurationsdateien: \texttt{ConfigParser}}
+\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
 Config-Datei lesen:
 \begin{lstlisting}[style=Python]
 parser = ConfigParser.SafeConfigParser()
@@ -271,8 +255,7 @@ Weitere Parser-Methoden:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Konfigurationsdateien: \texttt{ConfigParser}}
+\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
 Config-Datei schreiben:
 \begin{lstlisting}[style=Python]
 parser = ConfigParser.SafeConfigParser()
@@ -289,8 +272,7 @@ Weitere Parser-Methoden:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{CSV-Dateien: \texttt{csv}}
+\begin{frame}[fragile]{CSV-Dateien: \texttt{csv}}
 CSV: Comma-seperated values
 \begin{itemize}
 \item Tabellendaten im ASCII-Format
@@ -308,8 +290,7 @@ writer.writerow([1, 2, 3, 4])
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{CSV-Dateien: \texttt{csv}}
+\begin{frame}[fragile]{CSV-Dateien: \texttt{csv}}
 Mit verschiedenen Formaten (Dialekten) umgehen:
 \begin{lstlisting}[style=Python]
 reader(csvfile, dialect='excel') # Default
@@ -323,14 +304,13 @@ reader(csvfile, delimiter=";")
 Weitere Formatparameter: \texttt{lineterminator}, \texttt{quotechar}, \texttt{skipinitialspace}, \dots
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Objekte serialisieren: \texttt{pickle}}
+\begin{frame}[fragile]{Objekte serialisieren: \texttt{pickle}}
 Beliebige Objekte in Dateien speichern:
 \begin{lstlisting}[style=Python]
 obj = {"hallo": "welt", "spam":1}
-pickle.dump(obj, open("bla.txt", "wb"))
+pickle.dump(obj, open("bla.bin", "wb"))
 # ...
-obj = pickle.load(open("bla.txt", "rb"))
+obj = pickle.load(open("bla.bin", "rb"))
 \end{lstlisting}
 Objekt in String unwandeln (z.B. zum Verschicken "uber Streams):
 \begin{lstlisting}[style=Python]
@@ -340,8 +320,7 @@ obj = pickle.loads(s)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Persistente Dictionaries: \texttt{shelve}}
+\begin{frame}[fragile]{Persistente Dictionaries: \texttt{shelve}}
 Ein Shelve benutzt man wie ein Dictionary, es speichert seinen Inhalt in eine Datei.
 \begin{lstlisting}[style=Python]
 d = shelve.open("bla")
@@ -352,8 +331,46 @@ d.close()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Tar-Archive: \texttt{tarfile}}
+\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
+Datenbank in Datei oder im Memory, ab Python 2.5 in der stdlib.
+\begin{lstlisting}[style=Python]
+conn = sqlite3.connect("bla.db")
+c = conn.cursor()
+
+c.execute("""CREATE TABLE Friends
+             (vorname TEXT, nachname TEXT)""")
+c.execute("""INSERT INTO Friends
+             VALUES("Max", "Mueller")""")
+conn.commit()
+\end{lstlisting}
+\begin{lstlisting}[style=Python]
+c.execute("""SELECT * FROM Friends""")
+for row in c: print row
+
+c.close(); conn.close()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
+String-Formatter sind unsicher, da beliebiger SQL-Code eingeschleust werden kann!
+\begin{lstlisting}[style=Python]
+# Never do this!
+symbol = "Max"
+c.execute("... WHERE name = '%s'" % symbol)
+\end{lstlisting}
+Stattdessen die Platzhalter der Datenbank-API benutzen:
+\begin{lstlisting}[style=Python]
+c.execute("... WHERE name = ?", symbol)
+\end{lstlisting}
+\begin{lstlisting}[style=Python]
+f = (("Alice", "Meier"), ("Bob", "Schmidt"))
+for item in friends:
+    c.execute("""INSERT INTO Friends 
+                 VALUES (?,?)""", item)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Tar-Archive: \texttt{tarfile}}
 Ein tgz entpacken:
 \begin{lstlisting}[style=Python]
 tar = tarfile.open("spam.tgz")
@@ -369,8 +386,7 @@ tar.close()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Log-Ausgaben: \texttt{logging}}
+\begin{frame}[fragile]{Log-Ausgaben: \texttt{logging}}
 Flexible Ausgabe von Informationen, kann schnell angepasst werden.
 \begin{lstlisting}[style=Python]
 import logging
@@ -388,9 +404,8 @@ WARNING:root:You should know this.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Log-Ausgaben: \texttt{logging}}
-Beispiel: Ausgabe in Datei, benutzerdefiniertes Format, gr"o"seres Log-Level:
+\begin{frame}[fragile]{Log-Ausgaben: \texttt{logging}}
+Beispiel: Ausgabe in Datei, benutzerdefiniertes Format, feineres Log-Level:
 \begin{lstlisting}[style=Python, basicstyle=\ttfamily\small]
 logging.basicConfig(level=logging.DEBUG,
   format="%(asctime)s %(levelname)-8s %(message)s",
@@ -407,8 +422,7 @@ Es k"onnen auch verschiedene Loginstanzen gleichzeitig benutzt werden,
 siehe Python-Dokumentation.
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Regul"are Ausdr"ucke: \texttt{re}}
+\begin{frame}[fragile]{Regul"are Ausdr"ucke: \texttt{re}}
 Einfaches Suchen nach Mustern:
 \begin{lstlisting}[style=Shell]
 >>> re.findall(r"\[.*?\]", "a[bc]g[hal]def")
@@ -429,8 +443,7 @@ Wird ein Regex-Muster mehrfach verwendet, sollte es aus Geschwindigkeitsgr"unden
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Regul"are Ausdr"ucke: \texttt{re}}
+\begin{frame}[fragile]{Regul"are Ausdr"ucke: \texttt{re}}
 Umgang mit Gruppen:
 \begin{lstlisting}[style=Shell]
 >>> re.findall("(\[.*?\])|(<.*?>)", 
@@ -450,8 +463,7 @@ Flags, die das Verhalten des Matching beeinflussen:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Sockets: \texttt{socket}}
+\begin{frame}[fragile]{Sockets: \texttt{socket}}
 Client-Socket erstellen und mit Server verbinden:
 \begin{lstlisting}[style=Python]
 sock = socket.socket(socket.AF_INET, 
@@ -467,8 +479,7 @@ sock.close()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Sockets: \texttt{socket}}
+\begin{frame}[fragile]{Sockets: \texttt{socket}}
 Server-Socket erstellen:
 \begin{lstlisting}[style=Python]
 server_socket = socket.socket(socket.AF_INET)
@@ -488,10 +499,39 @@ sock.send("Willkommen!\n")
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]{XML-RPC-Client: \texttt{xmlrpclib}}
+\begin{itemize}
+\item XML-RPC: \alert{Remote Procedure Call} via XML und HTTP
+\item unabh"anging von Plattform und Programmiersprache
+\end{itemize}
+\begin{lstlisting}[style=Python]
+import xmlrpclib
 
-%%% Local Variables: 
-%%% mode: latex
-%%% latex-run-command: pdflatex
-%%% TeX-master: "vortrag"
-%%% End: 
+s = xmlrpclib.Server("http://localhost:8000")
+print s.add(2,3) 
+print s.sub(5,2) 
+\end{lstlisting}
+Konvertierungen f"ur die g"angigen Datentypen geschehen automatisch: 
+Booleans, Integer, Floats, Strings, Tupel, Listen, Dictionaries mit Strings als Keys, \dots
+\end{frame}
+
+\begin{frame}[fragile]{XML-RPC-Server: \texttt{SimpleXMLRPCServer}}
+\begin{lstlisting}[style=Python]
+from SimpleXMLRPCServer import SimpleXMLRPCServer
+
+# Methoden, die der Server zur Verfuegung
+# stellen soll:
+class MyFuncs:
+    def add(self, x, y):
+        return x + y
+    def sub(self, x, y):
+        return x - y
+    
+# Erstelle und starte Server:
+server = SimpleXMLRPCServer(("localhost", 8000))
+server.register_instance(MyFuncs())
+server.serve_forever()
+\end{lstlisting}
+\end{frame}
+
 
