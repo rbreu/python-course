@@ -46,7 +46,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Exakte Dezimalzahlen:\textt{fractions}}
+\begin{frame}[fragile]{Exakte Dezimalzahlen: \textt{fractions}}
 
 \begin{lstlisting}
 >>> from fractions import Fraction
@@ -59,6 +59,8 @@ Fraction(16, 15)
 >>> a/b
 Fraction(5, 3)
 \end{lstlisting}
+
+(Siehe auch: Modul \textt{decimal}.)
 \end{frame}
 
 
@@ -78,6 +80,19 @@ print delta.days
 print d2 + datetime.timedelta(days=44)
 \end{lstlisting}
 \end{frame}
+
+\begin{frame}[fragile]{Weitere Datentypen: \texttt{collections}}
+\alert{defaulttict}: Dictionary, welches Defaultwerte f"ur nicht vorhandene Schl"usselw"orter erzeugen kann:
+\begin{lstlisting}
+haeufigkeiten = defaultdict(lambda: 0)
+
+for c in "Hallo Welt!":
+    haeufigkeiten[c] += 1
+\end{lstlisting}
+Paramter (optional): Funktion zum Erzeugen der Defaultwerte
+
+\end{frame}
+
 
 \begin{frame}[fragile]{Operationen auf Verzeichnisnamen: \texttt{os.path}}
 \begin{itemize}
