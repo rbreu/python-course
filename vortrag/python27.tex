@@ -1,0 +1,15 @@
+\section{Neues in Python 2.7}
+
+\begin{frame}[fragile]{Neues in Python 2.7}
+
+\begin{itemize}
+\item Neue Syntax f"ur Mengen: Statt \texttt{set(1, 2, 3)} kann man schreiben: \texttt{\{1,2,3}\}
+\item Analog zu List Comprehensions gibt es Set Comprehensions und Dictionary Comprehensions zum schnellen Erzeugen:
+\begin{lstlisting}
+s = {i*2 for in in range(3)}
+d = {i: i*2 for i in range(3)}
+\end{lstlisting}
+\item \texttt{collections.OrderedDict}: Beim normalen Dictionary haben die Eintr"age eine willk"urliche Reihenfolge. OrderedDict kann die Eintr"age sortiert hinzuf"ugen.
+\end{itemize}
+
+\end{frame}
