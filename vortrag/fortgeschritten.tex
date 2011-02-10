@@ -122,19 +122,6 @@ Zusammenf"ugen mehrer Sequenzen zu einer Liste von Tupeln:
 N"utzlich, wenn man "uber mehrere Sequenzen parallel iterieren m"ochte
 \end{frame}
 
-
-\begin{frame}[fragile]{defaultdict}
-Ein Dictionary, welches Defaultwerte f"ur nicht vorhandene Schl"usselw"orter erzeugen kann:
-\begin{lstlisting}
-from collections import defaultdict
-haeufigkeiten = defaultdict(lambda: 0)
-
-for c in "Hallo Welt!":
-    haeufigkeiten[c] += 1
-\end{lstlisting}
-Paramter (optional): Funktion zum Erzeugen der Defaultwerte
-\end{frame}
-
 \begin{frame}[fragile]{Iteratoren}
 Was passiert, wenn \lstinline{for} auf einem Objekt aufgerufen wird?
 \begin{lstlisting}[style=Python]
