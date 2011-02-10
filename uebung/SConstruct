@@ -43,9 +43,9 @@ env.Decider('timestamp-newer')
 target = env.Serial("uebung1")
 env.Clean(target, clean_serial(target, env))
 
-#Default(PDF("uebung1.tex"),
-#        PDF("uebung2.tex"),
-#        PDF("uebung3.tex"))
+Default(PDF("uebung1.tex"),
+        PDF("uebung2.tex"),
+        PDF("uebung3.tex"))
 
 
 # Build serial stuff with: scons uebung1_serial

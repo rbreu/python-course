@@ -1,0 +1,10 @@
+.sconsign.dblite
+*.aux
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.brb
+*.vrb
