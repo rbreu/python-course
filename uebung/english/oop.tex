@@ -1,0 +1,60 @@
+\section*{Object Orientated Programming}
+
+\begin{aufgabe}[Point Class]
+\begin{teilaufgabe}
+Implement the Point class from the lecture. Implement a human-readable print output and ensure that two points are recognised as equal when their $x$ and $y$ values match.
+\end{teilaufgabe}
+\begin{teilaufgabe}
+Implement the $+$ and $-$ operator for two points:
+\begin{displaymath}
+\left(\begin{array}{c}
+x_1\\
+y_1
+\end{array}\right)
++
+\left(\begin{array}{c}
+x_2\\
+y_12
+\end{array}\right)
+=
+\left(\begin{array}{c}
+x_1 + x_2\\
+y_1 + y_2
+\end{array}\right), \hspace{5mm}
+\left(\begin{array}{c}
+x_1\\
+y_1
+\end{array}\right)
+*
+\left(\begin{array}{c}
+x_2\\
+y_12
+\end{array}\right)
+= (x_1 * x_2) + (y_1 * y_2)
+\end{displaymath}
+The following should be possible:
+\begin{lstlisting}
+>>> print Point(1, 2) + Point(4, 2)
+(5, 4)
+>>> print Point(1, 2) * Point(4, 2)
+8
+\end{lstlisting}
+\end{teilaufgabe}
+
+\begin{teilaufgabe}
+Implement the norm of a point with the help of the above scalar product:
+\begin{displaymath}
+\left\| p\right\| = \sqrt{p*p}
+\end{displaymath}
+\end{teilaufgabe}
+\end{aufgabe}
+
+\begin{aufgabe}[Bank account]
+\begin{teilaufgabe}
+Implement a bank account class with attributes for the account number, the account balance and the name of the account holder. The account must not be overdrawn; ensure that any access to the account balance does not result in a negative account balance.
+\end{teilaufgabe}
+\begin{teilaufgabe}
+Additionally to the account data, add an attribute for the interest rate, which is the same for all accounts. Implement a methods which informs the user about the current interest rate, and another method which calculates the interest for the current account balance.
+\end{teilaufgabe}
+\end{aufgabe}
+

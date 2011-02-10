@@ -1,0 +1,92 @@
+\section*{wxPython}
+
+\begin{aufgabe}[Hello World]
+\label{aufg-hello-world}Implement the Hello World application given in the lecture, which creates an empty frame. Try different parameters for title, size and position of the frame.
+\end{aufgabe}
+
+\begin{aufgabe}[Static text]
+\begin{teilaufgabe}
+Extend the program from Exercise \ref{aufg-hello-world} so that it displays text inside the frame (\lstinline{wx.StaticText}). Display multi line text centered, as well as flushed left and flushed right.
+\end{teilaufgabe}
+\begin{teilaufgabe}
+Add more \lstinline{wx.StaticText} widgets to the frame. What happens if you omit position parameters? Position the widgets via parameters and observe the behaviour of the frame on resizing.
+\end{teilaufgabe}
+\end{aufgabe}
+
+
+\begin{aufgabe}[Buttons]
+\begin{teilaufgabe}
+Extend the program from Exercise \ref{aufg-hello-world} so that it displays a button. The program should exit when the button is pressed. (Close the main frame: \lstinline{self.Close(True)}.)
+\end{teilaufgabe}
+\begin{teilaufgabe}
+Add more buttons. The buttons should execute different actions (e.g. print different text to the terminal) when clicked.
+\end{teilaufgabe}
+\end{aufgabe}
+
+\begin{aufgabe}[Sizer]
+\label{aufg-sizer}
+Create a frame with a box sizer and buttons and try the different possibilities of box sizers. E.g.:
+\begin{itemize}
+\item A button that fills the whole frame
+\item A horizontal row of buttons
+\item A vertical row of buttons
+\end{itemize}
+You don't need to bind actions to the buttons; this exercise is all about layout.
+\end{aufgabe}
+
+
+\begin{aufgabe}[RadioBox]
+\label{aufg-radiobox}
+Create a frame which displays a radio box. As soon as the user selects one item, print the selection to the console.
+
+\hinweis Contrary to the exercises above, it is now necessary to add the radio box object as an attribute to the frame object so that you can access it outside of the init method: \lstinline{self.radiobox = ...}
+\end{aufgabe}
+
+\begin{aufgabe}[Text editor]
+Write a simple text editor. Proceed by the following steps:
+\begin{teilaufgabe}[Text entry field]
+Create a frame with a multiline TextCtrl widget. The text field should fill the whole frame, see Exercise \ref{aufg-sizer}. Try using the widget!
+\begin{itemize}
+\item What happens if you enter many lines into the field, or very long lines?
+\item What do key combinations like Ctrl-C, Ctrl-V, Ctrl-X, Ins, Del, \dots do? 
+\end{itemize}
+\end{teilaufgabe}
+\begin{teilaufgabe}[Menus]
+Add a menu bar and a "File" menu. The menu should contain the entry "Quit".
+\end{teilaufgabe}
+\begin{teilaufgabe}[Status bar]
+Add a status bar. Observe how the menu entry's help texts are automatically displayed in the status bar.
+\end{teilaufgabe}
+\begin{teilaufgabe}[New file]
+Add a "New" entry to the status bar which deletes the content of the text entry field.
+
+\hinweis Analogous to Exercise \ref{aufg-radiobox} you need to make the text entry field an attribute of the main frame object now.
+\end{teilaufgabe}
+\begin{teilaufgabe}[Open file]
+Add a "Open \dots" entry to the file menu. The user should be able to select a frile from a FileDialog which is then displayed in the text entry field.
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Save as]
+Add a "Save as \dots" entry to the menu. The user should be able to select a file to wich the content of the text field entry is then saved.
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Save]
+Add a "Save" entry to the menu bar, which saves the file under the name it was opend or saved last. In order to do that, add an attribute to the main frame  \lstinline{filename} which is updated accordingly on "Save as" and "Open".
+
+Beware, the filename does not always exist when the user wants to save! (Why?) In this case, the \lstinline{filename} attribute should be \lstinline{None}; ideally the action "Save" invokes a file dialog in this case, as "Save as" does.
+
+Additionally, you can display the filename in the frame's status bar (\lstinline{SetTitle}).
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Display in the status bar]
+Display the program's actions in the status bar, e.g. "File bla.txt saved."
+\end{teilaufgabe}
+
+\begin{teilaufgabe}[Save status]
+Save the status whether the file has been changed since being saved last in an attribute of the main frame. Display this status appropriately in the frame's title bar. The event triggered by the TextCtrl on text changes is \lstinline{wx.EVT_TEXT}.
+
+Additionally you can add warnings (e.g. MessageDialog) when the user wants to execute "Open", "Quit" or "New" while having an unsaved file open.
+\end{teilaufgabe}
+
+\end{aufgabe}
+

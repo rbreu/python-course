@@ -1,0 +1,73 @@
+>>> help()
+
+Welcome to Python 2.4!  This is the online help utility.
+
+If this is your first time using Python, you should definitely check out
+the tutorial on the Internet at http://www.python.org/doc/tut/.
+
+[...]
+
+help> quit
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+>>> help(complex)
+
+Help on class complex in module __builtin__:
+
+class complex(object)
+ |  complex(real[, imag]) -> complex number
+ |
+ |  Create a complex number from a real part and an optional imaginary part.
+ |  This is equivalent to (real + imag*1j) where imag defaults to 0.
+ |
+ |  Methods defined here:
+
+[...]
+
+>>> dir(complex)
+['__abs__', '__add__', '__class__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__eq__', '__float__', '__floordiv__', '__ge__', '__getattribute__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__int__', '__le__', '__long__', '__lt__', '__mod__', '__mul__', '__ne__', '__neg__', '__new__', '__nonzero__', '__pos__', '__pow__', '__radd__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rmod__', '__rmul__', '__rpow__', '__rsub__', '__rtruediv__', '__setattr__', '__str__', '__sub__', '__truediv__', 'conjugate', 'imag', 'real']
+>>> 3 + 4
+7
+>>> 3.0 + 4  # Addition of float and int yields a float
+7.0
+>>> 3 * 4
+12
+>>> 3 ** 2
+9
+>>> 3.0 ** 2
+9.0
+>>> 12/4
+3
+>>> 13/4    # Divion of two integers yields integer division
+3
+>>> 13%4
+1
+>>> 13.0/4  # For exact division convert at least one number to a float
+3.25
+>>> 1 + 3j - 1 - 4j
+-1j
+>>> (1 + 3j) * (1 - 4j)
+(13-1j)
+>>> 1/3.0  # For exact division convert at least one number to a float
+0.33333333333333331
+>>> 1/0    # You can't divide by zero -> Exception
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ZeroDivisionError: integer division or modulo by zero
+>>> x = 5; y = 6
+>>> x + y
+11
+>>> z = x + y
+>>> print z
+11
+>>> x = 3.0  # Dynamic Assignment: x was an int a few lines back
+>>> type(x)
+<type 'float'>
+>>> x = complex(x)  # Explicit conversion to another data type
+>>> print x
+(3+0j)
+>>> type(x)
+<type 'complex'>

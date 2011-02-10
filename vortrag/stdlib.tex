@@ -25,6 +25,23 @@
 \end{lstlisting}
 \end{frame}
 
+
+\begin{frame}[fragile]{Exakte Dezimalzahlen: fractions}
+
+\begin{lstlisting}
+>>> from fractions import Fraction
+>>> a = Fraction(2, 3)
+>>> b = Fraction(2, 5)
+>>> print float(a), float(b)
+0.66666666666666663 0.40000000000000002
+>>> a+b
+Fraction(16, 15)
+>>> a/b
+Fraction(5, 3)
+\end{lstlisting}
+\end{frame}
+
+
 \begin{frame}[fragile]{Zufall: \texttt{random}}
 \begin{itemize}
 \item Zuf"allige Integers: \\ \texttt{randint(a, b)},  \texttt{randrange([start,] stop[, step])}
@@ -69,7 +86,7 @@
 \begin{itemize}
 \item Working directory: \lstinline{getcwd()}, \lstinline{chdir(path)}
 \item Dateirechte "andern: \lstinline{chmod(path, mode)}
-\item Benutzer "andern: \lstinline{chown(path, uid, gid)}
+\item Besitzer "andern: \lstinline{chown(path, uid, gid)}
 \item Verzeichnis erstellen: \lstinline{mkdir(path[, mode])}, \lstinline{makedirs(path[, mode])}
 \item Dateien l"oschen: \lstinline{remove(path)}, \lstinline{removedirs(path)}
 \item Dateien umbenennen: \lstinline{rename(src, dst)}, \lstinline{renames(old, new)}
@@ -473,7 +490,7 @@ sock.connect(("whois.denic.de", 43))
 \vspace*{2mm}
 Mit dem Server kommunizieren:
 \begin{lstlisting}[style=Python]
-sock.send("fz-juelich.de" + "\n")
+sock.send("-T dn fz-juelich.de\n")
 print sock.recv(4096) # Antwort lesen
 sock.close()
 \end{lstlisting}

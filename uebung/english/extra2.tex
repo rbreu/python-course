@@ -1,0 +1,62 @@
+\section*{Additional Exercises}
+
+\begin{aufgabe}[UNO]
+Implement a simple UNO game without action cards. Proceed by the following steps:
+
+\begin{teilaufgabe}[Basics]
+Suggestion for structuring:
+\begin{auflistung}
+\item Class \lstinline{Card} with attributes \lstinline{suit} and \lstinline{rank}, and a method \lstinline{match(self, other)} which checks if a card can be played on another card.
+\item Class for a shuffled card deck which inherits from \lstinline{list}:
+\begin{lstlisting}
+class DeckUNO(list):
+    RANK = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    SUIT = ["Red", "Yellow", "Green", "Blue"]
+
+    def __init__(self):
+        cards = []
+
+        for suit in self.SUIT:
+            for rank in self.RANK:
+                cards.append(Card(suit, rank))
+
+        random.shuffle(cards)
+
+        list.__init__(self, cards)
+\end{lstlisting}
+\item Class \lstinline{Player}. The init method takes a card deck object as parameter, of which six cards are removed and saved as the player's hand of cards; more parameters (player name) are possible. Additionally the \lstinline{Player} needs methods to execute a move. If you want to have different types of players (computer player, human player), those methods differ. In this case you could inherit the classes for the different flavours of players from on basic \lstinline{Player} class.
+\end{auflistung}
+Let the program run until one player has won or no more new cards can be drawn from the playing stack. For this, exceptions might be useful, which can inherit from the basic \lstinline{Exception}:
+\begin{lstlisting}
+class WinException(Exception):
+    pass
+
+class StackEmptyException(Exception):
+    pass
+\end{lstlisting}
+\end{teilaufgabe}
+\begin{teilaufgabe}[Action cards]
+
+Want to do more? Implement action cards (like skip, draw, reverse).
+\end{teilaufgabe}
+\begin{teilaufgabe}[For experts]
+You can create the sorted list of cards much easier. Either use a list comprehension or write a custom generateor \lstinline{combine} which is used as follows:
+\begin{lstlisting}
+cards = list(combine(...))
+\end{lstlisting}
+Or use \lstinline{itertools.product}\dots
+\end{teilaufgabe}
+\end{aufgabe}
+
+\begin{aufgabe}[For experts]
+The lecture showed how to use classes as a way of a flexible structure. Enhance on the principle and write a class \lstinline{Bunch} whose \lstinline{init} method accepts arbitrary keyword parameters and saves them to according attributes:
+\begin{lstlisting}
+point = Bunch(x=2, y=3)
+print point.x, point.y
+
+person = Bunch(givenname="Homer", familyname="Simpson", phone=123456)
+print person.givenname, person.familyname, person.phone
+\end{lstlisting}
+\end{aufgabe}
+
+

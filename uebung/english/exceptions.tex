@@ -1,0 +1,26 @@
+\section*{Exceptions}
+\begin{aufgabe}
+
+Read a number from keyboard input and calculate its square. What happens if the 
+user enters something that is not a number? Let the program display a user firendly message in that case!
+\end{aufgabe}
+
+\begin{aufgabe}[Factorial revisited]
+The factorial is only defined for natural numbers. How does the function from Excersise \ref{fakultaet} handle negative parameters? Let the program throw a \texttt{ValueError} in this case.
+\end{aufgabe}
+
+\begin{aufgabe}
+Write a program which reads strings from keyboard input in an endless loop and checks each input if it is a palindrome (use the function from Excercise \ref{palindrom}). What happens if the user presses \texttt{Ctrl-C} or \texttt{Ctrl-D}? Adapt the program so that, when \texttt{Ctrl-C} or \texttt{Ctrl-D} is pressed, it asks the user if they want to exit the program.
+\end{aufgabe}
+
+\begin{aufgabe}
+The module \texttt{readline} provides shell-like editing features for command line input. Generally, the module is only available on *nix systems. The following does not import the module on Windows machines:
+\begin{lstlisting}
+if not sys.platform.startswith("win"):
+    import readline
+    import rlcompleter
+    readline.parse_and_bind("tab: complete")
+\end{lstlisting}
+Why is a solution with exceptions better? Rewrite the code so that it uses exceptions.
+\end{aufgabe}
+

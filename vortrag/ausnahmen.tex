@@ -233,14 +233,40 @@ def gauss_solver(matrix):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Das \texttt{with}-Statement}
-Einige Objekte bieten Kontext-Management an. Damit k"onnen \lstinline{try... finally}\,-Bl"ocke einfacher geschrieben werden:
-\begin{lstlisting}
-from __future__ import with_statement
 
+\begin{frame}[fragile]{Ausnahmen vs. if-Abfragen von Werten}
+\onslide<1->
+Ausnahmen bevorzugen!
+
+\begin{lstlisting}
+def quadrat(x):
+    if type(x) == int or type(x) == float:
+        return x ** 2
+    else:
+        return None
+\end{lstlisting}
+Schlecht!
+
+\onslide<2->
+\begin{itemize}
+  \item Was ist mit anderen numerischen Datentypen (komplexe Zahlen, eigene Typen)? Besser: Versuchen zu potenzieren und eventuelle Ausnahmen abfangen! $\rightarrow$ \alert{Duck-Typing}
+
+  \item Aufrufer der Funktion kann vergessen, den R"uckgabewert zu pr"ufen (und weiterzureichen). Besser: Ausnahme ausl"osen!
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Das \texttt{with}-Statement}
+Einige Objekte bieten Kontext-Management an. Damit k"onnen \lstinline{try ... finally}\,-Bl"ocke einfacher geschrieben werden:
+\begin{lstlisting}
 with open("test.txt") as f:
     for line in f:
         print line
 \end{lstlisting}
-Nach dem \lstinline{with}-Block ist das Dateiobjekt stets wieder geschlossen, auch wenn im Block eine Exception auftrat.
+Nach dem \lstinline{with}-Block ist das Dateiobjekt stets wieder geschlossen, auch wenn im Block eine Exception auftrat.\vspace{5mm}
+
+In Python 2.5 ist folgender Import n"otig:
+\begin{lstlisting}
+from __future__ import with_statement
+\end{lstlisting}
 \end{frame}

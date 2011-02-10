@@ -6,9 +6,6 @@ class MainFrame(wx.Frame):
     def __init__(self):
         wx.Frame.__init__(self, parent=None, title="Text Input")
         panel = wx.Panel(parent=self)
-
-        button = wx.Button(parent=panel, label="Click me")
-
         self.Show(True)
 
         msg = wx.MessageDialog(parent=panel, message="Are you ok?",
@@ -17,7 +14,7 @@ class MainFrame(wx.Frame):
 
         value = msg.ShowModal()
         if value == wx.ID_YES:
-            print "That's fine!"
+            print "That's great!"
         else:
             print "I'm sorry."
 

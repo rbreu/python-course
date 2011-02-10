@@ -1,0 +1,33 @@
+\newpage 
+
+\section*{Additional Exercises}
+
+\begin{aufgabe}[Refactoring]
+
+Oftentimes, parts of a GUI consist of many widgets of the same type with similar functionalities, which leads to lots of repetition in the source code. For menus, for example, we have to create a great deal of menu items and have to bind their events to event handler. To simplify the source code on such occasions, we can write generic functions or classes. 
+
+Understand the following code and use it in your text editor:
+\begin{lstlisting}
+class OneMenu(wx.Menu):
+    """
+    One popup menu.
+    """
+
+    def __init__(self, parent, items):
+        """
+        items: List of menu items, where one item is a list:
+                  [name, status bar text, method to bind, enable flag]
+        """ 
+
+        wx.Menu.__init__(self)
+ 
+        for item in items:
+            if item:
+                menu_item = self.Append(-1, item[0], item[1])
+                menu_item.Enable(item[3])
+                parent.Bind(wx.EVT_MENU, item[2], menu_item)
+            else:
+                self.AppendSeparator()
+\end{lstlisting}
+
+\end{aufgabe}

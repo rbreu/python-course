@@ -75,16 +75,16 @@ foo(1, 17, 42)
 \begin{frame}[fragile]{Funktionen sind Objekte}
 Funktionen sind Objekte und k"onnen wie solche zugewiesen und "ubergeben werden:
 \begin{lstlisting}[style=Shell]
+>>> a = float
+>>> a(22)
+22.0
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
 >>> def foo(fkt):
 ...     print fkt(33)
 ...
 >>> foo(float)
 33.0
-\end{lstlisting}
-\begin{lstlisting}[style=Shell]
->>> a = float
->>> a(22)
-22.0
 \end{lstlisting}
 \end{frame}
 

@@ -1,7 +1,7 @@
 \section*{Zus"atzliche Aufgaben}
 
-\begin{aufgabe}[MauMau]
-Implementieren Sie ein einfaches MauMau-Spiel ohne Sonderregeln f"ur bestimmte Karten. Gehen Sie dabei wie folgt vor:
+\begin{aufgabe}[UNO/Mau-Mau)]
+Implementieren Sie ein einfaches UNO-Spiel (oder Mau-Mau-Spiel) ohne Sonderregeln f"ur bestimmte Karten. Gehen Sie dabei wie folgt vor:
 
 \begin{teilaufgabe}[Grundlagen]
 Vorschlag f"ur eine Strukturierung in Klassen:
@@ -9,9 +9,9 @@ Vorschlag f"ur eine Strukturierung in Klassen:
 \item Klasse \lstinline{Karte} mit Attributen \lstinline{farbe} und \lstinline{wert} und einer Methode \lstinline{kompatibel(self, other)}, die "uberpr"uft, ob zwei Karten aufeinander gelegt werden k"onnen.
 \item Klasse f"ur ein gemischtes Kartendeck, welche von \lstinline{list} erbt:
 \begin{lstlisting}
-class Deck32(list):
-    WERTE = ["7", "8", "9", "10", "Bube", "Dame", "Koenig", "As"]
-    FARBEN = ["Karo", "Herz", "Pik", "Kreuz"]
+class DeckUNO(list):
+    WERTE = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    FARBEN = ["Rot", "Gelb", "Gruen", "Blau"]
 
     def __init__(self):
         karten = []
@@ -24,7 +24,7 @@ class Deck32(list):
 
         list.__init__(self, karten)
 \end{lstlisting}
-\item Klasse \lstinline{Spieler}. Der init-Methode wird ein Kartendeck-Objekt "ubergeben, davon werden sechs Karten entfernt und als Handkarten gespeichert, weitere Parameter (Spielername) sind denkbar. Zus"atzlich ben"otigt der Spieler Methoden zum Durchf"uhren eines Spielzuges. M"ochte man verschiedene Typen von Spielern einsetzen (Computerspieler, menschlicher Spieler), unterscheiden sich diese Methoden. Man k"onnte dann die Klassen f"ur die verschiedenen Spieler von einer allgemeinen \lstinline{Spieler}-Klasse erben lassen.
+\item Klasse \lstinline{Spieler}. Der init-Methode wird ein Kartendeck-Objekt "ubergeben, davon werden sechs Karten entfernt und als Handkarten gespeichert; weitere Parameter (Spielername) sind denkbar. Zus"atzlich ben"otigt der Spieler Methoden zum Durchf"uhren eines Spielzuges. M"ochte man verschiedene Typen von Spielern einsetzen (Computerspieler, menschlicher Spieler), unterscheiden sich diese Methoden. Man k"onnte dann die Klassen f"ur die verschiedenen Spieler von einer allgemeinen \lstinline{Spieler}-Klasse erben lassen.
 \end{auflistung}
 Lassen Sie das Programm so lange laufen, bis ein Spieler gewonnen hat oder keine Karten mehr vom Talon gezogen werden k"onnen. Daf"ur k"onnten eigene Ausnahmen n"utzlich sein, welche von der allgemeinen \lstinline{Exception} abgeleitet werden:
 \begin{lstlisting}
@@ -36,18 +36,19 @@ class TalonEmptyException(Exception):
 \end{lstlisting}
 \end{teilaufgabe}
 \begin{teilaufgabe}[Spezialkarten]
-Noch Lust? Implementieren Sie die Sonderregeln f"ur die Acht (Aussetzen), die Sieben (zwei Karten ziehen) und den Buben (Farbwunsch).
+Noch Lust? Implementieren Sie die Sonderkarten f"ur  Aussetzen, Karten ziehen, Farbwunsch etc.
 \end{teilaufgabe}
 \begin{teilaufgabe}[F"ur Profis]
 Die sortierte Kartenliste im Kartendeck kann einfacher erzeugt werden. Man kann entweder eine List Comprehension verwenden oder einen eigenen Generator \lstinline{combine} schreiben, welchen man wie folgt verwendet:
 \begin{lstlisting}
 karten = list(combine(...))
 \end{lstlisting}
+Oder \lstinline{itertools.product} benutzen\dots
 \end{teilaufgabe}
 \end{aufgabe}
 
 \begin{aufgabe}[F"ur Profis]
-Wie man einfache Klassen als beliebiege Strukturen verwenden kann, wurde in der Vorlesung gezeigt. Verbessern Sie das Prinzip und schreiben Sie eine Klasse \lstinline{Bunch}, deren \lstinline{init-Methode} beliebige Keyword-Argumente nimmt und diese in entsprechenden Attributen speichert:
+Wie man einfache Klassen als beliebiege Strukturen verwenden kann, wurde in der Vorlesung gezeigt. Verbessern Sie das Prinzip und schreiben Sie eine Klasse \lstinline{Bunch}, deren \lstinline{init}-Methode beliebige Keyword-Argumente nimmt und diese in entsprechenden Attributen speichert:
 \begin{lstlisting}
 punkt = Bunch(x=2, y=3)
 print punkt.x, punkt.y
