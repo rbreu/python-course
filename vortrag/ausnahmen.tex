@@ -8,13 +8,13 @@ Fehler beim Parsen: \alert{Programm wird nicht ausgef"uhrt}. Z.B.:
 \item Einr"uckungsfehler
 \end{itemize}
 \begin{lstlisting}[style=Python]
-print "Ich laufe..."
+print "I'm running..."
 def add(a, b)
    return a + b
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
-$ ./addiere.py
-  File "addiere.py", line 2
+$ ./add.py
+  File "add.py", line 2
     def add(a, b)
                 ^
 SyntaxError: invalid syntax
@@ -25,12 +25,12 @@ SyntaxError: invalid syntax
 Ausnahmen (Exceptions) treten \alert{zur Laufzeit} auf:
 \begin{lstlisting}[style=Python]
 import math
-print "Ich laufe..."
+print "I'm running..."
 math.foo()
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
 $ ./test.py
-Ich laufe...
+I'm running...
 Traceback (most recent call last):
   File "test.py", line 3, in ?
     math.foo()
@@ -42,10 +42,10 @@ attribute 'foo'
 \begin{frame}[fragile]{Ausnahmen behandeln}
 \begin{lstlisting}[style=Python]
 try:
-    s = raw_input("Gib eine Zahl ein: ")
-    zahl = float(s)
+    s = raw_input("Enter a number: ")
+    number = float(s)
 except ValueError:
-    print "Das ist keine Zahl!"
+    print "That's not a number!"
 \end{lstlisting}
 \begin{itemize}
 \item \lstinline{except}-Block wird ausgef"uhrt, wenn Code im \lstinline{try}-Block eine passende Ausnahme wirft
@@ -61,14 +61,14 @@ except (ValueError, TypeError, NameError):
 \begin{frame}[fragile]{Ausnahmen behandeln}
 \begin{lstlisting}[style=Python]
 try:
-    s = raw_input("Gib eine Zahl ein: ")
-    zahl = 1/float(s)
+    s = raw_input("Enter a number: ")
+    number = 1/float(s)
 except ValueError:
-    print "Das ist keine Zahl!"
+    print "That's not a number!"
 except ZeroDivisionError:
-    print "Man kann nicht durch Null teilen!"
+    print "You can't divide by zero!"
 except:
-    print "Was ist hier passiert?"
+    print "Oops, what's happened?"
 \end{lstlisting}
 \begin{itemize}
 \item Mehrere \lstinline{except}-Statements f"ur verschiedene Ausnahmen
@@ -93,7 +93,7 @@ else:
     print f.read()
     f.close()
 finally:
-    print "Ende von try."
+    print "End of try."
 \end{lstlisting}
 \end{frame}
 
@@ -221,15 +221,15 @@ Ausnahmen weiterreichen:
 try:
     f = open("spam")
 except IOError:
-    print "Fehler beim Oeffnen!"
+    print "Problem while opening file!"
     raise
 \end{lstlisting}
 \vspace{3mm}
 Ausnahmen ausl"osen:
 \begin{lstlisting}[style=Python]
 def gauss_solver(matrix):
-    # Wichtiger Code
-    raise ValueError("Matrix singulaer")
+    # Important code
+    raise ValueError("Singular matrix")
 \end{lstlisting}
 \end{frame}
 
@@ -239,7 +239,7 @@ def gauss_solver(matrix):
 Ausnahmen bevorzugen!
 
 \begin{lstlisting}
-def quadrat(x):
+def square(x):
     if type(x) == int or type(x) == float:
         return x ** 2
     else:

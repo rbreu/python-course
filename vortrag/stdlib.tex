@@ -26,7 +26,27 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Exakte Dezimalzahlen: fractions}
+\begin{frame}[fragile]{Zufall: \texttt{random}}
+\begin{itemize}
+\item Zuf"allige Integers: \\ \texttt{randint(a, b)},  \texttt{randrange([start,] stop[, step])}
+\item Zuf"allige Floats (Gleichverteilg.): \texttt{random()}, \texttt{uniform(a, b)}
+\item Andere Verteilungen: \texttt{expovariate(lambd)}, \texttt{gammavariate(alpha, beta)}, \texttt{gauss(mu, sigma)}, \dots
+\item Zuf"alliges Element einer Sequenz: \texttt{choice(seq)}
+\item Mehrere eindeutige, zuf"allige Elemente einer Sequenz: \texttt{sample(population, k)}
+\item Sequenz mischen: \texttt{shuffle(seq[, random])}
+\end{itemize}
+\begin{lstlisting}[style=Python]
+>>> s = [1, 2, 3, 4, 5]
+>>> random.shuffle(s)
+>>> s
+[2, 5, 4, 3, 1]
+>>> random.choice("Hello world!")
+'e'
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Exakte Dezimalzahlen:\textt{fractions}}
 
 \begin{lstlisting}
 >>> from fractions import Fraction
@@ -42,22 +62,20 @@ Fraction(5, 3)
 \end{frame}
 
 
-\begin{frame}[fragile]{Zufall: \texttt{random}}
-\begin{itemize}
-\item Zuf"allige Integers: \\ \texttt{randint(a, b)},  \texttt{randrange([start,] stop[, step])}
-\item Zuf"allige Floats (Gleichverteilg.): \texttt{random()}, \texttt{uniform(a, b)}
-\item Andere Verteilungen: \texttt{expovariate(lambd)}, \texttt{gammavariate(alpha, beta)}, \texttt{gauss(mu, sigma)}, \dots
-\item Zuf"alliges Element einer Sequenz: \texttt{choice(seq)}
-\item Mehrere eindeutige, zuf"allige Elemente einer Sequenz: \texttt{sample(population, k)}
-\item Sequenz mischen: \texttt{shuffle(seq[, random])}
-\end{itemize}
-\begin{lstlisting}[style=Python]
->>> s = [1, 2, 3, 4, 5]
->>> random.shuffle(s)
->>> s
-[2, 5, 4, 3, 1]
->>> random.choice("Hallo Welt!")
-'e'
+\begin{frame}[fragile]{Datum und Zeit: \txttt{datetime}}
+Zeit- und Datumsangaben:
+\begin{lstlisting}
+d1 = datetime.date(2008, 3, 21)  
+d2 = datetime.date(2008, 6, 22)
+dt = datetime.datetime(2011, 8, 26, 12, 30)
+t = datetime.time(12, 30)
+\end{lstlisting}
+Mit Zeit und Datum rechnen:
+\begin{lstlisting}
+print d1 < d2
+delta = d2 - d1
+print delta.days
+print d2 + datetime.timedelta(days=44)
 \end{lstlisting}
 \end{frame}
 
@@ -77,7 +95,7 @@ Fraction(5, 3)
 ('spam/eggs', '.py')
 >>> os.path.expanduser("~/spam")
 '/home/rbreu/spam'
->>> os.path.expandvars("/bla/$TEST")
+>>> os.path.expandvars("/blah/$TEST")
 '/bla/test.py'
 \end{lstlisting}%$
 \end{frame}
@@ -93,8 +111,8 @@ Fraction(5, 3)
 \item Liste von Dateien in Verzeichnis: \lstinline{listdir(path)}
 \end{itemize}
 \begin{lstlisting}[style=Python]
-for datei in os.listdir("mydir"):
-    os.chmod(os.path.join("mydir", datei), 
+for myfile in os.listdir("mydir"):
+    os.chmod(os.path.join("mydir", myfile), 
              stat.S_IRUSR|stat.S_IWUSR)
 \end{lstlisting}
 \end{frame} 
@@ -132,7 +150,7 @@ shutil.copytree("spam/eggs", "../beans",
 Einfaches Ausf"uhren eines Programmes:
 \begin{lstlisting}[style=Python]
 p = subprocess.Popen(["ls", "-l", "mydir"])
-returncode = p.wait() # Auf Ende warten
+returncode = p.wait() # wait for p to end
 \end{lstlisting}
 Zugriff auf die Ausgabe eines Programmes:
 \begin{lstlisting}[style=Python]
@@ -145,58 +163,6 @@ Pipes zwischen Prozessen (\lstinline{ls -l | grep txt})
 p1 = Popen(["ls", "-l"], stdout=PIPE)
 p2 = Popen(["grep", "txt"], stdin=p1.stdout)
 \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Threads: \texttt{threading}}
-Programmteile gleichzeitig ablaufen lassen mit \alert{Thread-Objekten}:
-\begin{lstlisting}[style=Python]
-class Counter(threading.Thread):
-    def __init__(self):
-        threading.Thread.__init__(self)
-        self.counter = 0
-
-    def run(self):  # Hauptteil
-        while self.counter < 10:
-            self.counter += 1
-            print self.counter
-
-counter = Counter()
-counter.start() # Thread starten
-# hier etwas gleichzeitig tun...
-counter.join() # Warte auf Ende des Threads
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Threads: \texttt{threading}}
-\begin{itemize}
-\item Problem, wenn zwei Threads gleichzeitig auf das gleiche Objekt schreibend zugreifen wollen!
-\item $\rightarrow$ Verhindern, dass Programmteile gleichzeitig ausgef"uhrt werden mit \alert{Lock-Objekten}
-\item Locks haben genau zwei Zust"ande: \texttt{locked} und \texttt{unlocked}
-\end{itemize}
-\begin{lstlisting}[style=Python]
-lock = threading.Lock()
-
-lock.aquire() # Warte bis Lock frei ist
-              # und locke es dann 
-#... wichtiger Code
-lock.release() # Lock freigeben fuer andere
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}{Threads: \texttt{threading}}
-\begin{itemize}
-\item Kommunikation zwischen Threads: Z.B. mittels \alert{Event-Objekten}
-\item Events haben zwei Zust"ande: gesetzt und nicht gesetzt
-\item "ahnlich Locks, aber ohne gegenseitigen Ausschluss
-\end{itemize}
-Bsp: Event, um Threads mitzuteilen, dass sie sich beenden sollen.\\
-Methoden auf Event-Objekten:
-\begin{itemize}
-\item Status des Events abfragen: \texttt{isSet()}
-\item Setzen des Events: \texttt{set()}
-\item Zur"ucksetzten des Events: \texttt{clear()}
-\item Warten, dass Event gesetzt wird: \texttt{wait([timeout])}
-\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
@@ -245,7 +211,7 @@ Einfaches Format zum Speichern von Konfigurationen u."A.: Windows INI-Format
 \begin{lstlisting}[style=Python]
 [font]
 font = Times New Roman
-# Kommentar (oder: ! als Kommentarzeichen)
+# comment (or: ! as comment symbol)
 size = 16
 
 [colors]
@@ -324,10 +290,10 @@ Weitere Formatparameter: \texttt{lineterminator}, \texttt{quotechar}, \texttt{sk
 \begin{frame}[fragile]{Objekte serialisieren: \texttt{pickle}}
 Beliebige Objekte in Dateien speichern:
 \begin{lstlisting}[style=Python]
-obj = {"hallo": "welt", "spam":1}
-pickle.dump(obj, open("bla.bin", "wb"))
+obj = {"hello": "world", "spam":1}
+pickle.dump(obj, open("blah.bin", "wb"))
 # ...
-obj = pickle.load(open("bla.bin", "rb"))
+obj = pickle.load(open("blah.bin", "rb"))
 \end{lstlisting}
 Objekt in String unwandeln (z.B. zum Verschicken "uber Streams):
 \begin{lstlisting}[style=Python]
@@ -340,9 +306,9 @@ obj = pickle.loads(s)
 \begin{frame}[fragile]{Persistente Dictionaries: \texttt{shelve}}
 Ein Shelve benutzt man wie ein Dictionary, es speichert seinen Inhalt in eine Datei.
 \begin{lstlisting}[style=Python]
-d = shelve.open("bla")
+d = shelve.open("blah")
 d["spam"] = "eggs"
-d["bla"] = 1
+d["blah"] = 1
 del d["foo"]   
 d.close()  
 \end{lstlisting}
@@ -355,9 +321,9 @@ conn = sqlite3.connect("bla.db")
 c = conn.cursor()
 
 c.execute("""CREATE TABLE Friends
-             (vorname TEXT, nachname TEXT)""")
+             (firstname TEXT, lastname TEXT)""")
 c.execute("""INSERT INTO Friends
-             VALUES("Max", "Mueller")""")
+             VALUES("Jane", "Doe")""")
 conn.commit()
 \end{lstlisting}
 \begin{lstlisting}[style=Python]
@@ -372,15 +338,20 @@ c.close(); conn.close()
 String-Formatter sind unsicher, da beliebiger SQL-Code eingeschleust werden kann!
 \begin{lstlisting}[style=Python]
 # Never do this!
-symbol = "Max"
-c.execute("... WHERE name = '%s'" % symbol)
+symbol = "Jane"
+c.execute("... WHERE firstname = '%s'" % symbol)
 \end{lstlisting}
+\vspace{2mm}
+\includegraphics[width=\textwidth]{images/exploits_of_a_mom.png}
+\end{frame}
+
+\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
 Stattdessen die Platzhalter der Datenbank-API benutzen:
 \begin{lstlisting}[style=Python]
 c.execute("... WHERE name = ?", symbol)
 \end{lstlisting}
 \begin{lstlisting}[style=Python]
-f = (("Alice", "Meier"), ("Bob", "Schmidt"))
+f = (("Janis", "Joplin"), ("Bob", "Dylan"))
 for item in friends:
     c.execute("""INSERT INTO Friends 
                  VALUES (?,?)""", item)
@@ -480,41 +451,25 @@ Flags, die das Verhalten des Matching beeinflussen:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Sockets: \texttt{socket}}
-Client-Socket erstellen und mit Server verbinden:
-\begin{lstlisting}[style=Python]
-sock = socket.socket(socket.AF_INET, 
-                     socket.SOCK_STREAM)
-sock.connect(("whois.denic.de", 43))
+
+\begin{frame}[fragile]{URLs lesen: \texttt{urllib2}}
+Einfaches lesen:
+\begin{lstlisting}
+import urllib2
+r = urllib2.urlopen('http://www.fz-juelich.de')
+print r.read()
+print r.headers["content-type"]
 \end{lstlisting}
-\vspace*{2mm}
-Mit dem Server kommunizieren:
-\begin{lstlisting}[style=Python]
-sock.send("-T dn fz-juelich.de\n")
-print sock.recv(4096) # Antwort lesen
-sock.close()
+Man kann den Request vorm Absenden anpassen:
+\begin{lstlisting}
+opener = urllib2.build_opener()
+opener.addheaders = [('User-agent', 
+                      'Mozilla/5.0')]
+r = opener.open('http://www.fz-juelich.de')
 \end{lstlisting}
+Es werden Cookies, Authentifizierung, Proxies etc unterst"utzt.
 \end{frame}
 
-\begin{frame}[fragile]{Sockets: \texttt{socket}}
-Server-Socket erstellen:
-\begin{lstlisting}[style=Python]
-server_socket = socket.socket(socket.AF_INET)
-server_socket.bind(("localhost", 6666))
-\end{lstlisting}
-\vspace*{2mm}
-Auf Client-Verbindungen warten und sie akzeptieren:
-\begin{lstlisting}[style=Python]
-server_socket.listen(1)
-(sock, address) = server_socket.accept()
-\end{lstlisting}
-\vspace*{2mm}
-Mit dem Client kommunizieren:
-\begin{lstlisting}[style=Python]
-sock.send("Willkommen!\n")
-# ...
-\end{lstlisting}
-\end{frame}
 
 \begin{frame}[fragile]{XML-RPC-Client: \texttt{xmlrpclib}}
 \begin{itemize}

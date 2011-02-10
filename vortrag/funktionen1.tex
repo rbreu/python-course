@@ -2,22 +2,22 @@
 
 \begin{frame}[fragile]{Funktionen}
 \begin{lstlisting}[style=Python]
-def addiere(a, b):
-    """Gibt die Summe von a und b zurueck."""
+def add(a, b):
+    """Returns the sum of a and b."""
 
-    summe = a + b
-    return summe
+    mysum = a + b
+    return mysum
 \end{lstlisting}
 
 \begin{lstlisting}[style=Shell]
->>> ergebnis = addiere(3, 5)
->>> print ergebnis
+>>> result = add(3, 5)
+>>> print result
 8
->>> help(addiere)
-Help on function addiere in module __main__:
+>>> help(add)
+Help on function add in module __main__:
 
-addiere(a, b)
-    Gibt die Summe von a und b zurueck.
+add(a, b)
+    Returns the sum of a and b.
 \end{lstlisting}
 \end{frame}
 
@@ -28,15 +28,15 @@ addiere(a, b)
 \item Funktionen ohne expliziten R"uckgabewert geben \lstinline{None} zur"uck
 \end{itemize}
 \begin{lstlisting}[style=Python]
-def hallo_welt():
-    print "Hallo Welt!"
+def hello_world():
+    print "Hello World!"
 
-a = hallo_welt()
+a = hello_world()
 print a
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
-$ mein_programm.py
-Hallo Welt
+$ my_program.py
+Hello World
 None
 \end{lstlisting} %$
 \end{frame}
@@ -60,7 +60,7 @@ Man kann Parameter auch in anderer Reihenfolge als definiert angeben:
 def foo(a, b, c):
     print a, b, c
 
-foo(b=3, c=1, a="hallo")
+foo(b=3, c=1, a="hello")
 \end{lstlisting}
 Defaultwerte festlegen:
 \begin{lstlisting}[style=Python]

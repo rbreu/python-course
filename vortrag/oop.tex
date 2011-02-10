@@ -14,15 +14,15 @@
 
 \begin{frame}[fragile]{Einfache Klassen als Structs verwenden}
 \begin{lstlisting}[style=Python]
-class Punkt:
+class Point:
     pass
 
-p = Punkt()
+p = Point()
 p.x = 2.0
 p.y = 3.3
 \end{lstlisting}
 \begin{itemize}
-\item \alert{Klasse}: Eigener Datentyp (hier: \texttt{Punkt})
+\item \alert{Klasse}: Eigener Datentyp (hier: \texttt{Point})
 \item \alert{Objekt}: Instanz der Klasse (hier: \texttt{p})
 \item Attribute (hier \texttt{x}, \texttt{y})  k"onnen dynamisch hinzugef"ugt werden
 \end{itemize}
@@ -30,12 +30,12 @@ p.y = 3.3
 
 \begin{frame}[fragile]{Klassen}
 \begin{lstlisting}[style=Python]
-class Punkt:
+class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
-p = Punkt(2.0, 3.0)
+p = Point(2.0, 3.0)
 print p.x, p.y
 p.x = 2.5
 p.z = 42
@@ -47,7 +47,7 @@ p.z = 42
 
 \begin{frame}[fragile]{Methoden auf Objekten}
 \begin{lstlisting}[style=Python]
-class Punkt:
+class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -56,7 +56,7 @@ class Punkt:
         n = math.sqrt(self.x**2 + self.y**2)
         return n
 
-p = Punkt(2.0, 3.0)
+p = Point(2.0, 3.0)
 print p.x, p.y, p.norm()
 \end{lstlisting}
 \begin{itemize}
@@ -70,9 +70,9 @@ print p.x, p.y, p.norm()
 \onslide<1->
 Standard-R"uckgabe von \lstinline{str(...)} f"ur eigene Objekte:
 \begin{lstlisting}[style=Shell]
->>> p = Punkt(2.0, 3.0)
+>>> p = Point(2.0, 3.0)
 >>> print p  # --> print str(p)
-<__main__.Punkt instance at 0x402d7a8c>
+<__main__.Point instance at 0x402d7a8c>
 \end{lstlisting}
 \vspace{2mm}
 
@@ -92,8 +92,8 @@ def __str__(self):
 \onslide<1->
 Standard: \texttt{==} pr"uft Objekte eigener Klassen auf Identit"at.
 \begin{lstlisting}[style=Shell]
->>> p1 = Punkt(2.0, 3.0)
->>> p2 = Punkt(2.0, 3.0)
+>>> p1 = Point(2.0, 3.0)
+>>> p2 = Point(2.0, 3.0)
 >>> p1 == p2
 False
 \end{lstlisting}
@@ -106,9 +106,9 @@ def __eq__(self, other):
            (self.y == other.y)
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
->>> p1 == p2
+>>> p1 == p2 # Check for equal values
 True
->>> p1 is p2 # Identitaet pruefen
+>>> p1 is p2 # Check for identity
 False
 \end{lstlisting}
 \end{frame}
@@ -147,19 +147,19 @@ Siehe dazu Dokumentation:\\
 \begin{frame}[fragile]{Klassenvariablen}
 Haben f"ur alle Objekte einer Klasse stets den gleichen Wert:
 \begin{lstlisting}[style=Python]
-class Punkt:
-    anzahl = 0  #Anzahl aller Punkt-Objekte
+class Point:
+    count = 0  # Count all point objects
     def __init__(self, x, y):
-        self.__class__.anzahl += 1
+        self.__class__.count += 1
         ...
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
->>> p1 = Punkt(2, 3); p2 = Punkt(3, 4)
->>> p1.anzahl
+>>> p1 = Point(2, 3); p2 = Point(3, 4)
+>>> p1.count
 2
->>> p2.anzahl
+>>> p2.count
 2
->>> Punkt.anzahl
+>>> Point.count
 2
 \end{lstlisting}
 \end{frame}
@@ -198,55 +198,55 @@ Beispiel: Verschiedene Telefon-Arten
 \begin{itemize}
 \item Telefon
 \item Handy (ist ein Telefon mit zus"atzlichen Funktionen)
-\item Fotohandy (ist ein Handy mit zus"atzlichen Funktionen)
+\item SmartPhone (ist ein Handy mit zus"atzlichen Funktionen)
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Vererbung}
 \begin{lstlisting}[style=Python]
-class Telefon:
-    def telefonieren(self):
+class Phone:
+    def call(self):
         pass
 
-class Handy(Telefon):
-    def sms_schicken(self):
+class MobilePhone(Phone):
+    def send_text(self):
         pass
 \end{lstlisting}
 Handy erbt jetzt Methoden und Attribute von Telefon.
 \begin{lstlisting}[style=Python]
-h = Handy()
-h.telefonieren() # Geerbt von Telefon
-h.sms_schicken() # Eigene Methode
+h = MobilePhone()
+h.call() # inherited from Phone
+h.send_text() # own method
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Methoden "uberschreiben}
 In der abgeleiteten Klasse k"onnen die Methoden der Elternklasse "uberschrieben werden:
 \begin{lstlisting}[style=Python]
-class Handy(Telefon):
-    def telefonieren(self):
-        suche_funkverbindung()
-        Telefon.telefonieren(self)
+class MobilePhone(Telefon):
+    def call(self):
+        find_signal()
+        Phone.call(self)
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Mehrfachvererbung}
 Klassen k"onnen von mehreren Elternklassen erben. Bsp:
 \begin{itemize}
-\item Fotohandy ist ein Telefon
-\item Fotohandy ist eine Kamera
+\item SmartPhone ist ein Handy
+\item SmartPhone ist eine Kamera
 \end{itemize}
 \begin{lstlisting}[style=Python]
-class Fotohandy(Handy, Kamera):
+class SmartPhone(MobilePhone, Camera)
     pass
 
-h = Fotohandy()
-h.telefonieren()  # geerbt von Handy
-h.fotografieren() # geerbt von Kamera
+h = SmartPhone()
+h.call()  # inherited from MobilePhone
+h.take_photo() # inherited from Camera
 \end{lstlisting}
 Attribute werden in folgender Reihenfolge gesucht:
 
-Fotohandy, Handy, Elterklasse von Handy (rekursiv), Kamera, Elternklasse von Kamera (rekursiv).
+SmartPhone, MobilePhone, Elterklasse von MobilePhone (rekursiv), Camera, Elternklasse von Camera (rekursiv).
 \end{frame}
 
 \begin{frame}[fragile]{Private Attribute}

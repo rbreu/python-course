@@ -58,18 +58,18 @@ msg = MIMEText("Hallo Welt!")
 \begin{frame}[fragile]{Eigene Module}
 Jedes Python-Programm kann als Modul importiert werden.
 \begin{lstlisting}[style=Python]
-"""Mein erstes Modul: mein_modul.py"""
+"""My first module: my_module.py"""
 
 def add(a, b):
-   """Addiere a und b."""
+   """Add a and b."""
    return a + b
 
 print add(2, 3)
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
->>> import mein_modul
+>>> import my_module
 5
->>> mein_modul.add(17, 42)
+>>> my_module.add(17, 42)
 59
 \end{lstlisting}
 Top-Level-Anweisungen werden beim Import ausgef"uhrt!

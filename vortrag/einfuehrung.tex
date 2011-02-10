@@ -38,18 +38,18 @@ $\rightarrow$ \alert{plattformunabh"angiger Code}
 \begin{lstlisting}[style=Python]
 #!/usr/bin/env python
 
-# Dies ist ein Kommentar
-print "Hallo Welt!"
+# This is a commentary
+print "Hello world!"
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
-$ python hallo_welt.py
-Hallo Welt!
+$ python hello_world.py
+Hello world!
 $
 \end{lstlisting}%$
 \begin{lstlisting}[style=Shell]
-$ chmod 755 hallo_welt.py
-$ ./hallo_welt.py
-Hallo Welt!
+$ chmod 755 hello_world.py
+$ ./hello_world.py
+Hello world!
 $
 \end{lstlisting} %$
 \end{frame}
@@ -58,13 +58,13 @@ $
 \begin{lstlisting}[style=Python]
 #!/usr/bin/env python
 
-name = raw_input("Wie heisst du? ")
-print "Hallo", name
+name = raw_input("What's your name? ")
+print "Hello", name
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
-$ ./hallo_user.py
-Wie heisst du? Rebecca
-Hallo Rebecca
+$ ./hello_user.py
+What's your name? Rebecca
+Hello Rebecca
 $
 \end{lstlisting}
 \end{frame}
@@ -85,12 +85,12 @@ $
 
 \begin{frame}[fragile]{Starke und dynamische Typisierung}
 \begin{lstlisting}[style=Python]
-zahl = 3
-print zahl, type(zahl)
-print zahl + 42
-zahl = "3"
-print zahl, type(zahl)
-print zahl + 42
+number = 3
+print number, type(number)
+print number + 42
+number = "3"
+print number, type(number)
+print number + 42
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
 3 <type 'int'>
@@ -98,7 +98,7 @@ print zahl + 42
 3 <type 'str'>
 Traceback (most recent call last):
   File "test.py", line 6, in ?
-    print zahl + 42
+    print number + 42
 TypeError: cannot concatenate 'str' and 
 'int' objects
 \end{lstlisting}
@@ -111,8 +111,8 @@ $ python
 Python 2.6 (r26:66714, Feb  3 2009, 20:52:03) 
 [GCC 4.3.2] on linux2
 Type "help", "copyright", "credits" or ...
->>> print "hallo welt"
-hallo welt
+>>> print "hello world"
+hello world
 >>> a = 3 + 4
 >>> print a
 7
