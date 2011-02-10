@@ -108,6 +108,18 @@ Zusammenf"ugen mehrer Sequenzen zu einer Liste von Tupeln:
 \end{frame}
 
 
+\begin{frame}[fragile]{defaultdict}
+Ein Dictionary, welches Defaultwerte f"ur nicht vorhandene Schl"usselw"orter erzeugen kann:
+\begin{lstlisting}
+from collections import defaultdict
+haeufigkeiten = defaultdict(lambda: 0)
+
+for c in "Hallo Welt!":
+    haeufigkeiten[c] += 1
+\end{lstlisting}
+Paramter (optional): Funktion zum Erzeugen der Defaultwerte
+\end{frame}
+
 \begin{frame}[fragile]{Iteratoren}
 Was passiert, wenn \lstinline{for} auf einem Objekt aufgerufen wird?
 \begin{lstlisting}[style=Python]
@@ -151,8 +163,8 @@ Einfache Weise, Iteratoren zu erzeugen:
 \end{itemize}
 \begin{lstlisting}[style=Python]
 def reverse(data):
-    for index in range(len(data)-1, -1, -1):
-        yield data[index]
+    for element in data[::-1]:
+        yield element
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
 >>> for char in reverse("spam"):
@@ -166,8 +178,7 @@ m a p s
 "Ahnlich zu List Comprehensions kann man anonyme Iteratoren erzeugen:
 \begin{lstlisting}[style=Shell]
 >>> data = "spam"
->>> for c in (data[i] for i in
-...           range(len(data)-1, -1, -1)):
+>>> for c in (elem for elem in data[::-1]):
 ...     print c,
 ...
 m a p s

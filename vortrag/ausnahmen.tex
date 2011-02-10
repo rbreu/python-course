@@ -14,7 +14,7 @@ def add(a, b)
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
 $ ./addiere.py
-  File "addiere.py", line 1
+  File "addiere.py", line 2
     def add(a, b)
                 ^
 SyntaxError: invalid syntax
@@ -231,4 +231,16 @@ def gauss_solver(matrix):
     # Wichtiger Code
     raise ValueError("Matrix singulaer")
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Das \texttt{with}-Statement}
+Einige Objekte bieten Kontext-Management an. Damit k"onnen \lstinline{try... finally}\,-Bl"ocke einfacher geschrieben werden:
+\begin{lstlisting}
+from __future__ import with_statement
+
+with open("test.txt") as f:
+    for line in f:
+        print line
+\end{lstlisting}
+Nach dem \lstinline{with}-Block ist das Dateiobjekt stets wieder geschlossen, auch wenn im Block eine Exception auftrat.
 \end{frame}

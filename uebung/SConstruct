@@ -1,8 +1,8 @@
 from __future__ import with_statement
 
 
-USERNAMES = ["username%i" % i for i in range(1112, 1139)]
-PASSWORD = "secret"
+USERNAMES = ["py%i" % i for i in range(1112, 1139)]
+PASSWORD = "py.2009"
 SUFFIXES = [".pdf", ".tex", ".aux", ".log"]
 
 

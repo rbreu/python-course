@@ -52,7 +52,7 @@ Erzeugt ein leeres Fenster mit Titel \glqq Hello World\grqq.
 \vspace{3mm}
 Zur Application geh"ort mindestens ein \alert{Top Level Window}:
 \begin{itemize}
-\item Pr"asentiert dem Anwender die wichtigsten Datan und Kontrollelemente
+\item Pr"asentiert dem Anwender die wichtigsten Daten und Kontrollelemente
 \item Wird das letzte Top Level Window geschlossen, beendet sich die Application (die Hauptschleife wird verlassen)
 \end{itemize}
 \end{frame}
@@ -191,7 +191,7 @@ class MainFrame(wx.Frame):
 \end{itemize}
 $\rightarrow$ Nur \lstinline{onButtonB} wird ausgef"uhrt!\\[3mm]
 
-Behandeltes Event wird weiter propagieren mit \alert{Skip}:
+Behandeltes Event weiter propagieren mit \alert{Skip}:
 \begin{lstlisting}[style=Python]
 def on_buttonB(self, evt):
    print "You pressed me!"
@@ -318,7 +318,7 @@ print txt.GetStringSelection()
 \begin{frame}[fragile]{Auswahl mit Checkboxen}
 \begin{lstlisting}[style=Python]
 check = wx.CheckBox(parent=panel, 
-                    label="Check me")
+                    label="Check &me")
 self.Bind(wx.EVT_CHECKBOX, self.on_checkbox,
           check)
 print check.IsChecked()

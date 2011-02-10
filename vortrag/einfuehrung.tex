@@ -73,7 +73,7 @@ $
 \alert{Starke Typisierung:}
 \begin{itemize}
 \item Objekt ist genau von einem Typ! String ist immer String, \texttt{int} immer \texttt{int}
-\item Gegenbeispiel C: \texttt{char} kann als \texttt{short} betrachtet werden, \texttt{void~*} kann alles sein
+\item Gegenbeispiele: PHP, C: \texttt{char} kann als \texttt{short} betrachtet werden, \texttt{void~*} kann alles sein
 \end{itemize}
 \alert{Dynamische Typisierung: }
 \begin{itemize}
@@ -88,14 +88,14 @@ $
 zahl = 3
 print zahl, type(zahl)
 print zahl + 42
-zahl = "Rebecca"
+zahl = "3"
 print zahl, type(zahl)
 print zahl + 42
 \end{lstlisting}
 \begin{lstlisting}[style=Shell]
 3 <type 'int'>
 45
-Rebecca <type 'str'>
+3 <type 'str'>
 Traceback (most recent call last):
   File "test.py", line 6, in ?
     print zahl + 42
@@ -108,8 +108,8 @@ TypeError: cannot concatenate 'str' and
 Der Interpreter kann im interaktiven Modus gestartet werden:
 \begin{lstlisting}[style=Shell]
 $ python
-Python 2.4.1 (#1, Oct 13 2006, 16:58:04)
-[GCC 4.0.2 20050901 (prerelease) ...
+Python 2.5.4 (r254:67916, Feb 18 2009, 03:00:47) 
+[GCC 4.3.3] on linux2
 Type "help", "copyright", "credits" or ...
 >>> print "hallo welt"
 hallo welt

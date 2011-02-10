@@ -6,7 +6,7 @@ class MainFrame(wx.Frame):
     def __init__(self):
         wx.Frame.__init__(self, parent=None, title="Text Input")
         panel = wx.Panel(parent=self)
-        self.check = wx.CheckBox(parent=panel, label="Check me")
+        self.check = wx.CheckBox(parent=panel, label="Check &me")
         self.Bind(wx.EVT_CHECKBOX, self.onCheckBox, self.check)
         self.Show(True)
 
