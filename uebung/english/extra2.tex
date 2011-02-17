@@ -40,13 +40,11 @@ class StackEmptyException(Exception):
 Want to do more? Implement action cards (like skip, draw, reverse).
 \end{teilaufgabe}
 \begin{teilaufgabe}[For experts]
-You can create the sorted list of cards much easier. Either use a list comprehension or write a custom generateor \lstinline{combine} which is used as follows:
-\begin{lstlisting}
-cards = list(combine(...))
-\end{lstlisting}
-Or use \lstinline{itertools.product}\dots
+You can create the sorted list of cards much easier. You can use a list comprehension, and the \lstinline{itertools} module could be of use\dots
 \end{teilaufgabe}
 \end{aufgabe}
+
+\newpage
 
 \begin{aufgabe}[For experts]
 The lecture showed how to use classes as a way of a flexible structure. Enhance on the principle and write a class \lstinline{Bunch} whose \lstinline{init} method accepts arbitrary keyword parameters and saves them to according attributes:

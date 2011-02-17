@@ -3,7 +3,7 @@
 import sys
 import re
 
-name = (sys.argv[1])
+name = sys.argv[1]
 
 in_data = open(name).read()
 out_data = re.sub("<.*?>", "", in_data)
@@ -27,12 +27,6 @@ out_data = re.sub("<.*?>", "", in_data)
 #   But we only want the parts <h1>bla</h1> and <h2>blupp</h3>
 
 
-outfile = open(name + ".txt", "w")
-outfile.write(out_data)
-outfile.close()
-        
+with open(name + ".txt", "w") as outfile:
+    outfile.write(out_data)
 
-
-# Wiedereinmal schlampiger Umgang mit Dateiobjekten bzgl. close...
-#
-# Once more sloppy file handling regarding close...

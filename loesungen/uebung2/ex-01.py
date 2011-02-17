@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-FREQUENT = set("adehinrstu")
+FREQUENT = set("adehinrstu") # this is the German alphabet version
 
 def frequent_test(s):
     return set(s.lower()) <= FREQUENT

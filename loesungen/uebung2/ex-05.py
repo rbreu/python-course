@@ -6,7 +6,7 @@ import random
 pwd = ""
 
 for i in range(8):
-    pwd += random.choice(string.letters+string.digits)
+    pwd += random.choice(string.letters + string.digits + "-_.")
 
 # sting.letters enthaelt alle Buchstaben (gross und klein),
 # string.digits enthaelt alle Ziffern.

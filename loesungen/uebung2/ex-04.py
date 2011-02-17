@@ -4,7 +4,7 @@
 #
 # Inheriting from object is important for properties to work:
 
-class Konto(object):
+class Account(object):
     """
     Konto-Klasse.
 
@@ -15,16 +15,16 @@ class Konto(object):
     #
     # interest rate is the same for all accounts, thus a class attribute:
 
-    zinssatz = 0.03
+    interest = 0.03
     
-    def __init__(self, nummer, inhaber, stand=0.0):
+    def __init__(self, number, holder, balance=0.0):
         # Kontonummber und Inhaber sind je Konto verschieden, also
         # Objektattribute:
         #
         # Account number and holder are different per account, thus
         # object attributes:
-        self.nummer = int(nummer)
-        self.inhaber = str(inhaber)
+        self.number = int(number)
+        self.holder = str(holder)
 
         # Wir wollen den Kontostand ueber Getter und Setter aendern,
         # deswegen markieren wir das Attribut mit einem Unterstrich
@@ -33,27 +33,27 @@ class Konto(object):
         # We want to use getters and setters on the account balance,
         # thus we mark the attribute as "private" via a leading
         # underscore:
-        self._stand = float(stand)
+        self._balance = float(balance)
 
 
     def __str__(self):
-        return "%i %s %.2f" % (self.nummer, self.inhaber, self._stand)
+        return "%i %s %.2f" % (self.number, self.holder, self._balance)
 
 
-    def set_stand(self, new):
+    def set_balance(self, new):
 
         if new < 0:
-            raise ValueError("Kontostand zu niedrig.")
+            raise ValueError("Balance too low.")
         else:
-            self._stand = new
+            self._balance = new
 
 
-    def get_stand(self):
-        return self._stand
+    def get_balance(self):
+        return self._balance
 
 
-    stand = property(get_stand, set_stand)
-    # Jetzt koennen wir auf das Objektattribut stand zugreifen wie auf
+    balance = property(get_balance, set_balance)
+    # Jetzt koennen wir auf das Objektattribut balance zugreifen wie auf
     # ein normales Attribut, jedoch werden automatisch die Getter und
     # Setter verwendet
     #
@@ -65,24 +65,24 @@ class Konto(object):
     # Zinssatz ausgeben ist fuer alle Objekte gleich, deswegen
     # Klassenmethode:
     #
-    # Displaying the Interest rate is the same for all objects,
+    # Displaying the interest rate is the same for all objects,
     # thus a class method:
     @classmethod
-    def get_zinssatz(cls):
-        return "Der Zinssatz betraegt %s" % cls.zinssatz
+    def get_interest(cls):
+        return "The interest rate is %s" % cls.interest
 
 
-    def berechne_zinsen(self):
-        return self.stand * self.__class__.zinssatz
+    def calculate_interest(self):
+        return self.balance * self.__class__.interest
 
 
 
 if __name__ == "__main__":
-    k = Konto(1234, "Rebecca Breu", 1000.0)
+    k = Account(1234, "Rebecca Breu", 1000.0)
     print k
-    k.stand = k.stand - 50
+    k.balance = k.balance - 50
     print k
-    print k.get_zinssatz()
-    print "Zinsen:", k.berechne_zinsen()
-    k.stand = k.stand - 1200
+    print k.get_interest()
+    print "Interest:", k.calculate_interest()
+    k.balance = k.balance - 1200
     print k

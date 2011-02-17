@@ -10,7 +10,7 @@ for entry in os.listdir(root):
     (base, ext) = os.path.splitext(entry)
     if ext == ".htm":
         newname = base + ".html"
-        print "Umbenennen / Renaming: %s -> %s um." % (name, newname)
+        print "Umbenennen / Renaming: %s -> %s" % (name, newname)
         os.rename(name, newname)
         
 
@@ -23,5 +23,5 @@ import glob
 for name in glob.glob(os.path.join(root, "*.htm")):
     (base, ext) = os.path.splitext(name)
     newname = base + ".html"
-    print "Umbenennen / Renaming: %s -> %s um." % (name, newname)
+    print "Umbenennen / Renaming: %s -> %s" % (name, newname)
     os.rename(name, newname)

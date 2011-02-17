@@ -2,7 +2,7 @@
 
 from math import sqrt
 
-class Punkt(object):
+class Point(object):
     """
     Ein Punkt in einem zweidimensionen Raum.
     Darstellung der Koordinaten in karthesischen Koordinaten (x, y).
@@ -37,7 +37,7 @@ class Punkt(object):
         # Verhalten bei +
         #
         # Behaviour during +
-        return Punkt(self.x + other.x, self.y + other.y)
+        return Point(self.x + other.x, self.y + other.y)
 
     def __mul__(self, other):
         # Verhalten bei *
@@ -57,9 +57,9 @@ class Punkt(object):
 
 
 if __name__ == "__main__":
-    p1 = Punkt(4, 2)
-    p2 = Punkt(4, 2)
-    p3 = Punkt(1, 2)
+    p1 = Point(4, 2)
+    p2 = Point(4, 2)
+    p3 = Point(1, 2)
 
     print p1, p2
     print p1 == p2

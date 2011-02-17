@@ -35,14 +35,14 @@ def letters2morse(s):
         try:
             morse += MORSE[char] + "  "
         except KeyError:
-            print "Ignoriere unknown charater:", char
+            print "Ignore unknown charater:", char
 
     return morse
 
 
 print letters2morse("Rebecca")
-print letters2morse("Hallo Welt")
-print letters2morse("Hallo! Welt!")
+print letters2morse("Hello world")
+print letters2morse("Hello! world!")
 
 
 
@@ -58,7 +58,7 @@ def letters2morse2(s):
         try:
             morse.append(MORSE[char])
         except KeyError:
-            print "Ignoriere unbekanntes Zeichen:", char
+            print "Ignore unknown character:", char
 
     return "  ".join(morse)
 

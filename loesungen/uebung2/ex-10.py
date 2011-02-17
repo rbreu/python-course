@@ -5,29 +5,29 @@ import random
 class WinException(Exception):
     pass
 
-class TalonEmptyException(Exception):
+class PileEmptyException(Exception):
     pass
 
 
-class Karte:
-    def __init__(self, farbe, wert):
-        self.farbe = farbe
-        self.wert = wert
+class Card:
+    def __init__(self, suit, rank):
+        self.suit = suit
+        self.rank = rank
 
     def __str__(self):
-        return "%s %s" % (self.farbe, self.wert)
+        return "%s %s" % (self.suit, self.rank)
 
     def __repr__(self):
-        return "%s %s" % (self.farbe, self.wert)
+        return "%s %s" % (self.suit, self.rank)
             
-    def kompatibel(self, other):
+    def is_compatible(self, other):
         """
         Kann man die Karten aufeinander legen?
 
         Can you play one card onto another?
         
         """
-        return (self.farbe == other.farbe) or (self.wert == other.wert)
+        return (self.suit == other.suit) or (self.rank == other.rank)
 
 
 class DeckUNO(list):
@@ -39,8 +39,8 @@ class DeckUNO(list):
     """
 
 
-    RANK = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    SUIT = ["Red", "Yellow", "Green", "Blue"]
+    RANKS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    SUITS = ["Red", "Yellow", "Green", "Blue"]
 
     # Durch Ableiten und umdefinieren der beiden obigen Klassenattribute
     # kann man leicht weitere Karten-Decks erhalten, z.B. ein Skat-Blatt
@@ -52,101 +52,105 @@ class DeckUNO(list):
     
 
     def __init__(self):
-        karten = []
+        cards = []
 
-        for farbe in self.SUIT:
-            for wert in self.RANK:
-                karten.append(Karte(farbe, wert))
+        for suit in self.SUITS:
+            for rank in self.RANKS:
+                cards.append(Card(suit, rank))
 
         # Fuer Profis eine kuerzere Variante:
         #
         # A shorter version for experts:
                 
-        # karten = [Karte(farbe, wert) for farbe in SUIT for wert in RANK]
+        # cards = [Card(suit, rank) for suit in SUITS for rank in RANKS]
+
+        # or, using the itertools module:
+        # cards = [ Card(s, r) for s, r in itertools.product(SUITS, RANKS) ]
+
+        random.shuffle(cards)
+
+        list.__init__(self, cards)
 
 
-        random.shuffle(karten)
-
-        list.__init__(self, karten)
-
-
-class Spieler:
+class Player:
     """
     Abstrakter Spieler.
-    In abgeleiteten Klassen muss die Methode ziehe(self, ablage, talon)
+    In abgeleiteten Klassen muss die Methode ziehe(self, played_cards, pile)
     implementiert werden, welche None zurueckgibt.
 
     Abstract player.
     In child classes, the method ziehe (draw) needs to be overwritten.
     """
     
-    def __init__(self, name, talon):
+    def __init__(self, name, pile):
         self.name = name
-        self.karten = [talon.pop() for i in range(6)]
+        self.cards = [pile.pop() for i in range(6)]
 
 
-    def ziehe(self, ablage, talon):
-        # Diese Methode muss in abgeleiten Klassen implementiert werden!
+    def move(self, played_cards, pile):
+        # Ein Spielzug. Diese Methode muss in abgeleiten Klassen
+        # implementiert werden!
         #
-        # This methods needs to be overwritten in child classes!
+        # One move. This methods needs to be overwritten in child
+        # classes!
         raise NotImplementedError()
     
 
 
-class ComputerSpieler(Spieler):
+class ComputerPlayer(Player):
     """
     Computerspieler mit einfacher kuenstlicher Intelligenz.
 
     Computer player with simple artificial intelligence.
     """
 
-    def suche_karte(self, ablage):
+    def find_card(self, played_cards):
         """
         Suche Karte, die auf die Ablage passt.
 
         Search a card which can be played onto the pile of played cards.
         """
 
-        for karte in self.karten:
-            if karte.kompatibel(ablage[-1]):
-                return karte
+        for card in self.cards:
+            if card.is_compatible(played_cards[-1]):
+                return card
       
 
-    def ziehe(self, ablage, talon):
+    def move(self, played_cards, pile):
         """
         Ein Spielzug.
 
         One move.
         """
 
-        karte = self.suche_karte(ablage)
+        card = self.find_card(played_cards)
 
-        if karte: #karte gefunden / found a playable card
-            print "%s spielt/plays %s" % (self.name, karte)
-            self.karten.remove(karte)
-            ablage.append(karte)
-            if not self.karten:
+        if card: #karte gefunden / found a playable card
+            print "%s spielt/plays %s" % (self.name, card)
+            self.cards.remove(card)
+            played_cards.append(card)
+            if not self.cards:
                 raise WinException
         else: #keine passende Karte gefunden / no playable card
             print "%s zieht eine Karte / draws a card" % self.name
             try:
-                self.karten.append(talon.pop())
+                self.cards.append(pile.pop())
             except:
-                raise TalonEmptyException()
+                raise PileEmptyException()
 
 
 
 if __name__ == "__main__":
-    talon = DeckUNO()
-    ablage = [talon.pop()]
+    pile = DeckUNO()
+    played_cards = [pile.pop()]
 
-    spieler = [ComputerSpieler("Computer1", talon), 
-               ComputerSpieler("Computer2", talon)]
+    spieler = [ComputerPlayer("Computer1", pile), 
+               ComputerPlayer("Computer2", pile)]
 
     while True:
         for s in spieler:
-            print "Ablage:", ablage[-1]
-            s.ziehe(ablage, talon)
+            print "Played Card:", played_cards[-1]
+            s.move(played_cards, pile)
 
     # Diese Hauptschleife laesst sich sehr einfach um weitere
     # Mitspieler erweitern.

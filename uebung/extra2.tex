@@ -1,6 +1,6 @@
 \section*{Zus"atzliche Aufgaben}
 
-\begin{aufgabe}[UNO/Mau-Mau)]
+\begin{aufgabe}[UNO/Mau-Mau]
 Implementieren Sie ein einfaches UNO-Spiel (oder Mau-Mau-Spiel) ohne Sonderregeln f"ur bestimmte Karten. Gehen Sie dabei wie folgt vor:
 
 \begin{teilaufgabe}[Grundlagen]
@@ -39,11 +39,7 @@ class TalonEmptyException(Exception):
 Noch Lust? Implementieren Sie die Sonderkarten f"ur  Aussetzen, Karten ziehen, Farbwunsch etc.
 \end{teilaufgabe}
 \begin{teilaufgabe}[F"ur Profis]
-Die sortierte Kartenliste im Kartendeck kann einfacher erzeugt werden. Man kann entweder eine List Comprehension verwenden oder einen eigenen Generator \lstinline{combine} schreiben, welchen man wie folgt verwendet:
-\begin{lstlisting}
-karten = list(combine(...))
-\end{lstlisting}
-Oder \lstinline{itertools.product} benutzen\dots
+Die sortierte Kartenliste im Kartendeck kann einfacher erzeugt werden. Man kann eine List Comprehension verwenden, und auch das \lstinline{itertools}-Modul k"onnte n"utzlich sein\dots
 \end{teilaufgabe}
 \end{aufgabe}
 
