@@ -1,21 +1,21 @@
 #!/usr/bin/env python
 
-def fakultaet(n):
+def factorial(n):
     
     if n<0:
-        raise ValueError("Fakultaet fuer negative Zahlen nicht definiert.")
+        raise ValueError("Factorial not defined for negative numbers.")
 
-    fak = 1
+    fac = 1
     for i in range(1, n+1):
-        fak *= i
+        fac *= i
 
-    return fak
+    return fac
 
 
 if __name__ == "__main__":
-    print fakultaet(0)
-    print fakultaet(-2)
-    print fakultaet(3)
+    print factorial(0)
+    print factorial(-2)
+    print factorial(3)
 
     # Hat nichts mit dieser Aufgabe zu tun, aber die if-Abfrage sorgt
     # dafuer, dass dieser Block nur ausgefuehrt wird, wenn diese Datei

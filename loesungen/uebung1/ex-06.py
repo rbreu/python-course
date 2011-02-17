@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-s = raw_input("Ein String / A string: ")
+s = raw_input("Ein String / Some string: ")
 
 # Auch ueber Strings kann man iterieren:
 #

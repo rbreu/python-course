@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-def ulam_folge(n):
+def ulam_numbers(n):
     ulam = []
     
     while True:
@@ -18,8 +18,8 @@ def ulam_folge(n):
     return ulam
 
 
-print ulam_folge(1)
-print ulam_folge(6)
+print ulam_numbers(1)
+print ulam_numbers(6)
 
 
 

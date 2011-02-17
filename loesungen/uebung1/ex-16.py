@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-zahl = raw_input("Eine Zahl: ")
+number = raw_input("Eine Zahl / Some number: ")
 
 try:
-    ergebnis = float(zahl) ** 2
+    result = float(number) ** 2
 except ValueError:
     print "Das ist keine Zahl. / This is not a number."
 else:
-    print "Das Quadrat ist / The number squared is:", ergebnis
+    print "Das Quadrat ist / The number squared is:", result
 
 
 # Statt des else-Zweiges kann man das print natuerlich auch einfach

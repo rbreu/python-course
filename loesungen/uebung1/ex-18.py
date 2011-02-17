@@ -9,30 +9,24 @@ def is_palindrome(s):
 
 while True:
     try:
-        eingabe = raw_input("Ein String: ")
+        user_input = raw_input("Some string: ")
     except (KeyboardInterrupt, EOFError):
         print   # print ohne Parameter ergibt eine Leerzeile
-        beenden = raw_input("Wirklich beenden? (y/N) ")
-        if beenden.lower().startswith("y"):
+                # print without parameter yields an empty line
+        quit = raw_input("Really quit? (y/n) ")
+        if quit.lower().startswith("y"):
             # durch lower und startswith ist es egal, ob er benutzer
             # Y, y, YES, yes, Yes, ... eingibt
+            #
+            # because of lower and startswith it doesn't matter whether
+            # the user enters Y, y, YES, yes, Yes, ...
             break
         else:
             continue
 
-    print "Palindrom?", is_palindrome(eingabe)
+    print "Palindrome?", is_palindrome(user_input)
 
 
 
-# Statt die Palindrom-Funktion nochmal zu schreiben, koennte man den Code
-# der anderen Palindrom-Aufgabe importieren und die dortige Funktion
-# wiederverwenden:
-
-# import palindrom
-# palindrom.is_palindrome(...)
-
-# Dazu waere es nueztlich, wenn das Programm der anderen Aufgabe mit
-# if __name__ == "__main__":
-# arbeitet
 
 

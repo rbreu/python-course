@@ -9,14 +9,14 @@ from random import randint
 # Program configurations that remain constant preferably as global
 # variables at top of the file. Mark as constatn by using ALL CAPITALS.
 
-HIGHSCORE = "ex-20-highscore.txttt"
+HIGHSCORE = "ex-20-highscore.txt"
 
 
 # Laengere Programme in sinnvolle Funktionen gliedern!
 #
 # Break longer programs into functions!
 
-def zahlenraten():
+def highlow():
     """
     Ein Spieldurchlauf Zahlenraten.
 
@@ -34,27 +34,27 @@ def zahlenraten():
     Returns the number of guesses.
     """
     
-    zahl = randint(1, 100)
-    versuche = 1
+    number = randint(1, 100)
+    tries = 1
 
     while True:
         try:
-            eingabe = int(raw_input("Rate eine Zahl / Guess a number: "))
+            user_input = int(raw_input("Rate eine Zahl / Guess a number: "))
         except ValueError:
             print "Das ist keine Zahl. / That's not a number."
             continue
-        if eingabe == zahl:
-            print "Richtig/Correct! Du hast %i Versuche gebraucht." % versuche
-            return versuche
-        elif eingabe > zahl:
+        if user_input == number:
+            print "Richtig/Correct! Du hast %i Versuche gebraucht." % tries
+            return tries
+        elif user_input > number:
             print "Zu gross. / Too high."
         else:
             print "Zu klein. / Too low."
 
-        versuche += 1
+        tries += 1
 
 
-def highscore_speichern(versuche, name):
+def save_highscore(tries, name):
     """
     Fuege einen Eintrag zur Highscore-Liste hinzu.
 
@@ -80,20 +80,15 @@ def highscore_speichern(versuche, name):
     #
     # Add the new entry and save the ten best entries:
         
-    highscore.append("%i\t%s\n" % (versuche, name))
+    highscore.append("%i\t%s\n" % (tries, name))
     highscore.sort()
     highscore = highscore[:10]
 
-    f = open(HIGHSCORE, "w")
-    try:
+    with open(HIGHSCORE, "w") as f:
         f.writelines(highscore)
-    except IOError, e:
-        print "Could not save highscore:", e
-    finally:
-        f.close()
 
 
-def highscore_ausgeben():
+def print_highscore():
     """
     Gib Highscore aus.
 
@@ -103,13 +98,8 @@ def highscore_ausgeben():
     print
     print "H I G H S C O R E"
 
-    f = open(HIGHSCORE)
-    try:
+    with open(HIGHSCORE) as f:
         print f.read()
-    except IOError, e:
-        "Could not read highscore:", e
-    finally:
-        f.close()
 
     print
     
@@ -121,11 +111,11 @@ if __name__ == "__main__":
     
     while True:
         name = raw_input("Dein Name / Your name: ")
-        versuche = zahlenraten()
-        highscore_speichern(versuche, name)
-        highscore_ausgeben()
-        weiter = raw_input("Weiter spielen / Another game? (y/n) ")
-        if weiter.lower().startswith("n"):
+        tries = highlow()
+        save_highscore(tries, name)
+        print_highscore()
+        another = raw_input("Weiter spielen / Another game? (y/n) ")
+        if another.lower().startswith("n"):
             break 
 
         # Bei gut gewahlten Funktionen und Funktionsnamen liest sich

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-def nichts():
+def nothing():
     print "Ich gebe nichts zurueck. / I don't return anything."
 
-a = nichts()
+a = nothing()
 print a
 
 # Funktionen ohne return geben automatisch None zurueck. Das ist ein Objekt

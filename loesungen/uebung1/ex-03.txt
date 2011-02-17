@@ -1,12 +1,12 @@
->>> l = [1, 2, 3, 4]
->>> l[0]
-1
+>>> l = [1, 2, 3, 4, 5, 6, 7]
 >>> l[1]
 2
->>> l[-1]  # Negative indices start at the end of the list
-4
+>>> l[3:6]
+[4, 5, 6]
+>>> l[-1] # Negative indices start at the end of the list
+7
 >>> l[-2]
-3
+6
 >>> l[8]  # doesn't work -> exception
 Traceback (most recent call last):
   File "<stdin>", line 1, in ?
@@ -17,22 +17,22 @@ Traceback (most recent call last):
 IndexError: list index out of range
 >>> l.append("spam")  # A list can contain arbitrary data types
 >>> print l
-[1, 2, 3, 4, 'spam']
+[1, 2, 3, 4, 5, 6, 7, 'spam']
 >>> l.append([1, 2, 3]) # A list can contain arbitrary data types
 >>> print l
-[1, 2, 3, 4, 'spam', [1, 2, 3]]
+[1, 2, 3, 4, 5, 6, 7, 'spam', [1, 2, 3]]
 >>> del l[1]
 >>> print l
-[1, 3, 4, 'spam', [1, 2, 3]]
+[1, 3, 4, 5, 6, 7, 'spam', [1, 2, 3]]
 >>> l.extend(["a", "b", "c"])  # Join two lists
 >>> print l
-[1, 3, 4, 'spam', [1, 2, 3], 'a', 'b', 'c']
+[1, 3, 4, 5, 6, 7, 'spam', [1, 2, 3], 'a', 'b', 'c']
 >>> l + [6, 7, 8.0]  # Concatenating two lists via + yields a new list
-[1, 3, 4, 'spam', [1, 2, 3], 'a', 'b', 'c', 6, 7, 8.0]
+[1, 3, 4, 5, 6, 7, 'spam', [1, 2, 3], 'a', 'b', 'c', 6, 7, 8.0]
 >>> print l  # Old list remains the same
-[1, 3, 4, 'spam', [1, 2, 3], 'a', 'b', 'c']
->>> l[4][2]  # Access elements of the sublist
-3
+[1, 3, 4, 5, 6, 7, 'spam', [1, 2, 3], 'a', 'b', 'c']
+>>> l[7][2]  # Access elements of the sublist
+7
 >>> l[1][2]  # l[1] is an Int -> Exception
 Traceback (most recent call last):
   File "<stdin>", line 1, in ?

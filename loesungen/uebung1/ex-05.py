@@ -3,7 +3,7 @@
 strings = []
 
 for i in range(10):
-    strings.append(raw_input("Ein String / A string: "))
+    strings.append(raw_input("Ein String / Some string: "))
 
 for s in strings:
     print s.replace("a", "e")

@@ -9,3 +9,7 @@
 *.brb
 *.vrb
 uebung1_serial*
+uebung/*.pdf
+uebung/english/*.pdf
+vortrag/*.pdf
+info_mail.txt
