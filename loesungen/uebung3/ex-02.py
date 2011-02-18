@@ -18,10 +18,10 @@ class MainFrame(wx.Frame):
         # Make all widgets childs of the panel. Thus they will be
         # automatically displayed inside the panel:
         wx.StaticText(parent=panel,
-                      label="Hallo\nWelt!\nWie geht's?",
+                      label="Hello\nworld!\nHow is it?",
                       style=wx.ALIGN_CENTER)
-        wx.StaticText(parent=panel, label="Lalelu", pos=(80, 80))
-        wx.StaticText(parent=panel, label="Und noch ein Text", pos=(100, 10))
+        wx.StaticText(parent=panel, label="Blah blah.", pos=(80, 80))
+        wx.StaticText(parent=panel, label="More Text", pos=(100, 10))
 
         self.Show(True)
 

@@ -9,9 +9,9 @@ class MainFrame(wx.Frame):
         panel = wx.Panel(parent=self)
 
         close_button = wx.Button(parent=panel, label="&Close")
-        # Das & ermoeglicht, den Button mit Alt+C zu klicken
+        # Das & ermoeglicht, den Button mit Alt+C zu 'klicken'
         #
-        # The & enables clickinng the button by pressing Alt+C
+        # The & enables 'clicking' the button by pressing Alt+C
 
         # Welche Funktion soll ausgefuehrt werden, wenn der Button
         # geklickt wird?
