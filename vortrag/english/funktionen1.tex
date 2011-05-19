@@ -1,6 +1,6 @@
-\section{Funktionen}
+\section{Functions}
 
-\begin{frame}[fragile]{Funktionen}
+\begin{frame}[fragile]{Functions}
 \begin{lstlisting}[style=Python]
 def add(a, b):
     """Returns the sum of a and b."""
@@ -21,11 +21,11 @@ add(a, b)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{R"uckgabewerte und Parameter}
+\begin{frame}[fragile]{Return Values and Parameters}
 \begin{itemize}
-\item Funktionen k"onnen beliebige Objekte als Parameter und R"uckgabewerte haben
-\item Typen der R"uckgabewerte und Parameter sind nicht festgelegt
-\item Funktionen ohne expliziten R"uckgabewert geben \lstinline{None} zur"uck
+\item Functions accept arbitrary objects as parameters and return values
+\item Types of parameters and return values are unspecified
+\item Functions without explicit return value return \lstinline{None}
 \end{itemize}
 \begin{lstlisting}[style=Python]
 def hello_world():
@@ -41,8 +41,8 @@ None
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]{Mehrere R"uckgabewerte}
-Mehrere R"uckgabewerte werden mittels Tupel oder Listen realisiert:
+\begin{frame}[fragile]{Multiple Return Values}
+Multiple return values are realised using tuples or lists:
 \begin{lstlisting}[style=Python]
 def foo():
    a = 17
@@ -54,15 +54,15 @@ ret = foo()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Keywords und Defaultwerte}
-Man kann Parameter auch in anderer Reihenfolge als definiert angeben:
+\begin{frame}[fragile]{Keywords and Default Values}
+Parameters can be passed to a function in a different order than specified:
 \begin{lstlisting}[style=Python]
 def foo(a, b, c):
     print a, b, c
 
 foo(b=3, c=1, a="hello")
 \end{lstlisting}
-Defaultwerte festlegen:
+Defining default values:
 \begin{lstlisting}[style=Python]
 def foo(a, b, c=1.3):
     print a, b, c
@@ -72,8 +72,8 @@ foo(1, 17, 42)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Funktionen sind Objekte}
-Funktionen sind Objekte und k"onnen wie solche zugewiesen und "ubergeben werden:
+\begin{frame}[fragile]{Functions Are Objects}
+Functions are objects and as such can be assigned and passed on:
 \begin{lstlisting}[style=Shell]
 >>> a = float
 >>> a(22)
