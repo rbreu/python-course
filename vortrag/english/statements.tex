@@ -1,13 +1,13 @@
 \section{Statements}
 
-\begin{frame}[fragile]{Das if-Statement}
+\begin{frame}[fragile]{The If Statement}
 \begin{lstlisting}[style=Python]
 if a == 3:
     print "Aha!"
 \end{lstlisting}
 \begin{itemize}
-\item Bl"ocke werden durch Einr"uckung festgelegt!
-\item Standard: Einr"uckung mit vier Leerzeichen
+\item Blocks are defined by indentation!
+\item Standard: Indentation with four spaces
 \end{itemize}
 \begin{lstlisting}
 if a == 3:
@@ -21,10 +21,10 @@ else:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Vergleichsoperatoren}
+\begin{frame}[fragile]{Relational Operators}
 \begin{itemize}
-\item Vergleich des Inhalts: \texttt{==}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}, \texttt{!=}
-\item Vergleich der Objektidentit"at: \lstinline{a is b}, \lstinline{a is not b}\item Und/Oder-Verkn"upfung: \lstinline{a and b}, \lstinline{a or b}
+\item Comparison of content: \texttt{==}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}, \texttt{!=}
+\item Comparison of object identity: \lstinline{a is b}, \lstinline{a is not b}\item And/or operator: \lstinline{a and b}, \lstinline{a or b}
 \item Negation: \lstinline{not a}
 \end{itemize}
 \begin{lstlisting}
@@ -33,7 +33,7 @@ if not (a==b) and (c<3):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{for-Schleifen}
+\begin{frame}[fragile]{For Loops}
 \begin{lstlisting}[style=Python]
 for i in range(10):
     print i   # 0, 1, 2, 3, ..., 9
@@ -44,45 +44,45 @@ for i in range(3, 10):
 for i in range(0, 10, 2):
    print i   # 0, 2, 4, ..., 8
 else:
-   print "Schleife komplett durchlaufen."
+   print "Loop completed."
 \end{lstlisting}
 \begin{itemize}
-\item Schleife vorzeitig beenden: \lstinline{break}
-\item n"achster Durchlauf: \lstinline{continue}
-\item \lstinline{else} wird ausgef"uhrt, wenn die Schleife nicht vorzeitig verlassen wurde
+\item End loop prematurely: \lstinline{break}
+\item Next iteration: \lstinline{continue}
+\item \lstinline{else} is executed when loop didn't end prematurely
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-"Uber Sequenzen kann man direkt (ohne Index) iterieren:
+Iterate directly over sequences (without using an index):
 \begin{lstlisting}[style=Python]
 for item in ["spam", "eggs", "bacon"]:
     print item
 \end{lstlisting}
 
-Auch die \texttt{range}-Funktion liefert eine Liste:
+The \texttt{range} function generates a list, too:
 \begin{lstlisting}[style=Shell]
 >>> range(0, 10, 2)
 [0, 2, 4, 6, 8]
 \end{lstlisting}
-Ben"otigt man doch Indices:
+If indexes are necessary:
 \begin{lstlisting}[style=Python]
 for (i, char) in enumerate("hello world"):
     print i, char
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{while-Schleifen}
+\begin{frame}[fragile]{While Loops}
 \begin{lstlisting}[style=Python]
 while i < 10:
     i += 1
 \end{lstlisting}
-Auch hier k"onnen \lstinline{break} und \lstinline{continue} verwendet werden.\\[3mm]
-Ersatz f"ur do-while-Schleife:
+\lstinline{break} and \lstinline{continue} work for while loops, too.\\[3mm]
+Substitute for do-while loop:
 \begin{lstlisting}[style=Python]
 while True:
    # important code
-   if conditon:
+   if condition:
        break
 \end{lstlisting} 
 \end{frame}
