@@ -1,0 +1,524 @@
+\section{Pythons Standardbibliothek}
+
+\begin{frame}{Pythons Standardbibliothek}
+\alert{\glqq Batteries included\grqq}: umfassende Standardbibliothek f"ur die verschiedensten Aufgaben\\[4mm]
+
+\includegraphics[height=4.5cm]{images/batteries_included.jpg}
+\end{frame}
+
+\begin{frame}[fragile]{Mathematik: \texttt{math}}
+\begin{itemize}
+\item Konstanten: \texttt{e}, \texttt{pi}
+\item Auf- und Abrunden: \texttt{floor(x)}, \texttt{ceil(x)}
+\item Exponentialfunktion: \texttt{exp(x)}
+\item Logarithmus: \texttt{log(x[, base])}, \texttt{log10(x)}
+\item Potenz und Quadratwurzel: \texttt{pow(x, y)}, \texttt{sqrt(x)}
+\item Trigonometrische Funktionen: \texttt{sin(x)}, \texttt{cos(x)}, \texttt{tan(x)}
+\item Kovertierung Winkel $\leftrightarrow$ Radiant: \texttt{degrees(x)}, \texttt{radians(x)}
+\end{itemize}
+\begin{lstlisting}[style=Shell]
+>>> import math
+>>> math.sin(math.pi)
+1.2246063538223773e-16
+>>> math.cos(math.radians(30))
+0.86602540378443871
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Zufall: \texttt{random}}
+\begin{itemize}
+\item Zuf"allige Integers: \\ \texttt{randint(a, b)},  \texttt{randrange([start,] stop[, step])}
+\item Zuf"allige Floats (Gleichverteilg.): \texttt{random()}, \texttt{uniform(a, b)}
+\item Andere Verteilungen: \texttt{expovariate(lambd)}, \texttt{gammavariate(alpha, beta)}, \texttt{gauss(mu, sigma)}, \dots
+\item Zuf"alliges Element einer Sequenz: \texttt{choice(seq)}
+\item Mehrere eindeutige, zuf"allige Elemente einer Sequenz: \texttt{sample(population, k)}
+\item Sequenz mischen: \texttt{shuffle(seq[, random])}
+\end{itemize}
+\begin{lstlisting}[style=Python]
+>>> s = [1, 2, 3, 4, 5]
+>>> random.shuffle(s)
+>>> s
+[2, 5, 4, 3, 1]
+>>> random.choice("Hello world!")
+'e'
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Exakte Dezimalzahlen: \texttt{fractions}}
+
+\begin{lstlisting}
+>>> from fractions import Fraction
+>>> a = Fraction(2, 3)
+>>> b = Fraction(2, 5)
+>>> print float(a), float(b)
+0.66666666666666663 0.40000000000000002
+>>> a+b
+Fraction(16, 15)
+>>> a/b
+Fraction(5, 3)
+\end{lstlisting}
+
+(Siehe auch: Modul \texttt{decimal}.)
+\end{frame}
+
+
+\begin{frame}[fragile]{Datum und Zeit: \texttt{datetime}}
+Zeit- und Datumsangaben:
+\begin{lstlisting}
+d1 = datetime.date(2008, 3, 21)  
+d2 = datetime.date(2008, 6, 22)
+dt = datetime.datetime(2011, 8, 26, 12, 30)
+t = datetime.time(12, 30)
+\end{lstlisting}
+Mit Zeit und Datum rechnen:
+\begin{lstlisting}
+print d1 < d2
+delta = d2 - d1
+print delta.days
+print d2 + datetime.timedelta(days=44)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Weitere Datentypen: \texttt{collections}}
+\alert{defaulttict}: Dictionary, welches Defaultwerte f"ur nicht vorhandene Schl"usselw"orter erzeugen kann:
+\begin{lstlisting}
+haeufigkeiten = defaultdict(lambda: 0)
+
+for c in "Hallo Welt!":
+    haeufigkeiten[c] += 1
+\end{lstlisting}
+Paramter (optional): Funktion zum Erzeugen der Defaultwerte
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Operationen auf Verzeichnisnamen: \texttt{os.path}}
+\begin{itemize}
+\item Pfade: \texttt{abspath(path)}, \texttt{basename(path)}, \texttt{normpath(path)}, \texttt{realpath(path)}
+\item Pfad zusammensetzen: \texttt{join(path1[, path2[, ...]])}
+\item Pfade aufspalten: \texttt{split(path)}, \texttt{splitext(path)}
+\item Datei-Informationen: \texttt{isfile(path)}, \texttt{isdir(path)}, \texttt{islink(path)}, \texttt{getsize(path)}, \dots
+\item Home-Verzeichnis vervollst"andigen: \texttt{expanduser(path)}
+\item Umgebungsvariablen vervollst"andigen: \texttt{expandvars(path)}
+\end{itemize} 
+\begin{lstlisting}[style=Shell]
+>>> os.path.join("spam", "eggs", "ham.txt")
+'spam/eggs/ham.txt'
+>>> os.path.splitext("spam/eggs.py")
+('spam/eggs', '.py')
+>>> os.path.expanduser("~/spam")
+'/home/rbreu/spam'
+>>> os.path.expandvars("/blah/$TEST")
+'/bla/test.py'
+\end{lstlisting}%$
+\end{frame}
+
+\begin{frame}[fragile]{Dateien und Verzeichnisse: \texttt{os}}
+\begin{itemize}
+\item Working directory: \lstinline{getcwd()}, \lstinline{chdir(path)}
+\item Dateirechte "andern: \lstinline{chmod(path, mode)}
+\item Besitzer "andern: \lstinline{chown(path, uid, gid)}
+\item Verzeichnis erstellen: \lstinline{mkdir(path[, mode])}, \lstinline{makedirs(path[, mode])}
+\item Dateien l"oschen: \lstinline{remove(path)}, \lstinline{removedirs(path)}
+\item Dateien umbenennen: \lstinline{rename(src, dst)}, \lstinline{renames(old, new)}
+\item Liste von Dateien in Verzeichnis: \lstinline{listdir(path)}
+\end{itemize}
+\begin{lstlisting}[style=Python]
+for myfile in os.listdir("mydir"):
+    os.chmod(os.path.join("mydir", myfile), 
+             stat.S_IRUSR|stat.S_IWUSR)
+\end{lstlisting}
+\end{frame} 
+
+\begin{frame}[fragile]{Verzeichnislisting: \texttt{glob}}
+Liste von Dateien in Verzeichnis, mit Unix-artiger Wildcard-Vervollst"andigung: \texttt{glob(path)}
+\begin{lstlisting}[style=Shell]
+>>> glob.glob("python/[a-c]*.py")
+['python/confitest.py',
+ 'python/basics.py',
+ 'python/curses_test2.py',
+ 'python/curses_keys.py',
+ 'python/cmp.py',
+ 'python/button_test.py',
+ 'python/argument.py',
+ 'python/curses_test.py']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Dateien und Verzeichnisse: \texttt{shutil}}
+Higher Level-Operationen auf Dateien und Verzeichnissen.
+\begin{itemize}
+\item Datei kopieren: \texttt{copyfile(src, dst)}, \texttt{copy(src, dst)}
+\item Rekursiv kopieren; \texttt{copytree(src, dst[, symlinks])}
+\item Rekursiv l"oschen: \\\texttt{rmtree(path[, ignore\_errors[, onerror]])}
+\item Rekursiv verschieben: \texttt{move(src, dst)}
+\end{itemize}
+\begin{lstlisting}[style=Python]
+shutil.copytree("spam/eggs", "../beans", 
+                 symlinks=True)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Andere Prozesse starten: \texttt{subprocess}}
+Einfaches Ausf"uhren eines Programmes:
+\begin{lstlisting}[style=Python]
+p = subprocess.Popen(["ls", "-l", "mydir"])
+returncode = p.wait() # wait for p to end
+\end{lstlisting}
+Zugriff auf die Ausgabe eines Programmes:
+\begin{lstlisting}[style=Python]
+p = Popen(["ls"], stdout=PIPE, stderr=STDOUT) 
+p.wait()
+output = p.stdout.read()
+\end{lstlisting}
+Pipes zwischen Prozessen (\lstinline{ls -l | grep txt})
+\begin{lstlisting}[style=Python]
+p1 = Popen(["ls", "-l"], stdout=PIPE)
+p2 = Popen(["grep", "txt"], stdin=p1.stdout)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
+\begin{itemize}
+\item Einfach: Liste mit Parametern $\rightarrow$ \texttt{sys.argv}
+\item Komfortabler f"ur mehrere Optionen: \texttt{OptionParser}
+\end{itemize}
+\begin{lstlisting}[style=Python]
+parser = optparse.OptionParser()
+parser.add_option("-f", "--file", 
+                  dest="filename",
+                  default="out.txt",
+                  help="output file")
+parser.add_option("-v", "--verbose",
+                  action="store_true", 
+                  dest="verbose", 
+                  default=False,
+                  help="verbose output")
+
+(options, args) = parser.parse_args()
+print options.filename, options.verbose
+print args
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
+So wird ein optparse-Programm verwendet:
+\begin{lstlisting}[style=Shell]
+$ ./test.py -h
+usage: test.py [options]
+
+options:
+  -h, --help     show this help message and exit
+  -f FILENAME, --file=FILENAME
+                 output file
+  -v, --verbose  verbose output
+\end{lstlisting} %$
+\begin{lstlisting}[style=Shell]
+$ ./test.py -f aa bb cc
+aa False
+['bb', 'cc']
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
+Einfaches Format zum Speichern von Konfigurationen u."A.: Windows INI-Format
+\begin{lstlisting}[style=Python]
+[font]
+font = Times New Roman
+# comment (or: ! as comment symbol)
+size = 16
+
+[colors]
+font = black
+pointer = %(font)s
+background = white
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
+Config-Datei lesen:
+\begin{lstlisting}[style=Python]
+parser = ConfigParser.SafeConfigParser()
+parser.readfp(open("config.ini", "r"))
+print parser.get("colors", "font")
+\end{lstlisting}
+Weitere Parser-Methoden:
+\begin{itemize}
+\item Liste aller Sections: \texttt{sections()}
+\item Liste aller Optionen: \texttt{options(section)}
+\item Liste aller Optionen und Werte: \texttt{items(section)}
+\item Werte lesen: \texttt{get(sect, opt)}, \\
+\texttt{getint(sect, opt)}, \texttt{getfloat(sect, opt)}, \texttt{getboolean(sect, opt)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
+Config-Datei schreiben:
+\begin{lstlisting}[style=Python]
+parser = ConfigParser.SafeConfigParser()
+parser.add_section("colors")
+parser.set("colors", "font", "black")
+parser.write(open("config.ini", "w"))
+\end{lstlisting}
+Weitere Parser-Methoden:
+\begin{itemize}
+\item Section hinzuf"ugen: \texttt{add\_section(section)}
+\item Section l"oschen: \texttt{remove\_section(section)}
+\item Option hinzuf"ugen: \texttt{set(section, option, value)}
+\item Option entfernen: \texttt{remove\_option(section, option)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{CSV-Dateien: \texttt{csv}}
+CSV: Comma-seperated values
+\begin{itemize}
+\item Tabellendaten im ASCII-Format
+\item Spalten durch ein festgelegtes Zeichen (meist Komma) getrennt
+\end{itemize}
+\begin{lstlisting}[style=Python]
+reader = csv.reader(open("test.csv", "rb"))
+for row in reader:
+    for item in row: 
+        print item
+\end{lstlisting}
+\begin{lstlisting}[style=Python]
+writer = csv.writer(open(outfile, "wb"))
+writer.writerow([1, 2, 3, 4])
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{CSV-Dateien: \texttt{csv}}
+Mit verschiedenen Formaten (Dialekten) umgehen:
+\begin{lstlisting}[style=Python]
+reader(csvfile, dialect='excel') # Default
+writer(csvfile, dialect='excel_tab')
+\end{lstlisting}
+\vspace*{3mm}
+Einzelne Formatparameter angeben:
+\begin{lstlisting}[style=Python]
+reader(csvfile, delimiter=";")
+\end{lstlisting}
+Weitere Formatparameter: \texttt{lineterminator}, \texttt{quotechar}, \texttt{skipinitialspace}, \dots
+\end{frame}
+
+\begin{frame}[fragile]{Objekte serialisieren: \texttt{pickle}}
+Beliebige Objekte in Dateien speichern:
+\begin{lstlisting}[style=Python]
+obj = {"hello": "world", "spam":1}
+pickle.dump(obj, open("blah.bin", "wb"))
+# ...
+obj = pickle.load(open("blah.bin", "rb"))
+\end{lstlisting}
+Objekt in String unwandeln (z.B. zum Verschicken "uber Streams):
+\begin{lstlisting}[style=Python]
+s = pickle.dumps(obj)
+# ...
+obj = pickle.loads(s)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Persistente Dictionaries: \texttt{shelve}}
+Ein Shelve benutzt man wie ein Dictionary, es speichert seinen Inhalt in eine Datei.
+\begin{lstlisting}[style=Python]
+d = shelve.open("blah")
+d["spam"] = "eggs"
+d["blah"] = 1
+del d["foo"]   
+d.close()  
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
+Datenbank in Datei oder im Memory, ab Python 2.5 in der stdlib.
+\begin{lstlisting}[style=Python]
+conn = sqlite3.connect("bla.db")
+c = conn.cursor()
+
+c.execute("""CREATE TABLE Friends
+             (firstname TEXT, lastname TEXT)""")
+c.execute("""INSERT INTO Friends
+             VALUES("Jane", "Doe")""")
+conn.commit()
+\end{lstlisting}
+\begin{lstlisting}[style=Python]
+c.execute("""SELECT * FROM Friends""")
+for row in c: print row
+
+c.close(); conn.close()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
+String-Formatter sind unsicher, da beliebiger SQL-Code eingeschleust werden kann!
+\begin{lstlisting}[style=Python]
+# Never do this!
+symbol = "Jane"
+c.execute("... WHERE firstname = '%s'" % symbol)
+\end{lstlisting}
+\vspace{2mm}
+\includegraphics[width=\textwidth]{images/exploits_of_a_mom.png}
+\end{frame}
+
+\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
+Stattdessen die Platzhalter der Datenbank-API benutzen:
+\begin{lstlisting}[style=Python]
+c.execute("... WHERE name = ?", symbol)
+\end{lstlisting}
+\begin{lstlisting}[style=Python]
+f = (("Janis", "Joplin"), ("Bob", "Dylan"))
+for item in friends:
+    c.execute("""INSERT INTO Friends 
+                 VALUES (?,?)""", item)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Tar-Archive: \texttt{tarfile}}
+Ein tgz entpacken:
+\begin{lstlisting}[style=Python]
+tar = tarfile.open("spam.tgz")
+tar.extractall()
+tar.close()
+\end{lstlisting}
+\vspace*{3mm}
+Ein tgz erstellen:
+\begin{lstlisting}[style=Python]
+tar = tarfile.open("spam.tgz", "w:gz")
+tar.add("/home/rbreu/test")
+tar.close()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Log-Ausgaben: \texttt{logging}}
+Flexible Ausgabe von Informationen, kann schnell angepasst werden.
+\begin{lstlisting}[style=Python]
+import logging
+logging.debug("Very special information.")
+logging.info("I am doing this and that.")
+logging.warning("You should know this.")
+\end{lstlisting}
+\begin{lstlisting}[style=shell]
+WARNING:root:You should know this.
+\end{lstlisting}
+\begin{itemize}
+\item Messages bekommen einen Rang (Dringlichkeit):\\
+ \texttt{CRITICAL}, \texttt{ERROR}, \texttt{WARNING}, \texttt{INFO}, \texttt{DEBUG}
+\item Default: Nur Messages mit Rang \texttt{WARNING} oder h"oher werden ausgegeben
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Log-Ausgaben: \texttt{logging}}
+Beispiel: Ausgabe in Datei, benutzerdefiniertes Format, feineres Log-Level:
+\begin{lstlisting}[style=Python, basicstyle=\ttfamily\small]
+logging.basicConfig(level=logging.DEBUG,
+  format="%(asctime)s %(levelname)-8s %(message)s",
+  datefmt="%Y-%m-%d %H:%M:%S",
+  filename='/tmp/spam.log', filemode='w')
+\end{lstlisting}
+\begin{lstlisting}[style=Shell, basicstyle=\ttfamily\small]
+$ cat /tmp/spam.log
+2007-05-07 16:25:14 DEBUG   Very special information.
+2007-05-07 16:25:14 INFO    I am doing this and that.
+2007-05-07 16:25:14 WARNING You should know this.
+\end{lstlisting} %$
+Es k"onnen auch verschiedene Loginstanzen gleichzeitig benutzt werden,
+siehe Python-Dokumentation.
+\end{frame}
+
+\begin{frame}[fragile]{Regul"are Ausdr"ucke: \texttt{re}}
+Einfaches Suchen nach Mustern:
+\begin{lstlisting}[style=Shell]
+>>> re.findall(r"\[.*?\]", "a[bc]g[hal]def")
+['[bc]', '[hal]']
+\end{lstlisting}
+\vspace*{2mm}
+Ersetzen von Mustern:
+\begin{lstlisting}[style=Shell]
+>>> re.sub(r"\[.*?\]", "!", "a[bc]g[hal]def")
+'a!g!def'
+\end{lstlisting}
+\vspace*{2mm}
+Wird ein Regex-Muster mehrfach verwendet, sollte es aus Geschwindigkeitsgr"unden compiliert werden:
+\begin{lstlisting}[style=Shell]
+>>> pattern = re.compile(r"\[.*?\]")
+>>> pattern.findall("a[bc]g[hal]def")
+['[bc]', '[hal]']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Regul"are Ausdr"ucke: \texttt{re}}
+Umgang mit Gruppen:
+\begin{lstlisting}[style=Shell]
+>>> re.findall("(\[.*?\])|(<.*?>)", 
+               "[hi]s<b>sdd<hal>")
+[('[hi]', ''), ('', '<b>'), ('', '<hal>')]
+\end{lstlisting}
+\vspace*{2mm}
+Flags, die das Verhalten des Matching beeinflussen:
+\begin{lstlisting}[style=Shell]
+>>> re.findall("^a", "abc\nAbc", re.I|re.M)
+>>> ['a', 'A']
+\end{lstlisting}
+\begin{itemize}
+\item \texttt{re.I}: Gro"s-/Kleinschreibung ingnorieren
+\item \texttt{re.M}: \lstinline{^} bzw. \lstinline{$} matchen am Anfang/Ende jeder Zeile (nicht nur am Anfang des Strings) %$
+\item \texttt{re.S}: \lstinline{.} matcht auch Zeilenumbruch
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{URLs lesen: \texttt{urllib2}}
+Einfaches lesen:
+\begin{lstlisting}
+import urllib2
+r = urllib2.urlopen('http://www.fz-juelich.de')
+print r.read()
+print r.headers["content-type"]
+\end{lstlisting}
+Man kann den Request vorm Absenden anpassen:
+\begin{lstlisting}
+opener = urllib2.build_opener()
+opener.addheaders = [('User-agent', 
+                      'Mozilla/5.0')]
+r = opener.open('http://www.fz-juelich.de')
+\end{lstlisting}
+Es werden Cookies, Authentifizierung, Proxies etc unterst"utzt.
+\end{frame}
+
+
+\begin{frame}[fragile]{XML-RPC-Client: \texttt{xmlrpclib}}
+\begin{itemize}
+\item XML-RPC: \alert{Remote Procedure Call} via XML und HTTP
+\item unabh"anging von Plattform und Programmiersprache
+\end{itemize}
+\begin{lstlisting}[style=Python]
+import xmlrpclib
+
+s = xmlrpclib.Server("http://localhost:8000")
+print s.add(2,3) 
+print s.sub(5,2) 
+\end{lstlisting}
+Konvertierungen f"ur die g"angigen Datentypen geschehen automatisch: 
+Booleans, Integer, Floats, Strings, Tupel, Listen, Dictionaries mit Strings als Keys, \dots
+\end{frame}
+
+\begin{frame}[fragile]{XML-RPC-Server: \texttt{SimpleXMLRPCServer}}
+\begin{lstlisting}[style=Python]
+from SimpleXMLRPCServer import SimpleXMLRPCServer
+
+# Methoden, die der Server zur Verfuegung
+# stellen soll:
+class MyFuncs:
+    def add(self, x, y):
+        return x + y
+    def sub(self, x, y):
+        return x - y
+    
+# Erstelle und starte Server:
+server = SimpleXMLRPCServer(("localhost", 8000))
+server.register_instance(MyFuncs())
+server.serve_forever()
+\end{lstlisting}
+\end{frame}
+
+

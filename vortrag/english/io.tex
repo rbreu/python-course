@@ -1,0 +1,72 @@
+\section{Input/Output}
+
+\begin{frame}[fragile]{String-Formatierung}
+Stringformatierung "ahnlich C: 
+\begin{lstlisting}[style=Python]
+print "The answer is %i." % 42
+s = "%s: %3.4f" % ("spam", 3.14)
+\end{lstlisting}
+\begin{itemize}
+\item \alert{Integer dezimal}: d, i
+\item Integer oktal: o
+\item Integer hexadezimal: x, X
+\item \alert{Float}: f, F
+\item Float in Exponentialdarstellung: e, E, g, G
+\item Einzelnes Zeichen: c
+\item \alert{String}: s
+\end{itemize}
+Ein \texttt{\%}-Zeichen gibt man als \texttt{\%\%} aus.
+\end{frame}
+
+\begin{frame}[fragile]{Kommandozeilen-Eingaben}
+Benutzer-Eingaben:
+\begin{lstlisting}[style=Python]
+user_input = raw_input("Type something: ")
+\end{lstlisting}
+\vspace{3mm}
+Kommandozeilen-Parameter:
+\begin{lstlisting}[style=Python]
+import sys
+print sys.argv
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+$ ./params.py spam
+['params.py', 'spam']
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]{Dateien}
+\begin{lstlisting}[style=Python]
+datei1 = open("spam", "r")
+datei2 = open("/tmp/eggs", "wb")
+\end{lstlisting}
+\begin{itemize}
+\item Lesemodus: r
+\item Schreibmodus: w
+\item Bin"ardateien behandeln: b
+\item Schreibmodus, an Daten am Ende anh"angen: a
+\item Lesen und schreiben: r+
+\end{itemize}
+\begin{lstlisting}
+for line in datei1:
+    print line
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Operationen auf Dateien}
+\begin{itemize}
+\item \alert{lesen}: \lstinline{f.read([size])}
+\item Zeile lesen: \lstinline{f.readline()}
+\item mehrere Zeilen lesen: \lstinline{f.readlines([sizehint])}
+\item \alert{schreiben}: \lstinline{f.write(str)}
+\item mehrere Zeilen schreiben: \lstinline{f.writelines(sequence)}
+\item Datei \alert{schlie"sen}: \lstinline{f.close()}
+\end{itemize}
+\begin{lstlisting}[style=Python]
+datei = open("test", "w")
+lines = ["spam\n", "eggs\n", "ham\n"]
+datei.writelines(lines)
+datei.close()
+\end{lstlisting}
+Python wandelt \lstinline{\n} automatisch in den richtigen Zeilenumruch um!
+\end{frame}

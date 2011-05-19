@@ -1,0 +1,90 @@
+\section{Funktionen}
+
+\begin{frame}[fragile]{Funktionen}
+\begin{lstlisting}[style=Python]
+def add(a, b):
+    """Returns the sum of a and b."""
+
+    mysum = a + b
+    return mysum
+\end{lstlisting}
+
+\begin{lstlisting}[style=Shell]
+>>> result = add(3, 5)
+>>> print result
+8
+>>> help(add)
+Help on function add in module __main__:
+
+add(a, b)
+    Returns the sum of a and b.
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{R"uckgabewerte und Parameter}
+\begin{itemize}
+\item Funktionen k"onnen beliebige Objekte als Parameter und R"uckgabewerte haben
+\item Typen der R"uckgabewerte und Parameter sind nicht festgelegt
+\item Funktionen ohne expliziten R"uckgabewert geben \lstinline{None} zur"uck
+\end{itemize}
+\begin{lstlisting}[style=Python]
+def hello_world():
+    print "Hello World!"
+
+a = hello_world()
+print a
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+$ my_program.py
+Hello World
+None
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]{Mehrere R"uckgabewerte}
+Mehrere R"uckgabewerte werden mittels Tupel oder Listen realisiert:
+\begin{lstlisting}[style=Python]
+def foo():
+   a = 17
+   b = 42
+   return (a, b)
+
+ret = foo()
+(x, y) = foo()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Keywords und Defaultwerte}
+Man kann Parameter auch in anderer Reihenfolge als definiert angeben:
+\begin{lstlisting}[style=Python]
+def foo(a, b, c):
+    print a, b, c
+
+foo(b=3, c=1, a="hello")
+\end{lstlisting}
+Defaultwerte festlegen:
+\begin{lstlisting}[style=Python]
+def foo(a, b, c=1.3):
+    print a, b, c
+
+foo(1, 2)
+foo(1, 17, 42)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Funktionen sind Objekte}
+Funktionen sind Objekte und k"onnen wie solche zugewiesen und "ubergeben werden:
+\begin{lstlisting}[style=Shell]
+>>> a = float
+>>> a(22)
+22.0
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+>>> def foo(fkt):
+...     print fkt(33)
+...
+>>> foo(float)
+33.0
+\end{lstlisting}
+\end{frame}
+

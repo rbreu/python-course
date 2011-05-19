@@ -1,0 +1,304 @@
+\section{Objektorientierte Programmierung}
+
+\begin{frame}{Objektorientierte Programmierung}
+\begin{itemize}
+\item Bisher: \alert{prozedurale Programmierung}
+\begin{itemize}
+\item Daten
+\item Funktionen, die Daten als Parameter entgegennehmen und Ergebnis zur"uckliefern
+\end{itemize}
+\item Alternative: Fasse zusammengeh"orige Daten und Funktionen zusammen zu \alert{eigenen Datentypen}
+\item $\rightarrow$ Erweiterung von Strukturen/Datenverb"unden aus C/Fortran
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Einfache Klassen als Structs verwenden}
+\begin{lstlisting}[style=Python]
+class Point:
+    pass
+
+p = Point()
+p.x = 2.0
+p.y = 3.3
+\end{lstlisting}
+\begin{itemize}
+\item \alert{Klasse}: Eigener Datentyp (hier: \texttt{Point})
+\item \alert{Objekt}: Instanz der Klasse (hier: \texttt{p})
+\item Attribute (hier \texttt{x}, \texttt{y})  k"onnen dynamisch hinzugef"ugt werden
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Klassen}
+\begin{lstlisting}[style=Python]
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+p = Point(2.0, 3.0)
+print p.x, p.y
+p.x = 2.5
+p.z = 42
+\end{lstlisting}
+\begin{itemize}
+\item \texttt{\_\_init\_\_}: Wird automatisch nach Erzeugung eines Objekts aufgerufen
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Methoden auf Objekten}
+\begin{lstlisting}[style=Python]
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def norm(self):
+        n = math.sqrt(self.x**2 + self.y**2)
+        return n
+
+p = Point(2.0, 3.0)
+print p.x, p.y, p.norm()
+\end{lstlisting}
+\begin{itemize}
+\item Methodenaufruf: automatisch das Objekt als erster Parameter
+\item $\rightarrow$ wird "ublicherweise \lstinline{self} genannt
+\item\alert{Achtung}: Kein "Uberladen von Methoden m"oglich!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Objekte in Strings konvertieren}
+\onslide<1->
+Standard-R"uckgabe von \lstinline{str(...)} f"ur eigene Objekte:
+\begin{lstlisting}[style=Shell]
+>>> p = Point(2.0, 3.0)
+>>> print p  # --> print str(p)
+<__main__.Point instance at 0x402d7a8c>
+\end{lstlisting}
+\vspace{2mm}
+
+\onslide<2->
+Das kann man anpassen:
+\begin{lstlisting}[style=Python]
+def __str__(self):
+    return "(%i, %i)" % (self.x, self.y)
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+>>> print p
+(2, 3)
+ \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Objekte vergleichen}
+\onslide<1->
+Standard: \texttt{==} pr"uft Objekte eigener Klassen auf Identit"at.
+\begin{lstlisting}[style=Shell]
+>>> p1 = Point(2.0, 3.0)
+>>> p2 = Point(2.0, 3.0)
+>>> p1 == p2
+False
+\end{lstlisting}
+%\vspace{2mm}
+\onslide<2->
+Das kann man anpassen:
+\begin{lstlisting}[style=Python]
+def __eq__(self, other):
+    return (self.x == other.x) and
+           (self.y == other.y)
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+>>> p1 == p2 # Check for equal values
+True
+>>> p1 is p2 # Check for identity
+False
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Objekte vergleichen}
+Weitere Vergleichsoperatoren:
+\begin{itemize}
+\item \texttt{<} : \lstinline{__lt__(self, other)}
+\item \texttt{<=} : \lstinline{__le__(self, other)}
+\item \texttt{!=} : \lstinline{__ne__(self, other)}
+\item \texttt{>} : \lstinline{__gt__(self, other)}
+\item \texttt{>=} : \lstinline{__ge__(self, other)}
+\end{itemize}
+\vspace{2mm}
+Alternativ: \lstinline{__cmp__(self, other)}, gibt zur"uck:
+\begin{itemize}
+\item negativen Integer, wenn \lstinline{self < other}
+\item null, wenn \lstinline{self == other}
+\item positiven Integer, wenn \lstinline{self > other}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Datentypen emulieren}
+Man kann mit Klassen vorhandene Datentypen emulieren:
+\begin{itemize}
+\item Zahlen: Rechenoperationen, \texttt{int(myobj)}, \texttt{float(myobj)}, \dots
+\item Funktionen: \texttt{myobj(...)}
+\item Sequenzen: \texttt{len(myobj)}, \texttt{myobj[...]}, \lstinline{x in myobj}, ...
+\item Iteratoren: \lstinline{for i in myobj}
+\end{itemize}
+\vspace{2mm}
+Siehe dazu Dokumentation:\\
+\href{http://docs.python.org/ref/specialnames.html}{http://docs.python.org/ref/specialnames.html}
+\end{frame}
+
+\begin{frame}[fragile]{Klassenvariablen}
+Haben f"ur alle Objekte einer Klasse stets den gleichen Wert:
+\begin{lstlisting}[style=Python]
+class Point:
+    count = 0  # Count all point objects
+    def __init__(self, x, y):
+        self.__class__.count += 1
+        ...
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+>>> p1 = Point(2, 3); p2 = Point(3, 4)
+>>> p1.count
+2
+>>> p2.count
+2
+>>> Point.count
+2
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Klassenmethoden und statische Methoden}
+\begin{lstlisting}[style=Python]
+class Spam:
+    spam = "I don't like spam."
+
+    @classmethod
+    def cmethod(cls):
+        print cls.spam
+       
+    @staticmethod
+    def smethod():
+        print "Blah blah."
+\end{lstlisting}
+\begin{lstlisting}[style=Python]
+Spam.cmethod()
+Spam.smethod()
+s = Spam()
+s.cmethod()
+s.smethod()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Vererbung}
+Oft hat man verschiedene Klassen, die einander "ahneln.\\
+\alert{Vererbung} erlaubt:
+\begin{itemize}
+\item Hierarchische Klassenstruktur (Ist-ein-Beziehung)
+\item Wiederverwenden von "ahnlichem Code
+\end{itemize}
+\vspace{5mm}
+Beispiel: Verschiedene Telefon-Arten
+\begin{itemize}
+\item Telefon
+\item Handy (ist ein Telefon mit zus"atzlichen Funktionen)
+\item SmartPhone (ist ein Handy mit zus"atzlichen Funktionen)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vererbung}
+\begin{lstlisting}[style=Python]
+class Phone:
+    def call(self):
+        pass
+
+class MobilePhone(Phone):
+    def send_text(self):
+        pass
+\end{lstlisting}
+Handy erbt jetzt Methoden und Attribute von Telefon.
+\begin{lstlisting}[style=Python]
+h = MobilePhone()
+h.call() # inherited from Phone
+h.send_text() # own method
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Methoden "uberschreiben}
+In der abgeleiteten Klasse k"onnen die Methoden der Elternklasse "uberschrieben werden:
+\begin{lstlisting}[style=Python]
+class MobilePhone(Telefon):
+    def call(self):
+        find_signal()
+        Phone.call(self)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Mehrfachvererbung}
+Klassen k"onnen von mehreren Elternklassen erben. Bsp:
+\begin{itemize}
+\item SmartPhone ist ein Handy
+\item SmartPhone ist eine Kamera
+\end{itemize}
+\begin{lstlisting}[style=Python]
+class SmartPhone(MobilePhone, Camera)
+    pass
+
+h = SmartPhone()
+h.call()  # inherited from MobilePhone
+h.take_photo() # inherited from Camera
+\end{lstlisting}
+Attribute werden in folgender Reihenfolge gesucht:
+
+SmartPhone, MobilePhone, Elterklasse von MobilePhone (rekursiv), Camera, Elternklasse von Camera (rekursiv).
+\end{frame}
+
+\begin{frame}[fragile]{Private Attribute}
+\begin{itemize}
+\item In Python gibt es keine privaten Variablen oder Methoden. 
+\item \alert{Konvention:} Attribute, auf die nicht von au"sen zugegriffen werden sollte, beginnen mit einem Unterstrich: \lstinline{_foo}.
+\item Um Namenskonflikte zu vermeiden: Namen der Form \lstinline{__foo} werden durch \lstinline{_klassenname__foo} ersetzt:
+\end{itemize}
+\begin{lstlisting}[style=Python]
+class Spam:
+    __eggs = 3
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+>>> dir(Spam)
+>>> ['_Spam__eggs', '__doc__', '__module__']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Properties}
+Sollen beim Zugriff auf eine Variable noch Berechnungen oder "Uberpr"ufungen durchgef"uhrt werden: \alert{Getter} und \alert{Setter}
+\begin{lstlisting}[style=Python]
+class Spam(object):
+    def __init__(self):
+        self._value = 0
+    
+    def get_value(self):
+        return self._value
+
+    def set_value(self, value):
+        if value <= 0:  self._value = 0
+        else:  self._value = value
+
+    value = property(get_value, set_value)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Properties}
+Auf Properties wird wie auf gew"ohnliche Attribute zugegriffen:
+\begin{lstlisting}[style=Shell]
+>>> s = Spam()
+>>> s.value = 6   # set_value(6)
+>>> s.value       # get_value()
+>>> 6
+>>> s.value = -6  # set_value(-6)
+>>> s.value       # get_value()
+>>> 0
+\end{lstlisting}
+\begin{itemize}
+\item Getter und Setter k"onnen nachtr"aglich hinzugef"ugt werden, ohne die API zu ver"andern.
+\item Zugriff auf \lstinline{_value} immer noch m"oglich
+\end{itemize}
+
+\end{frame}
+
+

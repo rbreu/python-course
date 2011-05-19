@@ -1,0 +1,160 @@
+\section{Data Types I}
+
+\begin{frame}[fragile]{Numerical Data Types}
+\begin{itemize}
+\item \alert{\texttt{int}}: corresponds to \texttt{long} in C
+\item \alert{\texttt{long}}: unlimited range of values
+\item \alert{\texttt{float}}: corresponds to \texttt{double} in C 
+\item \alert{\texttt{complex}}: complex numbers
+\end{itemize} 
+\begin{lstlisting}[style=Python]
+a = 1
+b = 1L
+c = 1.0; c = 1e0
+d = 1 + 0j
+\end{lstlisting}
+\vspace{3mm}
+Integers are automatically converted to \texttt{long} if necessary!
+\end{frame}
+
+\begin{frame}{Operators on Numbers}
+\begin{itemize}
+\item \alert{Basic arithmetics}: \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}
+\item Div and modulo operator: \texttt{//}, \hspace{1mm}\texttt{\%}, \hspace{1mm}\texttt{divmod(x, y)}
+\item \alert{Absolute value}: \texttt{abs(x)}
+\item \alert{Rounding}: \texttt{round(x)}
+\item Conversion: \texttt{int(x)}, \texttt{long(x)}, \texttt{float(x)},\\s \texttt{complex(re~[, im=0])}
+\item Conjugate of a complex number: \texttt{x.conjugate()}
+\item \alert{Power}: \texttt{x ** y}, \hspace{1mm}\texttt{pow(x, y)}
+\end{itemize}
+Result of a composition of different data types is of the ``bigger'' data type.
+\end{frame}
+
+\begin{frame}[fragile]{Strings}
+Data type: \alert{\lstinline{str}}
+\begin{itemize}
+\item \lstinline{s = 'spam'}, \lstinline{s = "spam"}
+\item Multiline strings: \lstinline{s = """spam"""}
+\item No interpretation of escape sequences: \lstinline{s = r"spam"}
+\item Generate strings from other data types: \lstinline{str(1.0)}
+\end{itemize}
+\begin{lstlisting}[style=Shell]
+>>> s = """hello
+... world"""
+>>> print s
+hello
+world
+>>> print "sp\nam"
+sp
+am
+>>> print r"sp\nam"  # or: print "sp\\nam"
+sp\nam
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{String Methods}
+\begin{itemize}
+\item Count appearance of substrings: \lstinline{s.count(sub [, start[, end]])}
+\item Begins/ends with a substring? \lstinline{s.startswith(sub[, start[, end]])}, \lstinline{s.endswith(sub[, start[, end]])}
+\item All capital/lowercase letters: \lstinline{s.upper()}, \lstinline{s.lower()}
+\item Remove whitespace: \lstinline{s.strip([chars])}
+\item Split at substring: \lstinline{s.split([sub [,maxsplit]])}
+\item Find position of substring: \lstinline{s.index(sub[, start[, end]])}
+\item Replace a substring: \lstinline{s.replace(old, new[, count])}
+\end{itemize}
+More methods: \lstinline{help(str)}, \lstinline{dir(str)}
+\end{frame}
+
+\begin{frame}{Lists}
+Data type: \alert{\lstinline{list}}
+\begin{itemize}
+\item \lstinline{s = [1, "spam", 9.0, 42]}, \;\lstinline{s = []}
+\item \alert{Append an element}: \lstinline{s.append(x)}
+\item Extend with a second list: \lstinline{s.extend(s2)}
+\item Count appearance of an element: \lstinline{s.count(x)}
+\item Position of an element: \lstinline{s.index(x[, min[, max]])}
+\item Insert element at position: \lstinline{s.insert(i, x)}
+\item Remove and return element at position: \lstinline{\s.pop([i])}
+\item \alert{Remove element}: \lstinline{s.remove(x)}
+\item Reverse list: \lstinline{s.reverse()}
+\item \alert{Sort}: \lstinline{s.sort([cmp[, key[, reverse]]])}
+\item Sum of the elements: \lstinline{sum(s)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Operations on Sequences}
+Strings and lists have much in common: They are \alert{sequences}.
+\begin{itemize}
+\item Does/doesn't s contain an element?\\
+ \lstinline{x in s}, \lstinline{x not in s}
+\item Concatenate sequences: \lstinline{s + t}
+\item Multiply sequences: \lstinline{n * s}, \lstinline{s * n}
+\item \alert{i-th element}: \lstinline{s[i]}, \alert{i-th to last  element}: \lstinline{s[-i]}
+\item Subsequence: \lstinline{s[i:j]}, with step size k: \lstinline{s[i:j:k]}
+\item Subsequence from beginning/to end: \lstinline{s[:-i]}, \lstinline{s[i:]}, \lstinline{s[:]}
+\item \alert{Length}: \lstinline{len(s)}
+\item smallest/largest element: \lstinline{min(s)}, \lstinline{max(s)}
+\item Assignments: \lstinline{(a, b, c) = s} \\
+$\rightarrow$ \lstinline{a = s[0]}, \lstinline{b = s[1]}, \lstinline{c = s[2]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Sequencen}
+\begin{itemize}
+\item Another sequence: data type \alert{\texttt{tuple}}: \lstinline{a = (1, 2.0, "3")}
+\item List are mutable
+\item Strings and tuples are immutable
+\begin{itemize}
+\item No assignment \lstinline{s[i] = ...}
+\item No appending and removing of elements
+\item Functions like \texttt{upper} return a new string!
+\end{itemize}
+\end{itemize}
+\begin{lstlisting}[style=Shell]
+>>> s1 = "spam"
+>>> s2 = s1.upper()
+>>> s1
+'spam'
+>>> s2
+'SPAM'
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{References}
+\begin{itemize}
+\item In Python, everything is a reference to an object!
+\item Careful with assignments:
+\end{itemize}
+\begin{lstlisting}[style=Shell]
+>>> s1 = [1, 2, 3, 4]
+>>> s2 = s1
+>>> s2[1] = 17
+>>> s1
+[1, 17, 3, 4]
+>>> s2
+[1, 17, 3, 4]
+\end{lstlisting}
+Flat copy of a list: \lstinline{s2 = s1[:]} or \lstinline{s2 = list(s1)}
+\end{frame}
+
+\begin{frame}[fragile]{Boolean Values}
+Data type \alert{bool}: \texttt{True}, \texttt{False}
+
+Values that are evulated to \texttt{False}:
+\begin{itemize}
+\item \texttt{None}
+\item \texttt{False}
+\item \texttt{0} (in every numerical data type)
+\item empty strings, lists and tuples: \texttt{''}, \texttt{[]}, \texttt{()}
+\item empty dictionaries: \texttt{\{\}}
+\item empty sets
+\end{itemize}
+All other Objects of built-in data types are evaluated to \texttt{True}!
+\begin{lstlisting}[style=Shell]
+>>> bool([1, 2, 3])
+True
+>>> bool("")
+False
+\end{lstlisting}
+\end{frame}
+

@@ -1,0 +1,151 @@
+\section{Introduction}
+
+\begin{frame}{What is Python?}
+\alert{Python:} dynamic programming language which supports several different programing paradigms:
+\begin{itemize}
+\item procedural programming
+\item object oriented programming
+\item functional programming
+\end{itemize}
+Standard: Python byte code is executed in the Python interpreter (similar to Java)\\
+$\rightarrow$ \alert{platform independent code}
+\end{frame}
+
+\begin{frame}{Why Python?}
+\begin{itemize}
+\item syntax is clear, easy to read and learn (almost pseudo code)
+\item intuitive object oriented programming
+\item full modularity, hierarchical packages
+\item error handling via exceptions
+\item dynamic, high level data types
+\item comprehensive standard library for many tasks
+\item simply extendable via C/C++, wrapping of C/C++ libraries
+\end{itemize}
+\alert{Focus: programming speed}
+\end{frame}
+
+\begin{frame}{Is Python fast enough?}
+\begin{itemize}
+\item for compute intensive algorithms: Fortran, C, C++ might be better
+\item for user programs: Python is fast enough!
+\item most parts of Python are written in C
+\item performance-critical parts can be re-implemented in C/C++ if necessary
+\item first analyse, then optimise!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hello World!}
+\begin{lstlisting}[style=Python]
+#!/usr/bin/env python
+
+# This is a commentary
+print "Hello world!"
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+$ python hello_world.py
+Hello world!
+$
+\end{lstlisting}%$
+\begin{lstlisting}[style=Shell]
+$ chmod 755 hello_world.py
+$ ./hello_world.py
+Hello world!
+$
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]{Hello User}
+\begin{lstlisting}[style=Python]
+#!/usr/bin/env python
+
+name = raw_input("What's your name? ")
+print "Hello", name
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+$ ./hello_user.py
+What's your name? Rebecca
+Hello Rebecca
+$
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Strong and Dynamic Typing}
+\alert{Strong Typing:}
+\begin{itemize}
+\item Object is of exactly one type! A string is always a string, an integer always an integer
+\item Counter examples: PHP, JavaScript, C: \texttt{char} can be interpreted as \texttt{short}, \texttt{void~*} can be everything
+\end{itemize}
+\alert{Dynamic Typing:}
+\begin{itemize}
+\item no variable declaration
+\item variable names can be assigned to different data types in the course of a program
+\item An object's attributes are checked only at run time
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Strong and Dynamic Typing}
+\begin{lstlisting}[style=Python]
+number = 3
+print number, type(number)
+print number + 42
+number = "3"
+print number, type(number)
+print number + 42
+\end{lstlisting}
+\begin{lstlisting}[style=Shell]
+3 <type 'int'>
+45
+3 <type 'str'>
+Traceback (most recent call last):
+  File "test.py", line 6, in ?
+    print number + 42
+TypeError: cannot concatenate 'str' and 
+'int' objects
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Interactive Mode}
+The interpreter can be started in interactive mode:
+\begin{lstlisting}[style=Shell]
+$ python
+Python 2.6 (r26:66714, Feb  3 2009, 20:52:03) 
+[GCC 4.3.2] on linux2
+Type "help", "copyright", "credits" or ...
+>>> print "hello world"
+hello world
+>>> a = 3 + 4
+>>> print a
+7
+>>> 3 + 4
+7
+>>>
+\end{lstlisting} %$
+\end{frame}
+
+\begin{frame}{Documentation}
+Online help in the interpreter:
+\begin{itemize}
+\item \alert{\lstinline{help()}}: general Python help
+\item \alert{\lstinline{help(obj)}}: help regarding an object, e.g. a function or a module
+\item \alert{\lstinline{dir()}}: all used names
+\item \alert{\lstinline{dir(obj)}}: all attributes of an object
+\end{itemize}
+\vspace{5mm}
+Official documentation: \href{http://docs.python.org/}{http://docs.python.org/}
+\end{frame}
+
+\begin{frame}[fragile]{Documentation}
+\begin{lstlisting}[style=Shell]
+>>> help(dir)
+Help on built-in function dir:
+...
+>>> a = 3
+>>> dir()
+['__builtins__', '__doc__', '__file__', 
+'__name__', 'a']
+>>> help(a)
+Help on int object:
+...
+\end{lstlisting}
+\end{frame}
+

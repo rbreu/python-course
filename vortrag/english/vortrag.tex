@@ -1,0 +1,101 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\usepackage{py_vortrag}
+
+
+% title
+\title{Einf"uhrung in Python}
+
+\date{May 2011}
+
+\author{Rebecca Breu}
+
+\institute
+{
+ Verteilte Systeme und Grid-Computing \\
+ JSC\\
+ Forschungszentrum J"ulich
+}
+
+
+\begin{document}
+
+\AtBeginPart
+{
+  \begin{frame}
+  \titlepage
+  \end{frame}
+
+  \begin{frame}{Contents --- \insertpart}
+  \tableofcontents
+  \end{frame}
+}
+
+
+\AtBeginSection[]
+{
+   \begin{frame}{\insertsection}
+       \tableofcontents[currentsection]
+   \end{frame}
+}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Contents}
+\begin{columns}[t]
+
+\begin{column}{0.4\textwidth}
+  Part 1:\\[3mm]
+  \tableofcontents[part=1]
+\end{column}
+
+\begin{column}{0.6\textwidth}
+  Part 2:\\[3mm]
+  \tableofcontents[part=2]
+  \vspace{7mm}
+  Part 3:\\[3mm]
+  \tableofcontents[part=3]
+\end{column}
+
+\end{columns}
+\end{frame}
+
+
+\part{Teil 1}
+
+\input{einfuehrung}
+\input{datentypen1}
+\input{statements}
+\input{funktionen1}
+\input{io}
+\input{module}
+\input{ausnahmen}
+
+\vielspass
+
+\part{Teil 2}
+\input{datentypen2}
+\input{oop}
+\input{stdlib}
+
+
+\vielspass
+
+\part{Teil 3}
+\input{fortgeschritten}
+\input{python27}
+\input{wx}
+\input{ausblick}
+
+\vielspass
+
+\end{document}
+
