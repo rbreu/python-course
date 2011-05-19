@@ -1,7 +1,7 @@
-\section{Module und Pakete}
+\section{Modules and Packages}
 
-\begin{frame}[fragile]{Module importieren}
-Funktionen, Klassen und Objekte, die thematisch zusammengeh"oren, werden in Modulen geb"undelt.
+\begin{frame}[fragile]{Importing Modules}
+Functions, classes and object thematically belonging together are grouped in modules.
 \begin{lstlisting}[style=Python]
 import math
 s = math.sin(math.pi)
@@ -20,14 +20,14 @@ s = sin(pi)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Module}
+\begin{frame}[fragile]{Modules}
 \begin{itemize}
-\item Hilfe: \lstinline{dir(math)}, \lstinline{help(math)}
-\item Module werden gesucht in (siehe \lstinline{sys.path}):
+\item Help: \lstinline{dir(math)}, \lstinline{help(math)}
+\item Modules are searched for in (see \lstinline{sys.path}):
 \begin{itemize}
-\item dem Verzeichnis der aufrufenden Datei
-\item Verzeichnissen aus der Umgebungsvariablen \texttt{PYTHONPATH}
-\item installationsbedingten Verzeichnissen 
+\item the directory of the running script
+\item directories in the environment variable \texttt{PYTHONPATH}
+\item installation-dependent directories
 \end{itemize}
 \end{itemize}
 \begin{lstlisting}[style=Shell]
@@ -39,8 +39,8 @@ s = sin(pi)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Pakete importieren}
-Module k"onnen zu  hierarchisch strukturierten Paketen zusammengefasst werden.
+\begin{frame}[fragile]{Importing Packages}
+Modules can be grouped into hierarchically structured packages.
 \begin{lstlisting}[style=Python]
 import email
 msg = email.mime.text.MIMEText("Hallo Welt!")
@@ -55,8 +55,8 @@ msg = MIMEText("Hallo Welt!")
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Eigene Module}
-Jedes Python-Programm kann als Modul importiert werden.
+\begin{frame}[fragile]{Own Modules}
+Every Python program can be imported as a module.
 \begin{lstlisting}[style=Python]
 """My first module: my_module.py"""
 
@@ -72,11 +72,11 @@ print add(2, 3)
 >>> my_module.add(17, 42)
 59
 \end{lstlisting}
-Top-Level-Anweisungen werden beim Import ausgef"uhrt!
+Top level instructions are executed during import!
 \end{frame}
 
-\begin{frame}[fragile]{Eigene Module}
-Sollen Anweisungen nur beim direkten Ausf"uhren, aber nicht beim Importieren ausgef"uhrt werden:
+\begin{frame}[fragile]{Own Modules}
+If instructions should only be executed when running as a script, not importing it:
 \vspace{3mm}
 \begin{lstlisting}[style=Python]
 def add(a, b):
@@ -88,10 +88,10 @@ def main():
 if __name__ == "__main__":
     main()
 \end{lstlisting}
-Sinnvoll z.B. f"ur Tests der Modulfunktionalit"at.
+Useful e.g. for testing parts of the module.
 \end{frame}
 
-\begin{frame}[fragile]{Eigene Pakete}
+\begin{frame}[fragile]{Own Packages}
 \begin{columns}
 \begin{column}{3.2cm}
 \begin{tikzpicture}
@@ -113,8 +113,8 @@ Sinnvoll z.B. f"ur Tests der Modulfunktionalit"at.
 \end{column}
 \begin{column}{7.3cm}
 \begin{itemize}
-\item Pakete sind Unterordner
-\item In jedem Paket-Ordner: \lstinline{__init__.py} (kann leer sein)
+\item Packages are subdirectories
+\item In each package directory: \lstinline{__init__.py} (may be empty)
 \end{itemize}
 
 \begin{lstlisting}[style=Python]
