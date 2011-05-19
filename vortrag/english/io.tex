@@ -1,30 +1,30 @@
 \section{Input/Output}
 
-\begin{frame}[fragile]{String-Formatierung}
-Stringformatierung "ahnlich C: 
+\begin{frame}[fragile]{String Formatting}
+String formatting similar to C:
 \begin{lstlisting}[style=Python]
 print "The answer is %i." % 42
 s = "%s: %3.4f" % ("spam", 3.14)
 \end{lstlisting}
 \begin{itemize}
-\item \alert{Integer dezimal}: d, i
-\item Integer oktal: o
-\item Integer hexadezimal: x, X
+\item \alert{Integer decimal}: d, i
+\item Integer octal: o
+\item Integer hexadecimal: x, X
 \item \alert{Float}: f, F
-\item Float in Exponentialdarstellung: e, E, g, G
-\item Einzelnes Zeichen: c
+\item Float in exponential form: e, E, g, G
+\item Single character: c
 \item \alert{String}: s
 \end{itemize}
-Ein \texttt{\%}-Zeichen gibt man als \texttt{\%\%} aus.
+Use \texttt{\%\%} to output a single \texttt{\%} character.
 \end{frame}
 
-\begin{frame}[fragile]{Kommandozeilen-Eingaben}
-Benutzer-Eingaben:
+\begin{frame}[fragile]{Command Line Input}
+User input:
 \begin{lstlisting}[style=Python]
 user_input = raw_input("Type something: ")
 \end{lstlisting}
 \vspace{3mm}
-Kommandozeilen-Parameter:
+Command line parameters:
 \begin{lstlisting}[style=Python]
 import sys
 print sys.argv
@@ -35,38 +35,38 @@ $ ./params.py spam
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]{Dateien}
+\begin{frame}[fragile]{Files}
 \begin{lstlisting}[style=Python]
-datei1 = open("spam", "r")
-datei2 = open("/tmp/eggs", "wb")
+file1 = open("spam", "r")
+file2 = open("/tmp/eggs", "wb")
 \end{lstlisting}
 \begin{itemize}
-\item Lesemodus: r
-\item Schreibmodus: w
-\item Bin"ardateien behandeln: b
-\item Schreibmodus, an Daten am Ende anh"angen: a
-\item Lesen und schreiben: r+
+\item Read mode: r
+\item Write mode: w
+\item Handling binary files: b
+\item Read mode, appending to the end: a
+\item Read and write: r+
 \end{itemize}
 \begin{lstlisting}
-for line in datei1:
+for line in file1:
     print line
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Operationen auf Dateien}
+\begin{frame}[fragile]{Operations on Files}
 \begin{itemize}
-\item \alert{lesen}: \lstinline{f.read([size])}
-\item Zeile lesen: \lstinline{f.readline()}
-\item mehrere Zeilen lesen: \lstinline{f.readlines([sizehint])}
-\item \alert{schreiben}: \lstinline{f.write(str)}
-\item mehrere Zeilen schreiben: \lstinline{f.writelines(sequence)}
-\item Datei \alert{schlie"sen}: \lstinline{f.close()}
+\item \alert{read}: \lstinline{f.read([size])}
+\item Read a line: \lstinline{f.readline()}
+\item Read multiple lines: \lstinline{f.readlines([sizehint])}
+\item \alert{write}: \lstinline{f.write(str)}
+\item write multiple lines: \lstinline{f.writelines(sequence)}
+\item \alert{Close} file: \lstinline{f.close()}
 \end{itemize}
 \begin{lstlisting}[style=Python]
-datei = open("test", "w")
+file1 = open("test", "w")
 lines = ["spam\n", "eggs\n", "ham\n"]
-datei.writelines(lines)
-datei.close()
+file1.writelines(lines)
+file1.close()
 \end{lstlisting}
-Python wandelt \lstinline{\n} automatisch in den richtigen Zeilenumruch um!
+Python automatically converts \lstinline{\n} into the correct line ending!
 \end{frame}
