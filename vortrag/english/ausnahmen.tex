@@ -1,11 +1,11 @@
-\section{Fehler und Ausnahmen}
+\section{Errors and Exceptions}
 
 \begin{frame}[fragile]{Syntax Errors, Indentation Errors}
-Fehler beim Parsen: \alert{Programm wird nicht ausgef"uhrt}. Z.B.: 
+Errors while parsing: \alert{Program doesn't get executed}. E.g.: 
 \begin{itemize}
-\item Klammerungsfehler
-\item Falsche oder fehlende Semikolons, Doppelpunkte, Kommas
-\item Einr"uckungsfehler
+\item Mismatched or missing parenthesis
+\item Missing or misplaced semicolons, colons, commas
+\item Indentation errors
 \end{itemize}
 \begin{lstlisting}[style=Python]
 print "I'm running..."
@@ -21,8 +21,8 @@ SyntaxError: invalid syntax
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]{Ausnahmen}
-Ausnahmen (Exceptions) treten \alert{zur Laufzeit} auf:
+\begin{frame}[fragile]{Exceptions}
+Exceptions occur at \alert{runtime}:
 \begin{lstlisting}[style=Python]
 import math
 print "I'm running..."
@@ -39,7 +39,7 @@ attribute 'foo'
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]{Ausnahmen behandeln}
+\begin{frame}[fragile]{Handling Exceptions}
 \begin{lstlisting}[style=Python]
 try:
     s = raw_input("Enter a number: ")
@@ -48,17 +48,17 @@ except ValueError:
     print "That's not a number!"
 \end{lstlisting}
 \begin{itemize}
-\item \lstinline{except}-Block wird ausgef"uhrt, wenn Code im \lstinline{try}-Block eine passende Ausnahme wirft
-\item danach l"auft Programm normal weiter
-\item nicht behandelte Ausnahmen f"uhren zum Programmabbruch
+\item \lstinline{except} block is executed when the code in the code in the \lstinline{try}-Block throws an according exception
+\item afterwards, the program continues normally
+\item unhandled exceptions force the program to exit.
 \end{itemize}
-Verschiedene Ausnahmen abfangen:
+Handling different kinds of exceptions:
 \begin{lstlisting}[style=Python]
 except (ValueError, TypeError, NameError):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Ausnahmen behandeln}
+\begin{frame}[fragile]{Handling Exceptions}
 \begin{lstlisting}[style=Python]
 try:
     s = raw_input("Enter a number: ")
@@ -71,18 +71,18 @@ except:
     print "Oops, what's happened?"
 \end{lstlisting}
 \begin{itemize}
-\item Mehrere \lstinline{except}-Statements f"ur verschiedene Ausnahmen
-\item Letztes \lstinline{except} kann ohne Ausnahme-Typ verwendet werden: F"angt alle verbleibenen Ausnahmen ab
+\item Several \lstinline{except} statements for different exceptions
+\item Last \lstinline{except} can be used without specifying the kind of exception: Catches all remaining exceptions
 \begin{itemize}
-\item Vorsicht: Kann ungewollte Programmierfehler verdecken!
+\item Careful: Can mask unintended programming errors!
 \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Ausnahmen behandeln}
+\begin{frame}[fragile]{Handling Exceptions}
 \begin{itemize}
-\item \alert{\texttt{else}} wird ausgef"uhrt, wenn keine Ausnahme auftrat
-\item \alert{\texttt{finally}} wird in \alert{jedem} Fall ausgef"uhrt
+\item \alert{\texttt{else}} is executed if no exception occurred
+\item \alert{\texttt{finally}} is executed \alert{in any} case
 \end{itemize}
 \begin{lstlisting}[style=Python]
 try:
@@ -97,8 +97,8 @@ finally:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Ausnahme-Objekte}
-Auf das Ausnahme-Objekt zugreifen:
+\begin{frame}[fragile]{Exception Objects}
+Access to exception objects:
 \begin{lstlisting}[style=Python]
 try:
     f = open("spam")
@@ -113,7 +113,7 @@ $ python test.py
 \end{lstlisting}%$
 \end{frame}
 
-\begin{frame}{Ausnahmen in Funktionsaufrufen}
+\begin{frame}{Exceptions in Function Calls}
 \begin{figure}
 \centering
 \only<1>
@@ -208,15 +208,15 @@ $ python test.py
 }
 \end{figure}
 \begin{itemize}
-\item<1-> Funktion ruft Unterfunktionen auf.
-\item<4-> Unterfunktion wirft Ausnahme.
-\item<5-> Wird Ausnahme behandelt?
-\item<6-> Nein: Gib Ausnahme an aufrufende Funktion weiter.
+\item<1-> Function calls another function.
+\item<4-> That function raises an exception.
+\item<5-> Is exception handled?
+\item<6-> No: Pass exception to calling function.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Ausnahmen ausl"osen}
-Ausnahmen weiterreichen:
+\begin{frame}[fragile]{Raising Exceptions}
+Passing exceptions on:
 \begin{lstlisting}[style=Python]
 try:
     f = open("spam")
@@ -225,7 +225,7 @@ except IOError:
     raise
 \end{lstlisting}
 \vspace{3mm}
-Ausnahmen ausl"osen:
+Raising exceptions:
 \begin{lstlisting}[style=Python]
 def gauss_solver(matrix):
     # Important code
@@ -234,9 +234,9 @@ def gauss_solver(matrix):
 \end{frame}
 
 
-\begin{frame}[fragile]{Ausnahmen vs. if-Abfragen von Werten}
+\begin{frame}[fragile]{Exceptions vs. Checking Values Beforehand}
 \onslide<1->
-Ausnahmen bevorzugen!
+Exceptions are preferable!
 
 \begin{lstlisting}
 def square(x):
@@ -245,27 +245,27 @@ def square(x):
     else:
         return None
 \end{lstlisting}
-Schlecht!
+Bad!
 
 \onslide<2->
 \begin{itemize}
-  \item Was ist mit anderen numerischen Datentypen (komplexe Zahlen, eigene Typen)? Besser: Versuchen zu potenzieren und eventuelle Ausnahmen abfangen! $\rightarrow$ \alert{Duck-Typing}
+  \item What about other numerical data types (complex numbers, own data types)? Better: Try to compute the power and catch possible exceptions! $\rightarrow$ \alert{Duck-Typing}
 
-  \item Aufrufer der Funktion kann vergessen, den R"uckgabewert zu pr"ufen (und weiterzureichen). Besser: Ausnahme ausl"osen!
+  \item Caller of a function might forget to check return values for validity. Better: Raise an exception!
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}[fragile]{Das \texttt{with}-Statement}
-Einige Objekte bieten Kontext-Management an. Damit k"onnen \lstinline{try ... finally}\,-Bl"ocke einfacher geschrieben werden:
+\begin{frame}[fragile]{The \texttt{with} Statement}
+Some objects offer context management, which provides a more convenient way to write \lstinline{try ... finally} blocks:
 \begin{lstlisting}
 with open("test.txt") as f:
     for line in f:
         print line
 \end{lstlisting}
-Nach dem \lstinline{with}-Block ist das Dateiobjekt stets wieder geschlossen, auch wenn im Block eine Exception auftrat.\vspace{5mm}
+After the \lstinline{with} block the file object is guaranteed to be closed properly, no matter what exceptions occurred within the block.\vspace{5mm}
 
-In Python 2.5 ist folgender Import n"otig:
+In Python 2.5 this needs the following import:
 \begin{lstlisting}
 from __future__ import with_statement
 \end{lstlisting}
