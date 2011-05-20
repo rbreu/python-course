@@ -223,7 +223,7 @@ h.send_text() # own method
 \begin{frame}[fragile]{Methoden "uberschreiben}
 In der abgeleiteten Klasse k"onnen die Methoden der Elternklasse "uberschrieben werden:
 \begin{lstlisting}[style=Python]
-class MobilePhone(Telefon):
+class MobilePhone(Phone):
     def call(self):
         find_signal()
         Phone.call(self)
