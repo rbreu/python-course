@@ -1,22 +1,22 @@
-\section{Datentypen II}
+\section{Data Types II}
 
 \begin{frame}[fragile]{Sets}
-\alert{Set} (Menge): ungeordnet, doppelte Elemente werden nur einmal gespeichert
+\alert{Set}: unordered, no duplicated elements
 \begin{itemize}
 \item \lstinline{s = set([sequence])}
-\item \alert{Teilmenge}: \lstinline{s.issubset(t)}, \lstinline{s <= t}, echte T.: \lstinline{s < t}
-\item \alert{Obermenge}: \lstinline{s.issuperset(t)}, \lstinline{s >= t}, echte O.: \lstinline{s > t} 
-\item \alert{Vereinigung}: \lstinline{s.union(t)}, \lstinline{s | t}
-\item \alert{Schnittmenge}: \lstinline{s.intersection(t)}, \lstinline{s & t}
-\item \alert{Differenz}: \lstinline{s.difference(t)}, \lstinline{s - t}
-\item Symmetrische Differenz: \lstinline{s.symmetric_difference(t)}, \lstinline{s ^ t}
-\item Kopie: \lstinline{s.copy()}
+\item \alert{Subset}: \lstinline{s.issubset(t)}, \lstinline{s <= t}, proper s.: \lstinline{s < t}
+\item \alert{Superset}: \lstinline{s.issuperset(t)}, \lstinline{s >= t}, proper s.: \lstinline{s > t} 
+\item \alert{Union}: \lstinline{s.union(t)}, \lstinline{s | t}
+\item \alert{Intersection}: \lstinline{s.intersection(t)}, \lstinline{s & t}
+\item \alert{Difference}: \lstinline{s.difference(t)}, \lstinline{s - t}
+\item Symmetric Difference: \lstinline{s.symmetric_difference(t)}, \lstinline{s ^ t}
+\item Copy: \lstinline{s.copy()}
 \end{itemize}
-Wie f"ur Sequenzen gibt es auch: \lstinline{x in set}, \lstinline{len(set)}, \lstinline{for x in set}, \lstinline{add}, \lstinline{remove}
+As with sequences, the following works: \lstinline{x in set}, \lstinline{len(set)}, \lstinline{for x in set}, \lstinline{add}, \lstinline{remove}
 \end{frame}
 
 \begin{frame}[fragile]{Dictionaries}
-\alert{Dictionary}: Zuordnung Schl"ussel $\rightarrow$ Wert
+\alert{Dictionary}: Mapping of key $\rightarrow$ value
 \begin{lstlisting}[style=Shell]
 >>> d = { "spam": 1, "eggs": 17}
 >>> d["eggs"]
@@ -25,25 +25,25 @@ Wie f"ur Sequenzen gibt es auch: \lstinline{x in set}, \lstinline{len(set)}, \ls
 >>> d
 {'eggs': 17, 'bacon': 42, 'spam': 1}
 \end{lstlisting}
-\"Uber Dictionaries iterieren:
+Iterating over dictionaries:
 \begin{lstlisting}[style=Python]
 for key in d:
     print key, d[key]
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Operationen auf Dictionaries}
+\begin{frame}[fragile]{Operations on Dictionaries}
 \begin{itemize}
-\item Eintrag l"oschen: \lstinline{del}
-\item alle Eintr"age l"oschen: \lstinline{d.clear()}
-\item Kopie: \lstinline{d.copy()}
-\item Ist Schl"ussel enthalten? \lstinline{d.has_key(k)}, \lstinline{k in d}
-\item Liste von (key, value)-Tupeln: \lstinline{d.items()}
-\item Liste aller Schl"ussel: \lstinline{d.keys()}
-\item Liste aller Werte: \lstinline{d.values()}
-\item Eintrag holen: \lstinline{d.get(k[, x])}
-\item Eintrag l"oschen und zur"uckgeben: \lstinline{d.pop(k[, x])}
-\item Eintrag l"oschen und zur"uckgeben:  \lstinline{d.popitem()}
+\item Delete an entry: \lstinline{del}
+\item Delete all entries: \lstinline{d.clear()}
+\item Copy: \lstinline{d.copy()}
+\item Does it contain a key? \lstinline{d.has_key(k)}, \lstinline{k in d}
+\item List of all (key, value) tuples: \lstinline{d.items()}
+\item List of all keys: \lstinline{d.keys()}
+\item List all values: \lstinline{d.values()}
+\item Get an entry: \lstinline{d.get(k[, x])}
+\item Remove and return entry: \lstinline{d.pop(k[, x])}
+\item Remove and return arbitrary entry:  \lstinline{d.popitem()}
 \end{itemize}
 \end{frame}
 
