@@ -1,20 +1,20 @@
-\section{Pythons Standardbibliothek}
+\section{Python's Standard Library}
 
-\begin{frame}{Pythons Standardbibliothek}
-\alert{\glqq Batteries included\grqq}: umfassende Standardbibliothek f"ur die verschiedensten Aufgaben\\[4mm]
+\begin{frame}{Python's Standard Library}
+\alert{``Batteries included''}: comprehensive standard library for various tasks\\[4mm]
 
 \includegraphics[height=4.5cm]{images/batteries_included.jpg}
 \end{frame}
 
-\begin{frame}[fragile]{Mathematik: \texttt{math}}
+\begin{frame}[fragile]{Mathematics: \texttt{math}}
 \begin{itemize}
-\item Konstanten: \texttt{e}, \texttt{pi}
-\item Auf- und Abrunden: \texttt{floor(x)}, \texttt{ceil(x)}
-\item Exponentialfunktion: \texttt{exp(x)}
-\item Logarithmus: \texttt{log(x[, base])}, \texttt{log10(x)}
-\item Potenz und Quadratwurzel: \texttt{pow(x, y)}, \texttt{sqrt(x)}
-\item Trigonometrische Funktionen: \texttt{sin(x)}, \texttt{cos(x)}, \texttt{tan(x)}
-\item Kovertierung Winkel $\leftrightarrow$ Radiant: \texttt{degrees(x)}, \texttt{radians(x)}
+\item Constants: \texttt{e}, \texttt{pi}
+\item Round up/down: \texttt{floor(x)}, \texttt{ceil(x)}
+\item Exponential function: \texttt{exp(x)}
+\item Logarithm: \texttt{log(x[, base])}, \texttt{log10(x)}
+\item Power and square root: \texttt{pow(x, y)}, \texttt{sqrt(x)}
+\item Trigonometric functions: \texttt{sin(x)}, \texttt{cos(x)}, \texttt{tan(x)}
+\item Conversion degree $\leftrightarrow$ radiant: \texttt{degrees(x)}, \texttt{radians(x)}
 \end{itemize}
 \begin{lstlisting}[style=Shell]
 >>> import math
@@ -26,14 +26,14 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Zufall: \texttt{random}}
+\begin{frame}[fragile]{Random Numbers: \texttt{random}}
 \begin{itemize}
-\item Zuf"allige Integers: \\ \texttt{randint(a, b)},  \texttt{randrange([start,] stop[, step])}
-\item Zuf"allige Floats (Gleichverteilg.): \texttt{random()}, \texttt{uniform(a, b)}
-\item Andere Verteilungen: \texttt{expovariate(lambd)}, \texttt{gammavariate(alpha, beta)}, \texttt{gauss(mu, sigma)}, \dots
-\item Zuf"alliges Element einer Sequenz: \texttt{choice(seq)}
-\item Mehrere eindeutige, zuf"allige Elemente einer Sequenz: \texttt{sample(population, k)}
-\item Sequenz mischen: \texttt{shuffle(seq[, random])}
+\item Random integers: \\ \texttt{randint(a, b)},  \texttt{randrange([start,] stop[, step])}
+\item Random floats (uniform distr.): \texttt{random()}, \texttt{uniform(a, b)}
+\item Other distibutions: \texttt{expovariate(lambd)}, \texttt{gammavariate(alpha, beta)}, \texttt{gauss(mu, sigma)}, \dots
+\item Random element of a sequence: \texttt{choice(seq)}
+\item Several unique, random elements of a sequence: \texttt{sample(population, k)}
+\item Shuffled sequence: \texttt{shuffle(seq[, random])}
 \end{itemize}
 \begin{lstlisting}[style=Python]
 >>> s = [1, 2, 3, 4, 5]
@@ -46,7 +46,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Exakte Dezimalzahlen: \texttt{fractions}}
+\begin{frame}[fragile]{Exact decimals: \texttt{fractions}}
 
 \begin{lstlisting}
 >>> from fractions import Fraction
@@ -60,19 +60,19 @@ Fraction(16, 15)
 Fraction(5, 3)
 \end{lstlisting}
 
-(Siehe auch: Modul \texttt{decimal}.)
+(See also: module \texttt{decimal}.)
 \end{frame}
 
 
-\begin{frame}[fragile]{Datum und Zeit: \texttt{datetime}}
-Zeit- und Datumsangaben:
+\begin{frame}[fragile]{Date and Time: \texttt{datetime}}
+Date and time objects:
 \begin{lstlisting}
 d1 = datetime.date(2008, 3, 21)  
 d2 = datetime.date(2008, 6, 22)
 dt = datetime.datetime(2011, 8, 26, 12, 30)
 t = datetime.time(12, 30)
 \end{lstlisting}
-Mit Zeit und Datum rechnen:
+Calculating with date and time:
 \begin{lstlisting}
 print d1 < d2
 delta = d2 - d1
@@ -81,27 +81,26 @@ print d2 + datetime.timedelta(days=44)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Weitere Datentypen: \texttt{collections}}
-\alert{defaulttict}: Dictionary, welches Defaultwerte f"ur nicht vorhandene Schl"usselw"orter erzeugen kann:
+\begin{frame}[fragile]{More Data Types: \texttt{collections}}
+\alert{defaulttict}: Dictionary which creates default values for non-existant keywords:
 \begin{lstlisting}
-haeufigkeiten = defaultdict(lambda: 0)
+frequency = defaultdict(lambda: 0)
 
-for c in "Hallo Welt!":
-    haeufigkeiten[c] += 1
+for c in "Hello world!":
+    frequency[c] += 1
 \end{lstlisting}
-Paramter (optional): Funktion zum Erzeugen der Defaultwerte
-
+Paramter (optional): function creating the default values
 \end{frame}
 
 
-\begin{frame}[fragile]{Operationen auf Verzeichnisnamen: \texttt{os.path}}
+\begin{frame}[fragile]{Operations on Path Names: \texttt{os.path}}
 \begin{itemize}
-\item Pfade: \texttt{abspath(path)}, \texttt{basename(path)}, \texttt{normpath(path)}, \texttt{realpath(path)}
-\item Pfad zusammensetzen: \texttt{join(path1[, path2[, ...]])}
-\item Pfade aufspalten: \texttt{split(path)}, \texttt{splitext(path)}
-\item Datei-Informationen: \texttt{isfile(path)}, \texttt{isdir(path)}, \texttt{islink(path)}, \texttt{getsize(path)}, \dots
-\item Home-Verzeichnis vervollst"andigen: \texttt{expanduser(path)}
-\item Umgebungsvariablen vervollst"andigen: \texttt{expandvars(path)}
+\item Paths: \texttt{abspath(path)}, \texttt{basename(path)}, \texttt{normpath(path)}, \texttt{realpath(path)}
+\item Construct paths: \texttt{join(path1[, path2[, ...]])}
+\item Split paths: \texttt{split(path)}, \texttt{splitext(path)}
+\item File information: \texttt{isfile(path)}, \texttt{isdir(path)}, \texttt{islink(path)}, \texttt{getsize(path)}, \dots
+\item Expand home directory: \texttt{expanduser(path)}
+\item Expand environment variables: \texttt{expandvars(path)}
 \end{itemize} 
 \begin{lstlisting}[style=Shell]
 >>> os.path.join("spam", "eggs", "ham.txt")
@@ -115,15 +114,15 @@ Paramter (optional): Funktion zum Erzeugen der Defaultwerte
 \end{lstlisting}%$
 \end{frame}
 
-\begin{frame}[fragile]{Dateien und Verzeichnisse: \texttt{os}}
+\begin{frame}[fragile]{Files and Directories: \texttt{os}}
 \begin{itemize}
 \item Working directory: \lstinline{getcwd()}, \lstinline{chdir(path)}
-\item Dateirechte "andern: \lstinline{chmod(path, mode)}
-\item Besitzer "andern: \lstinline{chown(path, uid, gid)}
-\item Verzeichnis erstellen: \lstinline{mkdir(path[, mode])}, \lstinline{makedirs(path[, mode])}
-\item Dateien l"oschen: \lstinline{remove(path)}, \lstinline{removedirs(path)}
-\item Dateien umbenennen: \lstinline{rename(src, dst)}, \lstinline{renames(old, new)}
-\item Liste von Dateien in Verzeichnis: \lstinline{listdir(path)}
+\item Changing file permissions: \lstinline{chmod(path, mode)}
+\item Changing ower: \lstinline{chown(path, uid, gid)}
+\item Creating directories: \lstinline{mkdir(path[, mode])}, \lstinline{makedirs(path[, mode])}
+\item Removing files: \lstinline{remove(path)}, \lstinline{removedirs(path)}
+\item Renaming files: \lstinline{rename(src, dst)}, \lstinline{renames(old, new)}
+\item List of files in a directory: \lstinline{listdir(path)}
 \end{itemize}
 \begin{lstlisting}[style=Python]
 for myfile in os.listdir("mydir"):
@@ -132,8 +131,8 @@ for myfile in os.listdir("mydir"):
 \end{lstlisting}
 \end{frame} 
 
-\begin{frame}[fragile]{Verzeichnislisting: \texttt{glob}}
-Liste von Dateien in Verzeichnis, mit Unix-artiger Wildcard-Vervollst"andigung: \texttt{glob(path)}
+\begin{frame}[fragile]{Directory Listing: \texttt{glob}}
+List of files in a directory with Unix-like extension of wildcards: \texttt{glob(path)}
 \begin{lstlisting}[style=Shell]
 >>> glob.glob("python/[a-c]*.py")
 ['python/confitest.py',
@@ -147,13 +146,13 @@ Liste von Dateien in Verzeichnis, mit Unix-artiger Wildcard-Vervollst"andigung: 
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Dateien und Verzeichnisse: \texttt{shutil}}
-Higher Level-Operationen auf Dateien und Verzeichnissen.
+\begin{frame}[fragile]{Files and Directories: \texttt{shutil}}
+Higher level operations on files and direcories.
 \begin{itemize}
-\item Datei kopieren: \texttt{copyfile(src, dst)}, \texttt{copy(src, dst)}
-\item Rekursiv kopieren; \texttt{copytree(src, dst[, symlinks])}
-\item Rekursiv l"oschen: \\\texttt{rmtree(path[, ignore\_errors[, onerror]])}
-\item Rekursiv verschieben: \texttt{move(src, dst)}
+\item Copying files: \texttt{copyfile(src, dst)}, \texttt{copy(src, dst)}
+\item Recursive copy: \texttt{copytree(src, dst[, symlinks])}
+\item Recursive removal: \\\texttt{rmtree(path[, ignore\_errors[, onerror]])}
+\item Recursive move: \texttt{move(src, dst)}
 \end{itemize}
 \begin{lstlisting}[style=Python]
 shutil.copytree("spam/eggs", "../beans", 
@@ -161,29 +160,29 @@ shutil.copytree("spam/eggs", "../beans",
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Andere Prozesse starten: \texttt{subprocess}}
-Einfaches Ausf"uhren eines Programmes:
+\begin{frame}[fragile]{Run Processes: \texttt{subprocess}}
+Simple execution of a program:
 \begin{lstlisting}[style=Python]
 p = subprocess.Popen(["ls", "-l", "mydir"])
 returncode = p.wait() # wait for p to end
 \end{lstlisting}
-Zugriff auf die Ausgabe eines Programmes:
+Access to the program's output:
 \begin{lstlisting}[style=Python]
 p = Popen(["ls"], stdout=PIPE, stderr=STDOUT) 
 p.wait()
 output = p.stdout.read()
 \end{lstlisting}
-Pipes zwischen Prozessen (\lstinline{ls -l | grep txt})
+Pipes between processes (\lstinline{ls -l | grep txt})
 \begin{lstlisting}[style=Python]
 p1 = Popen(["ls", "-l"], stdout=PIPE)
 p2 = Popen(["grep", "txt"], stdin=p1.stdout)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
+\begin{frame}[fragile]{Access to Command Line Parameters: \texttt{optparse}}
 \begin{itemize}
-\item Einfach: Liste mit Parametern $\rightarrow$ \texttt{sys.argv}
-\item Komfortabler f"ur mehrere Optionen: \texttt{OptionParser}
+\item Simple list of parameters: $\rightarrow$ \texttt{sys.argv}
+\item More convenient for handling several options: \texttt{OptionParser}
 \end{itemize}
 \begin{lstlisting}[style=Python]
 parser = optparse.OptionParser()
@@ -203,7 +202,7 @@ print args
 \end{lstlisting}
 \end{frame}
 \begin{frame}[fragile]{Zugriff auf Kommandozeilenparameter: \texttt{optparse}}
-So wird ein optparse-Programm verwendet:
+Usage of an optparse program:
 \begin{lstlisting}[style=Shell]
 $ ./test.py -h
 usage: test.py [options]
@@ -221,8 +220,8 @@ aa False
 \end{lstlisting} %$
 \end{frame}
 
-\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
-Einfaches Format zum Speichern von Konfigurationen u."A.: Windows INI-Format
+\begin{frame}[fragile]{Configuration Files: \texttt{ConfigParser}}
+Simple format to store configuration etc: Windows' INI format
 \begin{lstlisting}[style=Python]
 [font]
 font = Times New Roman
@@ -236,45 +235,45 @@ background = white
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
-Config-Datei lesen:
+\begin{frame}[fragile]{Configuration Files: \texttt{ConfigParser}}
+Reading configuration files:
 \begin{lstlisting}[style=Python]
 parser = ConfigParser.SafeConfigParser()
 parser.readfp(open("config.ini", "r"))
 print parser.get("colors", "font")
 \end{lstlisting}
-Weitere Parser-Methoden:
+More parser methods:
 \begin{itemize}
-\item Liste aller Sections: \texttt{sections()}
-\item Liste aller Optionen: \texttt{options(section)}
-\item Liste aller Optionen und Werte: \texttt{items(section)}
-\item Werte lesen: \texttt{get(sect, opt)}, \\
+\item List of all sections: \texttt{sections()}
+\item List of all options: \texttt{options(section)}
+\item List of all options and values: \texttt{items(section)}
+\item Reading values: \texttt{get(sect, opt)}, \\
 \texttt{getint(sect, opt)}, \texttt{getfloat(sect, opt)}, \texttt{getboolean(sect, opt)}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Konfigurationsdateien: \texttt{ConfigParser}}
-Config-Datei schreiben:
+\begin{frame}[fragile]{Config Files: \texttt{ConfigParser}}
+Writing configuration files:
 \begin{lstlisting}[style=Python]
 parser = ConfigParser.SafeConfigParser()
 parser.add_section("colors")
 parser.set("colors", "font", "black")
 parser.write(open("config.ini", "w"))
 \end{lstlisting}
-Weitere Parser-Methoden:
+More parser methods:
 \begin{itemize}
-\item Section hinzuf"ugen: \texttt{add\_section(section)}
-\item Section l"oschen: \texttt{remove\_section(section)}
-\item Option hinzuf"ugen: \texttt{set(section, option, value)}
-\item Option entfernen: \texttt{remove\_option(section, option)}
+\item Adding a section: \texttt{add\_section(section)}
+\item Deleting a section: \texttt{remove\_section(section)}
+\item Adding an option: \texttt{set(section, option, value)}
+\item Removing and option: \texttt{remove\_option(section, option)}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{CSV-Dateien: \texttt{csv}}
-CSV: Comma-seperated values
+\begin{frame}[fragile]{CSV Files: \texttt{csv}}
+CSV: Comma Seperated Values
 \begin{itemize}
-\item Tabellendaten im ASCII-Format
-\item Spalten durch ein festgelegtes Zeichen (meist Komma) getrennt
+\item Data tables in ASCII format
+\item Columns are delimited by a predefined character (most often comma)
 \end{itemize}
 \begin{lstlisting}[style=Python]
 reader = csv.reader(open("test.csv", "rb"))
@@ -288,29 +287,29 @@ writer.writerow([1, 2, 3, 4])
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{CSV-Dateien: \texttt{csv}}
-Mit verschiedenen Formaten (Dialekten) umgehen:
+\begin{frame}[fragile]{CSV Files: \texttt{csv}}
+Handling different kinds of formats (dialects):
 \begin{lstlisting}[style=Python]
 reader(csvfile, dialect='excel') # Default
 writer(csvfile, dialect='excel_tab')
 \end{lstlisting}
 \vspace*{3mm}
-Einzelne Formatparameter angeben:
+Specifying individual format parameters:
 \begin{lstlisting}[style=Python]
 reader(csvfile, delimiter=";")
 \end{lstlisting}
-Weitere Formatparameter: \texttt{lineterminator}, \texttt{quotechar}, \texttt{skipinitialspace}, \dots
+Further format parameters: \texttt{lineterminator}, \texttt{quotechar}, \texttt{skipinitialspace}, \dots
 \end{frame}
 
-\begin{frame}[fragile]{Objekte serialisieren: \texttt{pickle}}
-Beliebige Objekte in Dateien speichern:
+\begin{frame}[fragile]{Serialising Objects: \texttt{pickle}}
+Saving single, arbitrary objects in files:
 \begin{lstlisting}[style=Python]
 obj = {"hello": "world", "spam":1}
 pickle.dump(obj, open("blah.bin", "wb"))
 # ...
 obj = pickle.load(open("blah.bin", "rb"))
 \end{lstlisting}
-Objekt in String unwandeln (z.B. zum Verschicken "uber Streams):
+Converting objects in strings (e.g. to send via streams):
 \begin{lstlisting}[style=Python]
 s = pickle.dumps(obj)
 # ...
@@ -318,8 +317,8 @@ obj = pickle.loads(s)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Persistente Dictionaries: \texttt{shelve}}
-Ein Shelve benutzt man wie ein Dictionary, es speichert seinen Inhalt in eine Datei.
+\begin{frame}[fragile]{Persistent Dictionaries: \texttt{shelve}}
+A shelve is used like a dictionary; it saves its content to a file.
 \begin{lstlisting}[style=Python]
 d = shelve.open("blah")
 d["spam"] = "eggs"
@@ -329,8 +328,8 @@ d.close()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
-Datenbank in Datei oder im Memory, ab Python 2.5 in der stdlib.
+\begin{frame}[fragile]{Lightweight Database: \texttt{sqlite3}}
+Database in a file or in memory; in Python's stdlib sine 2.5.
 \begin{lstlisting}[style=Python]
 conn = sqlite3.connect("bla.db")
 c = conn.cursor()
@@ -349,8 +348,8 @@ c.close(); conn.close()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
-String-Formatter sind unsicher, da beliebiger SQL-Code eingeschleust werden kann!
+\begin{frame}[fragile]{Lightweight Database: \texttt{sqlite3}}
+String formatting is insecure since it allows injection of arbitrary SQL code!
 \begin{lstlisting}[style=Python]
 # Never do this!
 symbol = "Jane"
@@ -360,8 +359,8 @@ c.execute("... WHERE firstname = '%s'" % symbol)
 \includegraphics[width=\textwidth]{images/exploits_of_a_mom.png}
 \end{frame}
 
-\begin{frame}[fragile]{Leichtgewichtige Datenbank: \texttt{sqlite3}}
-Stattdessen die Platzhalter der Datenbank-API benutzen:
+\begin{frame}[fragile]{Lightweight Database: \texttt{sqlite3}}
+Instead: Use the placeholder the database API provides:
 \begin{lstlisting}[style=Python]
 c.execute("... WHERE name = ?", symbol)
 \end{lstlisting}
@@ -373,15 +372,15 @@ for item in friends:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Tar-Archive: \texttt{tarfile}}
-Ein tgz entpacken:
+\begin{frame}[fragile]{Tar Archives: \texttt{tarfile}}
+Extracting a tgz:
 \begin{lstlisting}[style=Python]
 tar = tarfile.open("spam.tgz")
 tar.extractall()
 tar.close()
 \end{lstlisting}
 \vspace*{3mm}
-Ein tgz erstellen:
+Creating a tgz:
 \begin{lstlisting}[style=Python]
 tar = tarfile.open("spam.tgz", "w:gz")
 tar.add("/home/rbreu/test")
@@ -389,8 +388,8 @@ tar.close()
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Log-Ausgaben: \texttt{logging}}
-Flexible Ausgabe von Informationen, kann schnell angepasst werden.
+\begin{frame}[fragile]{Logging Output: \texttt{logging}}
+Flexible output of information which can be easily customised.
 \begin{lstlisting}[style=Python]
 import logging
 logging.debug("Very special information.")
@@ -401,14 +400,14 @@ logging.warning("You should know this.")
 WARNING:root:You should know this.
 \end{lstlisting}
 \begin{itemize}
-\item Messages bekommen einen Rang (Dringlichkeit):\\
+\item Messages are assigned a priority:\\
  \texttt{CRITICAL}, \texttt{ERROR}, \texttt{WARNING}, \texttt{INFO}, \texttt{DEBUG}
-\item Default: Nur Messages mit Rang \texttt{WARNING} oder h"oher werden ausgegeben
+\item Default: Only messages with priority \texttt{WARNING} or higher are printed
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Log-Ausgaben: \texttt{logging}}
-Beispiel: Ausgabe in Datei, benutzerdefiniertes Format, feineres Log-Level:
+\begin{frame}[fragile]{Logging Output: \texttt{logging}}
+Example: Output into file, custom format, higher logging level:
 \begin{lstlisting}[style=Python, basicstyle=\ttfamily\small]
 logging.basicConfig(level=logging.DEBUG,
   format="%(asctime)s %(levelname)-8s %(message)s",
@@ -421,8 +420,7 @@ $ cat /tmp/spam.log
 2007-05-07 16:25:14 INFO    I am doing this and that.
 2007-05-07 16:25:14 WARNING You should know this.
 \end{lstlisting} %$
-Es k"onnen auch verschiedene Loginstanzen gleichzeitig benutzt werden,
-siehe Python-Dokumentation.
+You can use multiple logger instancdes at the same time, see Python documentation.
 \end{frame}
 
 \begin{frame}[fragile]{Regul"are Ausdr"ucke: \texttt{re}}
